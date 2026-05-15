@@ -177,7 +177,7 @@ export default function Contact() {
           {/* SIDE RAIL */}
           <aside className="md:col-span-5 lg:col-span-4 space-y-px self-start" style={{ background: "var(--color-hairline)" }}>
             <Info icon={<Mail size={18} />} label="Email"      value="hello@salttidecreative.com" href="mailto:hello@salttidecreative.com" />
-            <Info icon={<Phone size={18} />} label="Phone"      value="+1 (425) 555-0123" href="tel:+14255550123" />
+            <Info icon={<Phone size={18} />} label="Phone"      value="+1 (425) 900-8335" href="tel:+14259008335" />
             <Info icon={<Clock size={18} />} label="Hours"      value="Mon – Fri · 9 AM – 6 PM PT" />
             <Info icon={<MapPin size={18} />} label="Studio"     value="Edmonds, WA · Remote-first" />
             <div className="p-7" style={{ background: "var(--color-ink)" }}>
