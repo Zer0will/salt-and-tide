@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/90669572/EGTco5S8SggNApnBKhc24B",
+    "access_key_id": "ASIAZV3A2ECZFWZUBVMA",
+    "secret_access_key": "fFUvz7GjW5H2NRfC71UdqkolbQMWZN1mqILhGWLO",
+    "session_token": "IQoJb3JpZ2luX2VjEKr//////////wEaCXVzLWVhc3QtMSJHMEUCIC6WMx7XNmp/w8GTzgHE1xcoTFxnrIFbptpCfMcUiN++AiEAtNo+pxHZt49b1xhrdB7gVtDEn77Rq4SFs3y0tuDWDmAq4gMIcxAEGgw2NjUzODYwOTg4NjYiDPcBJvs4IIz6wm6QCCq/A4QJwk+HPwBTmXiXvwgLbAC9xdm9Rug2cjsjrWji7s8SRuYNWOs9yJFNk8btW8Vnt68YpjfhodnsP1lEZP+q2L2PYYd6OGc5SgOtth0MFW8m0pswiOr7efobu0LWv5WUrNOZZBdrgFd/MV2AWyukxqSPibIDvWD6UiTXJQ48yIVu82yxOQLh+V+XufEsQNmeX60ZVMM8BjFluxJkfotROfX3shol7WNuEt5lJtnvdK61706zahbZCesrdge8FKA33cHmhH1yemwGQd1QYlZFpGL8dF6VpHwnk2sKeWB8GTrkHPZnaDzB7F7sJrOYMmEY5cIu/exdt8+GX6SgUB7y1JbqsW+o8paKyvydQ/TEskwWzT4XN5mTeCiGvZMrPHaCGXWRQ6YGIJH2STmpDAKqEa938Qd9y8D3irEru0KEnEVkj2rwy85EGZyTbrFdgFl9ufnA8cB/nd2XQh4Od6ung4UWE431XId7TicXALG8BRssHtRwRyzo3Gyur8zunfQZQdcZ7hpk15kasVrQo5eAO5hHdDxXz6Yaf5BUKxQ5+1maJk2KpM9UWgMxS2INTz4e6Iw8GGReaHL4Swh/AqLizjDO3pvQBjqdAZpP8JwdBSTJe2sLvqdO/ucpxH6UQ9AlYi7jGaQuI9YbOOo5PEyb34xvCHh/EHp0XeQfIoe09c4I6tBcjg1GEk0RAlPh/pYPGFpRQdkyWcWl9omDLKFi9lqK2lvwVG6fquxCB93xjKtmAJ2ZDQNt9dRL2+ukTKmppL7pAz2ce/WnjIisLFY3QAIk8BIJLBy8u/cO3dN4cqbzj+74nIE=",
+    "expiration": "2026-05-15T22:02:54.000Z"
+  },
+  "name": "salt-and-tide",
+  "path": "/home/ubuntu/salt-and-tide",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "hyFLjqKhfTYH6kDGPHPSmz",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "9PexeXRzDtrideaWXYBFtW",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Talichoco",
+    "OWNER_OPEN_ID": "Qi8BGehk5Axv4m9UHFRrVR",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "174466d6-d2c6-4c3e-a781-e1ee1a8da5d9",
+    "VITE_APP_ID": "EGTco5S8SggNApnBKhc24B",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "Salt \u0026 Tide Creative",
+    "VITE_FRONTEND_FORGE_API_KEY": "AgKbHdThasaSrdJS4dDjge",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
