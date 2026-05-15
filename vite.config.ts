@@ -203,7 +203,13 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+// Manus-specific plugins are only included when running inside the Manus environment
+const isManusEnv = Boolean(process.env.BUILT_IN_FORGE_API_URL);
+const plugins = [
+  react(),
+  tailwindcss(),
+  ...(isManusEnv ? [jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()] : []),
+];
 
 export default defineConfig({
   plugins,
