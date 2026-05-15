@@ -1,4 +1,6 @@
-// SALT & TIDE — Pacific Brutalist. Footer with marquee tape, four-column nav, and coordinates easter egg.
+// SALT & TIDE — Pacific Brutalist. Footer with marquee tape, NAP block, and column links.
+// SEO note: the <address> NAP block must remain identical to your Google Business Profile and any
+// citation directories (Yelp, Bing Places, etc.). Inconsistency hurts local rankings.
 import { Link } from "wouter";
 
 export function Footer() {
@@ -40,6 +42,7 @@ export function Footer() {
             { href: "/work", label: "Selected Work" },
             { href: "/services", label: "Services" },
             { href: "/about", label: "About" },
+            { href: "/insights", label: "Insights" },
             { href: "/contact", label: "Contact" },
           ]}/>
           <FootCol title="Capabilities" links={[
@@ -48,18 +51,39 @@ export function Footer() {
             { href: "/services#full", label: "Full-Service Growth" },
             { href: "/services#addons", label: "Care &amp; Retainers" },
           ]}/>
-          <div className="md:col-span-3">
-            <div className="mono-label">Reach Us</div>
-            <ul className="mt-4 space-y-2 text-sm" style={{ color: "var(--color-text-secondary)" }}>
-              <li><a className="ul-grow" href="mailto:hello@salttidecreative.com">hello@salttidecreative.com</a></li>
-              <li><a className="ul-grow" href="tel:+14255550123">+1 (425) 555-0123</a></li>
-              <li>Edmonds, WA · Remote-first</li>
-              <li className="pt-2">
-                <a className="ul-grow" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <FootCol title="Service Areas" links={[
+            { href: "/seattle-web-design", label: "Seattle, WA" },
+            { href: "/edmonds-web-design", label: "Edmonds, WA" },
+            { href: "/lynnwood-web-design", label: "Lynnwood, WA" },
+          ]}/>
+        </div>
+
+        <hr className="hr-tide my-12" />
+
+        {/* NAP — Name, Address, Phone (must match GBP exactly) */}
+        <div className="grid gap-8 md:grid-cols-12">
+          <div className="md:col-span-7">
+            <div className="mono-label">Reach Us · NAP</div>
+            <address className="mt-4 not-italic text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+              <div className="display" style={{ color: "var(--color-text-primary)", fontSize: "1.05rem" }}>Salt &amp; Tide Creative LLC</div>
+              <div>Edmonds, WA 98020 · United States</div>
+              <div className="mt-2">
+                <a className="ul-grow" href="mailto:hello@salttidecreative.com">hello@salttidecreative.com</a>
                 <span className="mx-2 opacity-40">·</span>
-                <a className="ul-grow" href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-              </li>
-            </ul>
+                <a className="ul-grow" href="tel:+14255550123">+1 (425) 555-0123</a>
+              </div>
+              <div className="mt-2 mono-label" style={{ color: "var(--color-text-muted)" }}>
+                MON–FRI · 9AM–6PM PT · SERVING SEATTLE &amp; PUGET SOUND
+              </div>
+            </address>
+          </div>
+          <div className="md:col-span-5 md:text-right">
+            <div className="mono-label">Find Us</div>
+            <div className="mt-4 text-sm flex gap-5 md:justify-end" style={{ color: "var(--color-text-secondary)" }}>
+              <a className="ul-grow" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a className="ul-grow" href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+              <a className="ul-grow" href="https://g.co/" target="_blank" rel="noreferrer">Google</a>
+            </div>
           </div>
         </div>
 
@@ -70,6 +94,7 @@ export function Footer() {
           <div className="flex items-center gap-5">
             <a className="ul-grow" href="#">Privacy</a>
             <a className="ul-grow" href="#">Terms</a>
+            <a className="ul-grow" href="/sitemap.xml">Sitemap</a>
             <span title="Made on the Edmonds waterfront">MADE IN EDMONDS, WA</span>
           </div>
         </div>

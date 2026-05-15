@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react"
 import { useReveal } from "@/hooks/useReveal";
 import { PROJECTS } from "@/data/portfolio";
 import NotFound from "./NotFound";
+import { Seo, SITE_ORIGIN, ORG_NAME, breadcrumbSchema } from "@/components/Seo";
 
 export default function CaseStudy() {
   useReveal();
@@ -14,8 +15,49 @@ export default function CaseStudy() {
   const p = PROJECTS[idx];
   const next = PROJECTS[(idx + 1) % PROJECTS.length];
 
+  // Compute SEO copy specific to this case study.
+  const isRestaurant = /restaurant|cafe|hospitality/i.test(p.category);
+  const seoTitle = `${p.client} — ${isRestaurant ? "Restaurant Website Design" : "Web Design"} Case Study | Salt & Tide`;
+  const seoDescTemplate = `${p.client} (${p.location}) — ${p.blurb} See the strategy, design, and result behind this ${p.category.toLowerCase()} project by Salt & Tide Creative.`;
+  const seoDescription = seoDescTemplate.length > 160 ? seoDescTemplate.slice(0, 157) + "…" : seoDescTemplate;
+
+  const creativeWorkLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: p.title,
+    headline: p.title,
+    url: `${SITE_ORIGIN}/work/${p.slug}`,
+    image: p.desktop,
+    description: p.blurb,
+    keywords: [p.category, "web design", p.location, "Seattle", "Edmonds WA"].join(", "),
+    creator: { "@type": "Organization", "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
+    about: { "@type": "LocalBusiness", name: p.client, address: { "@type": "PostalAddress", addressLocality: p.location } },
+    datePublished: `${p.year}-01-01`,
+  };
+
   return (
     <>
+      <Seo
+        title={seoTitle.length > 60 ? `${p.client} Case Study | Salt & Tide` : seoTitle}
+        description={seoDescription}
+        path={`/work/${p.slug}`}
+        image={p.desktop}
+        type="article"
+        keywords={[
+          `${p.client} website`,
+          `${p.category} web design`,
+          `${p.location} web design`,
+          "Seattle web design case study",
+        ]}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Work", path: "/work" },
+            { name: p.client, path: `/work/${p.slug}` },
+          ]),
+          creativeWorkLd,
+        ]}
+      />
       {/* HEAD */}
       <section style={{ paddingTop: "clamp(140px, 16vh, 200px)", paddingBottom: "clamp(40px, 6vh, 80px)" }}>
         <div className="container">
@@ -62,7 +104,14 @@ export default function CaseStudy() {
               <span style={{ width: 8, height: 8, borderRadius: 9999, background: "#3a3d44" }} />
               <span className="ml-3 text-[10px]" style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}>{p.client}</span>
             </div>
-            <img src={p.desktop} alt={p.title} style={{ display: "block", width: "100%" }} />
+            <img
+              src={p.desktop}
+              alt={`${p.client} desktop website design by ${ORG_NAME} — ${p.category} in ${p.location}`}
+              width={1600}
+              height={1000}
+              decoding="async"
+              style={{ display: "block", width: "100%" }}
+            />
           </div>
         </div>
         <hr className="hr-tide mt-16" />
@@ -94,7 +143,7 @@ export default function CaseStudy() {
             </div>
           </div>
           <div className="md:col-span-7 reveal flex justify-center">
-            <PhoneFrame src={p.mobile} alt={`${p.client} mobile`} />
+            <PhoneFrame src={p.mobile} alt={`${p.client} mobile website design by ${ORG_NAME} — responsive layout`} />
           </div>
         </div>
       </section>
@@ -107,7 +156,13 @@ export default function CaseStudy() {
             The complete experience.
           </h3>
           <div style={{ border: "1px solid var(--color-hairline)", maxHeight: 720, overflow: "hidden", position: "relative" }}>
-            <img src={p.full} alt={`${p.title} full page`} style={{ display: "block", width: "100%" }} />
+            <img
+              src={p.full}
+              alt={`${p.client} full-page website design — case study by ${ORG_NAME}`}
+              loading="lazy"
+              decoding="async"
+              style={{ display: "block", width: "100%" }}
+            />
             <div aria-hidden style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 200,
               background: "linear-gradient(to bottom, transparent, var(--color-ink))" }} />
           </div>
@@ -169,7 +224,7 @@ function PhoneFrame({ src, alt }: { src: string; alt: string }) {
         padding: 6,
         boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
       }}>
-        <img src={src} alt={alt} style={{ display: "block", width: "100%", borderRadius: 26 }} />
+        <img src={src} alt={alt} loading="lazy" decoding="async" style={{ display: "block", width: "100%", borderRadius: 26 }} />
       </div>
     </div>
   );

@@ -2,11 +2,52 @@
 import { Link } from "wouter";
 import { ArrowRight, MapPin } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
+import { Seo, SITE_ORIGIN, ORG_NAME, breadcrumbSchema } from "@/components/Seo";
 
 export default function About() {
   useReveal();
+
+  const peopleLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Yael", // OWNER: full name
+      jobTitle: "Co-Founder & Web Developer",
+      worksFor: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
+      address: { "@type": "PostalAddress", addressLocality: "Edmonds", addressRegion: "WA", addressCountry: "US" },
+      knowsAbout: ["Web Design", "Web Development", "AI-assisted build", "React", "Conversion-focused UX"],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Alex", // OWNER: full name
+      jobTitle: "Co-Founder & Marketing Strategist",
+      worksFor: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
+      address: { "@type": "PostalAddress", addressLocality: "Edmonds", addressRegion: "WA", addressCountry: "US" },
+      knowsAbout: ["Brand Strategy", "Local SEO", "Email Marketing", "Paid Media", "Restaurant Marketing"],
+    },
+  ];
+
   return (
     <>
+      <Seo
+        title="About Salt & Tide Creative | Edmonds, WA Web Design Studio"
+        description="Meet the founders of Salt & Tide Creative — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses."
+        path="/about"
+        keywords={[
+          "Edmonds web design studio",
+          "about Salt & Tide Creative",
+          "web designer Edmonds WA",
+          "PNW marketing agency",
+        ]}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+          ...peopleLd,
+        ]}
+      />
       <Hero />
       <Story />
       <Founders />

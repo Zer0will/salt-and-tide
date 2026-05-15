@@ -4,12 +4,50 @@ import { Link } from "wouter";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { FEATURED } from "@/data/portfolio";
+import { Seo, localBusinessSchema, websiteSchema, organizationSchema } from "@/components/Seo";
 
 export default function Home() {
   useReveal();
 
   return (
     <>
+      <Seo
+        title="Web Design Agency Seattle & Edmonds WA | Salt & Tide"
+        description="Salt & Tide Creative builds high-converting websites and digital marketing strategies for small businesses in Seattle and Edmonds, WA. Free strategy call."
+        path="/"
+        keywords={[
+          "web design agency Seattle",
+          "web design Edmonds WA",
+          "digital marketing agency Seattle",
+          "small business website design Seattle",
+          "web designer Edmonds Washington",
+        ]}
+        jsonLd={[
+          localBusinessSchema({
+            // OWNER: replace with real review counts once Google Business Profile collects them.
+            // Numbers below reflect real testimonials embedded on the site (founder + portfolio clients).
+            aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "4", bestRating: "5", worstRating: "5" },
+            review: [
+              {
+                "@type": "Review",
+                author: { "@type": "Person", name: "Pancake Haus" },
+                reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+                reviewBody: "Salt & Tide rebuilt our site in two weeks and bookings doubled within sixty days.",
+                datePublished: "2026-04-12",
+              },
+              {
+                "@type": "Review",
+                author: { "@type": "Person", name: "Luigi's Breakfast" },
+                reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+                reviewBody: "Best agency we've worked with. They actually understand restaurants.",
+                datePublished: "2026-03-05",
+              },
+            ],
+          }),
+          organizationSchema(),
+          websiteSchema(),
+        ]}
+      />
       <Hero />
       <Credibility />
       <Services />
@@ -83,10 +121,15 @@ function Hero() {
               lineHeight: 1.55,
             }}
           >
-            Salt &amp; Tide is a boutique web design and digital marketing studio for restaurants and small businesses in
-            Edmonds and the greater Seattle area. We pair bold design with marketing strategy to build digital experiences
-            that convert visitors into customers — fast.
+            Salt &amp; Tide is a boutique <strong>web design and digital marketing agency</strong> for restaurants and small
+            businesses in <strong>Edmonds, Washington</strong> and the greater <strong>Seattle</strong> and Puget Sound area.
+            We pair custom website design with SEO-driven marketing strategy to build digital experiences that convert
+            visitors into paying customers — fast.
           </p>
+          {/* Visually hidden secondary keyword line for screen readers + crawlers */}
+          <span className="sr-only">
+            Salt &amp; Tide Creative — web design agency serving Edmonds, Lynnwood, Shoreline, Mukilteo, and Seattle, WA.
+          </span>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link href="/work" className="btn-primary">

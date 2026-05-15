@@ -1,9 +1,12 @@
 // SALT & TIDE — Pacific Brutalist. 404.
 import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
+import { Seo } from "@/components/Seo";
 
 export default function NotFound() {
   return (
+    <>
+      <Seo title="Page not found | Salt & Tide" description="This page has drifted off the chart. Head back to Salt & Tide Creative — web design and digital marketing for Seattle and Edmonds, WA." path="/404" noindex />
     <section className="min-h-[100vh] flex items-center" style={{ paddingTop: 120 }}>
       <div className="container">
         <div className="mono-label" style={{ color: "var(--color-kelp)" }}>§ Adrift / 404</div>
@@ -18,5 +21,6 @@ export default function NotFound() {
         </Link>
       </div>
     </section>
+    </>
   );
 }

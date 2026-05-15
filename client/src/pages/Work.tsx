@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { PROJECTS } from "@/data/portfolio";
+import { Seo, SITE_ORIGIN, breadcrumbSchema, ORG_NAME } from "@/components/Seo";
 
 const FILTERS = [
   { k: "all",        l: "All Work" },
@@ -18,8 +19,38 @@ export default function Work() {
   const [active, setActive] = useState<string>("all");
   const list = useMemo(() => active === "all" ? PROJECTS : PROJECTS.filter(p => p.filters.includes(active)), [active]);
 
+  const itemListLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Salt & Tide Creative — Selected Web Design & Marketing Work",
+    itemListElement: PROJECTS.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${SITE_ORIGIN}/work/${p.slug}`,
+      name: p.title,
+    })),
+  };
+
   return (
     <>
+      <Seo
+        title="Web Design Portfolio | Salt & Tide — Seattle Agency"
+        description="See our web design and digital marketing work for Seattle and Edmonds, WA businesses. Real restaurant, service, and retail case studies from Salt & Tide Creative."
+        path="/work"
+        keywords={[
+          "web design portfolio Seattle",
+          "Edmonds web design portfolio",
+          "restaurant website design Seattle",
+          "small business web design case studies",
+        ]}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Selected Work", path: "/work" },
+          ]),
+          itemListLd,
+        ]}
+      />
       {/* HEAD */}
       <section className="relative" style={{ paddingTop: "clamp(140px, 16vh, 200px)", paddingBottom: "clamp(80px, 10vh, 130px)" }}>
         <div aria-hidden className="absolute inset-0" style={{
@@ -71,7 +102,10 @@ export default function Work() {
                     }}>
                       <img
                         src={p.desktop}
-                        alt={p.title}
+                        alt={`${p.client} — ${p.category.toLowerCase()} website design by ${ORG_NAME} in ${p.location}`}
+                        title={p.title}
+                        width={1600}
+                        height={1000}
                         loading={i < 4 ? "eager" : "lazy"}
                         decoding="async"
                         style={{

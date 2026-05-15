@@ -2,22 +2,81 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0F1115" />
-    <meta name="description" content="Salt & Tide Creative — boutique web design and digital marketing for restaurants and small businesses in Edmonds and the greater Seattle area." />
-    <title>Salt & Tide Creative — Web Design + Marketing | Edmonds, WA</title>
+    <meta name="format-detection" content="telephone=no" />
 
+    <!-- Default title + description; per-route Seo component overrides on navigation -->
+    <title>Web Design Agency Seattle &amp; Edmonds WA | Salt &amp; Tide</title>
+    <meta name="description" content="Salt &amp; Tide Creative builds high-converting websites and digital marketing strategies for small businesses in Seattle and Edmonds, WA. Free strategy call." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://salttidecreative.com/" />
+
+    <!-- Default Open Graph + Twitter (per-route overrides applied client-side) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Salt &amp; Tide Creative" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Web Design Agency Seattle &amp; Edmonds WA | Salt &amp; Tide" />
+    <meta property="og:description" content="Boutique web design and digital marketing for restaurants and small businesses across the Puget Sound region." />
+    <meta property="og:url" content="https://salttidecreative.com/" />
+    <meta property="og:image" content="https://salttidecreative.com/og/og-default.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Web Design Agency Seattle &amp; Edmonds WA | Salt &amp; Tide" />
+    <meta name="twitter:description" content="Boutique web design and digital marketing for restaurants and small businesses across the Puget Sound region." />
+    <meta name="twitter:image" content="https://salttidecreative.com/og/og-default.jpg" />
+
+    <!-- Performance: connect early to font + asset hosts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="dns-prefetch" href="//d3l8exsigh3o6e.cloudfront.net" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
-    <!-- Fontshare: Cabinet Grotesk + JetBrains Mono via Google -->
-    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- Fontshare: Cabinet Grotesk + Google: Inter + JetBrains Mono. font-display:swap is enforced via the URL parameter. -->
+    <link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&display=swap" />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
 
-    <meta property="og:title" content="Salt & Tide Creative" />
-    <meta property="og:description" content="Web design + digital marketing for the Pacific Northwest. We build sites that win business — not just look pretty." />
-    <meta property="og:type" content="website" />
+    <!-- Site-wide JSON-LD: Organization + WebSite (route components add page-level schema) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://salttidecreative.com/#organization",
+          "name": "Salt & Tide Creative",
+          "url": "https://salttidecreative.com",
+          "logo": "https://salttidecreative.com/og/og-default.jpg",
+          "foundingDate": "2026",
+          "areaServed": ["Edmonds, WA", "Seattle, WA", "Lynnwood, WA", "Shoreline, WA", "Mukilteo, WA"],
+          "sameAs": [
+            "https://www.linkedin.com/company/salt-tide-creative",
+            "https://www.instagram.com/salttidecreative"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "hello@salttidecreative.com",
+            "telephone": "+1-425-555-0123",
+            "areaServed": "US-WA",
+            "availableLanguage": ["English"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://salttidecreative.com/#website",
+          "url": "https://salttidecreative.com",
+          "name": "Salt & Tide Creative",
+          "inLanguage": "en-US",
+          "publisher": { "@id": "https://salttidecreative.com/#organization" }
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="grain">
     <div id="root"></div>

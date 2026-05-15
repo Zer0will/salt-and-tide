@@ -4,6 +4,7 @@ import { ArrowRight, Mail, Phone, Clock, MapPin, Check } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { useReveal } from "@/hooks/useReveal";
 import { toast } from "sonner";
+import { Seo, SITE_ORIGIN, ORG_NAME, ORG_PHONE, ORG_EMAIL, breadcrumbSchema } from "@/components/Seo";
 
 const SERVICE_OPTIONS = ["Web Design", "Digital Marketing", "Both", "Not Sure Yet"];
 const BUDGET_OPTIONS  = ["Under $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000+", "Let's discuss"];
@@ -55,8 +56,47 @@ export default function Contact() {
     }
   }
 
+  const contactPageLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: `Contact ${ORG_NAME}`,
+    url: `${SITE_ORIGIN}/contact`,
+    mainEntity: {
+      "@type": "Organization",
+      "@id": `${SITE_ORIGIN}/#organization`,
+      name: ORG_NAME,
+      email: ORG_EMAIL,
+      telephone: ORG_PHONE,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Edmonds",
+        addressRegion: "WA",
+        postalCode: "98020",
+        addressCountry: "US",
+      },
+    },
+  };
+
   return (
     <>
+      <Seo
+        title="Contact Salt & Tide Creative | Free Strategy Call"
+        description="Start your project with Salt & Tide Creative. Free 30-minute strategy call for Seattle and Edmonds, WA businesses. We respond within one business day."
+        path="/contact"
+        keywords={[
+          "contact web design agency Seattle",
+          "web design quote Edmonds WA",
+          "free website strategy call",
+          "hire web designer Seattle",
+        ]}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+          contactPageLd,
+        ]}
+      />
       {/* HERO */}
       <section style={{ paddingTop: "clamp(140px, 16vh, 200px)", paddingBottom: "clamp(40px, 6vh, 80px)" }}>
         <div className="container">

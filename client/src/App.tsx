@@ -12,6 +12,10 @@ import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import LocationPage from "./pages/LocationPage";
+import { SEATTLE, EDMONDS, LYNNWOOD } from "./data/locations";
+import Insights from "./pages/Insights";
+import InsightArticle from "./pages/InsightArticle";
 
 function Router() {
   return (
@@ -22,6 +26,11 @@ function Router() {
       <Route path="/services" component={Services} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
+      <Route path="/seattle-web-design">{() => <LocationPage config={SEATTLE} />}</Route>
+      <Route path="/edmonds-web-design">{() => <LocationPage config={EDMONDS} />}</Route>
+      <Route path="/lynnwood-web-design">{() => <LocationPage config={LYNNWOOD} />}</Route>
+      <Route path="/insights" component={Insights} />
+      <Route path="/insights/:slug" component={InsightArticle} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

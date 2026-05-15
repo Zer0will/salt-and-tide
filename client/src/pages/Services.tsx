@@ -3,11 +3,65 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Check, Plus, Minus } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
+import { Seo, SITE_ORIGIN, ORG_NAME, breadcrumbSchema, ORG_AREAS } from "@/components/Seo";
+
+const FAQS = [
+  { q: "How long does a typical project take?", a: "Tier 1 launches in 2–3 weeks. Tier 2 takes 3–5 weeks. Tier 3 is ongoing. We can move faster than most agencies because we use AI to accelerate the build phase — but every project is paced to give you time to review, not to rush you." },
+  { q: "What happens after launch?", a: "Every package includes post-launch support (30–60 days). After that, you can either move to a Care retainer, work with us on Tier 3, or simply own the site outright. We don't lock you into anything." },
+  { q: "Do you work with clients outside Edmonds?", a: "Yes. We're rooted in Edmonds and we love working with PNW businesses, but we work remotely with clients across the country. The work is the same." },
+  { q: "Why is your pricing lower than big Seattle agencies?", a: "Two reasons. First, we use AI to accelerate the parts of the work that used to take weeks of manual coding — that's a real efficiency gain we pass on to you. Second, we're a focused two-person studio with low overhead. You're paying for the work, not for a downtown office." },
+  { q: "Can you redesign an existing website?", a: "Yes. Most of our work to date has been redesigns of existing sites that weren't pulling their weight. We'll audit what you have, identify what's working, and rebuild what isn't." },
+  { q: "Do you handle hosting and domains?", a: "We can. We have preferred hosting partners we recommend, but we're happy to deploy to any platform you already use. We'll never lock you into a proprietary system." },
+];
 
 export default function Services() {
   useReveal();
+
+  const serviceLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Web Design and Digital Marketing",
+    provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
+    areaServed: ORG_AREAS.map((a) => ({ "@type": "Place", name: a })),
+    description: "Custom website design, build, and digital marketing services for small businesses in Seattle and Edmonds, Washington.",
+    offers: [
+      { "@type": "Offer", name: "Launch Tier (Up to 5 pages)", price: "3500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` },
+      { "@type": "Offer", name: "Growth Tier (Up to 10 pages + SEO)", price: "6500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` },
+      { "@type": "Offer", name: "Partnership Tier (Full-service growth)", price: "8500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services`, eligibleQuantity: { "@type": "QuantitativeValue", unitText: "per engagement" } },
+    ],
+  };
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <>
+      <Seo
+        title="Web Design & Marketing Services | Salt & Tide Creative"
+        description="Web design, SEO, and digital marketing services from $3,500. Launch, Growth, and Partnership tiers for small businesses in Seattle and Edmonds, WA."
+        path="/services"
+        keywords={[
+          "web design pricing Seattle",
+          "small business website design cost",
+          "local SEO services Edmonds WA",
+          "restaurant website design package",
+          "digital marketing agency pricing Seattle",
+        ]}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+          ]),
+          serviceLd,
+          faqLd,
+        ]}
+      />
       <Hero />
       <Pillars />
       <Packages />
@@ -268,32 +322,7 @@ function AddOns() {
 }
 
 function FAQ() {
-  const faqs = [
-    {
-      q: "How long does a typical project take?",
-      a: "Tier 1 launches in 2–3 weeks. Tier 2 takes 3–5 weeks. Tier 3 is ongoing. We can move faster than most agencies because we use AI to accelerate the build phase — but every project is paced to give you time to review, not to rush you.",
-    },
-    {
-      q: "What happens after launch?",
-      a: "Every package includes post-launch support (30–60 days). After that, you can either move to a Care retainer, work with us on Tier 3, or simply own the site outright. We don't lock you into anything.",
-    },
-    {
-      q: "Do you work with clients outside Edmonds?",
-      a: "Yes. We're rooted in Edmonds and we love working with PNW businesses, but we work remotely with clients across the country. The work is the same.",
-    },
-    {
-      q: "Why is your pricing lower than big Seattle agencies?",
-      a: "Two reasons. First, we use AI to accelerate the parts of the work that used to take weeks of manual coding — that's a real efficiency gain we pass on to you. Second, we're a focused two-person studio with low overhead. You're paying for the work, not for a downtown office.",
-    },
-    {
-      q: "Can you redesign an existing website?",
-      a: "Yes. Most of our work to date has been redesigns of existing sites that weren't pulling their weight. We'll audit what you have, identify what's working, and rebuild what isn't.",
-    },
-    {
-      q: "Do you handle hosting and domains?",
-      a: "We can. We have preferred hosting partners we recommend, but we're happy to deploy to any platform you already use. We'll never lock you into a proprietary system.",
-    },
-  ];
+  const faqs = FAQS;
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="py-20 md:py-28">
