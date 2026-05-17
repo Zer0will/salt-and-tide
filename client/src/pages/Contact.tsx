@@ -1,7 +1,6 @@
-// SALT & TIDE — Pacific Brutalist. Contact page. EmailJS hook is ready (set VITE_EMAILJS_* envs); falls back to mailto.
+// SALT & TIDE — Pacific Brutalist. Contact page. Formspree handles email delivery (set VITE_FORMSPREE_ENDPOINT).
 import { useState } from "react";
 import { ArrowRight, Mail, Phone, Clock, MapPin, Check } from "lucide-react";
-import emailjs from "@emailjs/browser";
 import { useReveal } from "@/hooks/useReveal";
 import { toast } from "sonner";
 import { Seo, SITE_ORIGIN, ORG_NAME, ORG_PHONE, ORG_EMAIL, breadcrumbSchema } from "@/components/Seo";
@@ -29,25 +28,29 @@ export default function Contact() {
       return;
     }
 
-    const SERVICE_ID  = (import.meta as any).env?.VITE_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = (import.meta as any).env?.VITE_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY  = (import.meta as any).env?.VITE_EMAILJS_PUBLIC_KEY;
+    const endpoint = (import.meta as any).env?.VITE_FORMSPREE_ENDPOINT;
 
     try {
-      if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY) {
-        await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, { publicKey: PUBLIC_KEY });
-        setSubmitted(true);
-        toast.success("Message sent. We'll reply within 24 hours.");
-        form.reset();
-      } else {
-        // Graceful fallback so the UI works even before EmailJS is configured
-        await new Promise((r) => setTimeout(r, 700));
-        setSubmitted(true);
-        toast.success("Message captured. We'll reply within 24 hours.");
-        form.reset();
-        // For dev: log payload
-        console.info("[contact] EmailJS env not set; would send:", Object.fromEntries(data.entries()));
+      if (!endpoint) {
+        toast.error("Contact form not configured yet. Email hello@salttidecreative.com directly.");
+        setSubmitting(false);
+        return;
       }
+
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(data)),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error((body as any)?.error ?? "Submission failed");
+      }
+
+      setSubmitted(true);
+      toast.success("Message sent. We'll reply within 24 hours.");
+      form.reset();
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Email hello@salttidecreative.com directly.");
