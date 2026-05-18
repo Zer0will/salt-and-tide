@@ -7,7 +7,7 @@
 import { useEffect } from "react";
 
 export const SITE_ORIGIN = "https://salttidecreative.com";
-export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og/og-default.jpg`;
+export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og/og-default.png`;
 
 type JsonLd = Record<string, unknown> | Record<string, unknown>[];
 
@@ -90,6 +90,7 @@ export function Seo({
     setMeta("property", "og:description", description);
     setMeta("property", "og:url", url);
     setMeta("property", "og:image", ogImage);
+    setMeta("property", "og:image:alt", title);
     setMeta("property", "og:image:width", "1200");
     setMeta("property", "og:image:height", "630");
     setMeta("property", "og:site_name", "Salt & Tide Creative");
@@ -113,9 +114,9 @@ export function Seo({
 // ---------- Reusable schema builders ----------
 
 export const ORG_NAME = "Salt & Tide Creative";
-export const ORG_PHONE = "+1-425-555-0123"; // OWNER: replace with live number
+export const ORG_PHONE = "+1-425-900-8335";
 export const ORG_EMAIL = "hello@salttidecreative.com";
-export const ORG_LOGO = `${SITE_ORIGIN}/og/og-default.jpg`; // OWNER: replace with logo URL
+export const ORG_LOGO = `${SITE_ORIGIN}/og/og-default.png`;
 export const ORG_AREAS = [
   "Edmonds, WA",
   "Seattle, WA",
@@ -160,8 +161,7 @@ export function localBusinessSchema(extra: Record<string, unknown> = {}) {
       },
     ],
     sameAs: [
-      "https://www.linkedin.com/company/salt-tide-creative", // OWNER: confirm
-      "https://www.instagram.com/salttidecreative",          // OWNER: confirm
+      // Add your real LinkedIn and Instagram URLs here once pages are live
     ],
     ...extra,
   };

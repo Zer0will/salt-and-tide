@@ -1,0 +1,33 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0F1115"/>
+
+  <!-- Subtle grid texture -->
+  <line x1="0" y1="1" x2="1200" y2="1" stroke="#FFFFFF" stroke-opacity="0.04"/>
+  <line x1="0" y1="629" x2="1200" y2="629" stroke="#FFFFFF" stroke-opacity="0.04"/>
+
+  <!-- Left accent bar -->
+  <rect x="80" y="180" width="3" height="270" fill="#3FAE7C"/>
+
+  <!-- Logo mark (top left) -->
+  <g transform="translate(80, 80)">
+    <rect x="0.5" y="0.5" width="47" height="47" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M9 31 Q 24 12 39 31" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    <line x1="5" y1="38" x2="43" y2="38" stroke="#3FAE7C" stroke-width="2.4"/>
+  </g>
+
+  <!-- Main headline -->
+  <text x="110" y="290" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="400" fill="#FFFFFF" letter-spacing="-2">Salt &amp; Tide Creative</text>
+
+  <!-- Tagline -->
+  <text x="110" y="360" font-family="'Courier New', Courier, monospace" font-size="22" fill="#3FAE7C" letter-spacing="4">WEB DESIGN + DIGITAL MARKETING</text>
+
+  <!-- Location -->
+  <text x="110" y="420" font-family="'Courier New', Courier, monospace" font-size="18" fill="#FFFFFF" fill-opacity="0.45" letter-spacing="2">EDMONDS · SEATTLE · GREATER PUGET SOUND</text>
+
+  <!-- Bottom kelp line -->
+  <line x1="80" y1="500" x2="1120" y2="500" stroke="#3FAE7C" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- URL bottom -->
+  <text x="80" y="540" font-family="'Courier New', Courier, monospace" font-size="16" fill="#FFFFFF" fill-opacity="0.3" letter-spacing="1">salttidecreative.com</text>
+</svg>
