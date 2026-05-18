@@ -30,7 +30,7 @@ export const PROJECTS: Project[] = [
     category: "Restaurant Launch",
     location: "Edmonds, WA",
     year: "2026",
-    liveUrl: "https://luigisbreakfast.vercel.app/",
+    liveUrl: "https://luigisrestaurant.online/",
     desktop: "/screenshots/luigis-breakfast-desktop.jpg",
     mobile:  "/screenshots/luigis-breakfast-mobile.jpg",
     full:    "/screenshots/luigis-breakfast-full.jpg",
