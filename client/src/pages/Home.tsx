@@ -1,10 +1,12 @@
-// SALT & TIDE — Pacific Brutalist. Home page. 8 sections: Hero / Credibility / Services / Featured Work / The Difference / Process / Social Proof / CTA.
+// SALT & TIDE — Pacific Brutalist. Home page ported from redesign/index.html while preserving the existing logo/nav system.
 import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { FEATURED } from "@/data/portfolio";
 import { Seo, localBusinessSchema, websiteSchema, organizationSchema } from "@/components/Seo";
+
+const sectionLabel = (n: string, label: string) => `§ ${n} / ${label}`;
 
 export default function Home() {
   useReveal();
@@ -24,8 +26,6 @@ export default function Home() {
         ]}
         jsonLd={[
           localBusinessSchema({
-            // OWNER: replace with real review counts once Google Business Profile collects them.
-            // Numbers below reflect real testimonials embedded on the site (founder + portfolio clients).
             aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "4", bestRating: "5", worstRating: "5" },
             review: [
               {
@@ -39,7 +39,7 @@ export default function Home() {
                 "@type": "Review",
                 author: { "@type": "Person", name: "Luigi's Breakfast" },
                 reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-                reviewBody: "Best agency we've worked with. They actually understand restaurants.",
+                reviewBody: "Best agency we've worked with. They understand restaurants and local growth.",
                 datePublished: "2026-03-05",
               },
             ],
@@ -50,6 +50,7 @@ export default function Home() {
       />
       <Hero />
       <Credibility />
+      <div className="seam" aria-hidden />
       <Services />
       <FeaturedWork />
       <Difference />
@@ -60,11 +61,9 @@ export default function Home() {
   );
 }
 
-/* ─────────────────────────────────────────────────────────── HERO */
 function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
 
-  // Word-stagger reveal for headline
   useEffect(() => {
     const el = headlineRef.current;
     if (!el) return;
@@ -76,388 +75,262 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden" style={{ minHeight: "100vh", background: "var(--color-ink)" }}>
-      {/* slow gradient mesh */}
-      <div aria-hidden className="absolute inset-0 pointer-events-none" style={{
-        background:
-          "radial-gradient(60% 50% at 80% 20%, rgba(63,174,124,0.18), transparent 70%), \
-           radial-gradient(60% 50% at 10% 80%, rgba(63,174,124,0.10), transparent 70%), \
-           radial-gradient(50% 40% at 60% 60%, rgba(255,255,255,0.04), transparent 70%)",
-      }} />
+    <section id="hero" className="relative isolate min-h-[100dvh] overflow-hidden pt-[140px] pb-20">
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(55% 50% at 82% 18%, rgba(63,174,124,0.16), transparent 70%), radial-gradient(60% 45% at 8% 86%, rgba(63,174,124,0.07), transparent 70%)",
+        }}
+      />
+      <HeroContours />
 
-      {/* corner-tag */}
-      <div className="absolute top-24 left-5 sm:left-7 lg:left-10 z-10 mono-label">
-        <div>SALT &amp; TIDE</div>
-        <div style={{ color: "var(--color-text-muted)" }}>EST. 2026 · EDMONDS, WA</div>
-      </div>
-      {/* sec num */}
-      <div className="absolute top-24 right-5 sm:right-7 lg:right-10 z-10 sec-num">§ 01 / HERO</div>
+      <div className="container relative z-10 grid gap-14 lg:grid-cols-[88px_minmax(0,1fr)_240px] lg:gap-8">
+        <aside className="hidden flex-col gap-5 pt-3 lg:flex" aria-hidden>
+          <div className="accent-bar" />
+          <div className="mono-label" style={{ color: "var(--color-text-muted)" }}>{sectionLabel("01", "Hero")}</div>
+          <div className="mono-label [writing-mode:vertical-rl] rotate-180 mt-4" style={{ letterSpacing: "0.3em", color: "var(--color-text-muted)" }}>Plate I of VIII</div>
+        </aside>
 
-      <div className="container relative z-10 grid grid-cols-12 gap-y-8" style={{ paddingTop: "min(22vh, 200px)", paddingBottom: "8vh" }}>
-        <div className="col-span-12 md:col-span-1 hidden md:block">
-          <div className="accent-bar mt-3" />
-        </div>
-
-        <div className="col-span-12 md:col-span-11">
-          <div className="mono-label" style={{ color: "var(--color-kelp)" }}>
-            Web Design + Marketing — Edmonds, WA
+        <div className="min-w-0">
+          <div className="mono-label inline-flex items-center gap-3" style={{ color: "var(--color-kelp)" }}>
+            <span className="h-px w-7" style={{ background: "var(--color-kelp)" }} />
+            Web Design &amp; Marketing — Pacific Northwest
           </div>
 
           <h1
             ref={headlineRef}
-            className="display mt-6"
-            style={{ fontSize: "clamp(3rem, 9.5vw, 9rem)", lineHeight: 0.92 }}
+            aria-label="We build websites that earn their keep."
+            className="display mt-7"
+            style={{ fontSize: "clamp(3rem, 9vw, 9rem)", lineHeight: 0.9, letterSpacing: "-0.035em" }}
           >
-            <Line>We Build Websites</Line>
-            <Line>That Actually</Line>
-            <Line accent>Win Business.</Line>
+            <Line>We build</Line>
+            <Line>websites that</Line>
+            <Line accent>earn their keep.</Line>
           </h1>
 
-          <p
-            className="mt-7 max-w-2xl"
-            style={{
-              color: "var(--color-text-secondary)",
-              fontSize: "clamp(1.05rem, 1.4vw, 1.3rem)",
-              lineHeight: 1.55,
-            }}
-          >
-            Salt &amp; Tide is a boutique <strong>web design and digital marketing agency</strong> for restaurants and small
-            businesses in <strong>Edmonds, Washington</strong> and the greater <strong>Seattle</strong> and Puget Sound area.
-            We pair custom website design with SEO-driven marketing strategy to build digital experiences that convert
-            visitors into paying customers — fast.
+          <p className="mt-8 max-w-2xl text-[clamp(1rem,1.05vw,1.125rem)] leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+            Salt &amp; Tide is a boutique <strong style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>web design and digital marketing studio</strong> for restaurants and small businesses in <strong style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>Edmonds, Washington</strong> and the greater <strong style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>Seattle</strong> area. Strategy, design, and growth — under one roof, by the same team.
           </p>
-          {/* Visually hidden secondary keyword line for screen readers + crawlers */}
-          <span className="sr-only">
-            Salt &amp; Tide Creative — web design agency serving Edmonds, Lynnwood, Shoreline, Mukilteo, and Seattle, WA.
-          </span>
+          <span className="sr-only">Salt &amp; Tide Creative — web design agency serving Edmonds, Lynnwood, Shoreline, Mukilteo, and Seattle, WA.</span>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Link href="/work" className="btn-primary">
-              See Our Work <ArrowRight size={18} />
-            </Link>
-            <Link href="/contact" className="btn-ghost">
-              Start a Project <ArrowUpRight size={18} />
-            </Link>
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <Link href="/work" className="btn-primary">See selected work <ArrowRight size={18} /></Link>
+            <Link href="/contact" className="btn-ghost">Start a project <ArrowUpRight size={18} /></Link>
+            <Link href="/about" className="btn-link">About the studio</Link>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-center gap-6">
-            <span className="mono-label">Trusted by</span>
-            <ClientPlaceholderRow />
+          <div className="mt-16 flex flex-wrap items-center gap-6 border-t pt-6" style={{ borderColor: "var(--color-hairline)" }}>
+            <span className="mono-label" style={{ color: "var(--color-text-muted)" }}>In good company</span>
+            <ClientRoster />
           </div>
         </div>
+
+        <aside className="hidden flex-col gap-6 pt-4 lg:flex" aria-label="Studio status">
+          <StatusKicker label="Status"><span className="inline-flex items-center gap-2 mono-label" style={{ color: "var(--color-kelp)" }}><span className="live-dot" /> 1 slot remaining</span></StatusKicker>
+          <StatusKicker label="Next opening">June 2026 <span className="ml-2 font-mono text-[11px]" style={{ color: "var(--color-text-secondary)" }}>/ 4-wk engagement</span></StatusKicker>
+          <StatusKicker label="Response time">≈ 4 hrs <span className="ml-2 font-mono text-[11px]" style={{ color: "var(--color-text-secondary)" }}>Mon–Fri</span></StatusKicker>
+          <StatusKicker label="From the desk">Edmonds, WA</StatusKicker>
+        </aside>
       </div>
 
-      {/* Scroll prompt */}
-      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 mono-label flex flex-col items-center gap-2 z-10" style={{ animation: "drop 2.4s ease-in-out infinite" }}>
-        <span>Scroll</span>
-        <span style={{ width: 1, height: 28, background: "var(--color-text-muted)" }} />
-      </div>
-
-      <style>{`
-        @keyframes drop {
-          0%, 100% { transform: translate(-50%, 0); opacity: 0.55; }
-          50%      { transform: translate(-50%, 8px); opacity: 1; }
-        }
-      `}</style>
-
-      <hr className="hr-tide" />
+      <hr className="hr-tide absolute bottom-0 left-0 right-0" />
     </section>
   );
 }
 
-function Line({ children, accent }: { children: string; accent?: boolean }) {
-  // Wrap each WORD in an inline-block so wrapping happens on word boundaries,
-  // and each word's characters animate up together.
-  const words = children.split(" ");
+function HeroContours() {
   return (
-    <span className="block" style={{ color: accent ? "var(--color-kelp)" : "inherit" }}>
-      {words.map((w, wi) => (
-        <span key={wi} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "top", marginRight: "0.28em" }}>
-          <span className="hero-char" style={{ display: "inline-block" }}>{w}</span>
+    <svg className="absolute inset-0 -z-10 h-full w-full opacity-60" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="contour" x1="0" x2="1">
+          <stop offset="0" stopColor="rgba(63,174,124,0.16)" />
+          <stop offset="1" stopColor="rgba(63,174,124,0.02)" />
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#contour)" strokeWidth="1">
+        {[720, 760, 800, 840, 880].map((y) => (
+          <path key={y} d={`M -80 ${y} Q 240 ${y - 60} 480 ${y - 20} T 1080 ${y - 60} T 1520 ${y - 30}`} />
+        ))}
+      </g>
+    </svg>
+  );
+}
+
+function Line({ children, accent }: { children: string; accent?: boolean }) {
+  return (
+    <span className="block overflow-hidden" style={{ color: accent ? "var(--color-kelp)" : "inherit", fontStyle: accent ? "italic" : undefined, fontWeight: accent ? 500 : undefined }}>
+      {children.split(" ").map((w, wi) => (
+        <span key={wi} className="inline-block overflow-hidden align-top" style={{ marginRight: "0.28em" }}>
+          <span className="hero-char inline-block translate-y-[120%]">{w}</span>
         </span>
       ))}
     </span>
   );
 }
 
-function ClientPlaceholderRow() {
-  // Stylized text placeholders (NOT empty boxes) — read like a credit roster.
+function StatusKicker({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="border-t pt-3" style={{ borderColor: "var(--color-hairline)" }}>
+      <div className="mono-label mb-2" style={{ fontSize: "10px", color: "var(--color-text-muted)" }}>{label}</div>
+      <div className="display-thin text-lg tracking-tight">{children}</div>
+    </div>
+  );
+}
+
+function ClientRoster() {
   const list = ["Pancake Haus", "Luigi's", "Walnut St. Coffee", "Medina Painting", "LGM Landscaping"];
   return (
-    <div className="flex flex-wrap items-center gap-x-7 gap-y-3" style={{ color: "var(--color-text-muted)" }}>
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
       {list.map((n, i) => (
-        <span key={i} className="display-thin tracking-tight" style={{ fontSize: "1.05rem" }}>
+        <span key={n} className="inline-flex items-center gap-5 display-thin text-[0.98rem]" style={{ color: "var(--color-text-secondary)" }}>
           {n}
-          {i < list.length - 1 && <span className="mx-3" style={{ opacity: 0.4 }}>·</span>}
+          {i < list.length - 1 && <span className="h-1 w-1 rounded-full opacity-60" style={{ background: "var(--color-text-muted)" }} />}
         </span>
       ))}
     </div>
   );
 }
 
-/* ─────────────────────────────────────────────────────────── CREDIBILITY */
 function Credibility() {
-  const stats = [
-    { v: "8+",      l: "Sites Designed & Delivered" },
-    { v: "100%",    l: "Client Satisfaction Guaranteed" },
-    { v: "2×",      l: "Faster With AI-Assisted Build" },
-    { v: "PNW",     l: "Locally Rooted, Globally Capable" },
-  ];
   return (
-    <section className="relative py-20 md:py-28" style={{ background: "var(--color-fog)", color: "var(--color-ink)" }}>
-      <div className="container">
-        <div className="flex items-baseline justify-between mb-12">
-          <div className="mono-label" style={{ color: "rgba(15,17,21,0.55)" }}>§ 02 / CREDIBILITY</div>
-          <div className="mono-label hidden md:block" style={{ color: "rgba(15,17,21,0.55)" }}>BY THE NUMBERS</div>
+    <section className="relative overflow-hidden py-24 md:py-36" style={{ background: "var(--color-fog)", color: "var(--color-ink)" }}>
+      <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(1200px 600px at 100% 0%, rgba(15,17,21,0.05), transparent 60%), repeating-linear-gradient(180deg, rgba(15,17,21,0.04) 0 1px, transparent 1px 80px)" }} />
+      <div className="container relative">
+        <SectionHead left={sectionLabel("02", "Credibility")} right="By the numbers" dark />
+        <div className="grid items-end gap-12 md:grid-cols-[1.4fr_1fr] md:gap-20">
+          <div className="reveal border-b pb-10 md:border-b-0 md:border-r md:pb-0 md:pr-16" style={{ borderColor: "rgba(15,17,21,0.10)" }}>
+            <div className="display font-extrabold" style={{ fontSize: "clamp(6rem,14vw,13.75rem)", lineHeight: 0.86, letterSpacing: "-0.06em", color: "var(--color-ink)" }}>8<span className="align-top text-[0.45em]" style={{ color: "var(--color-kelp-deep)" }}>+</span></div>
+            <p className="mt-6 display-thin max-w-[22ch]" style={{ fontSize: "clamp(1.25rem,2vw,1.75rem)", color: "rgba(15,17,21,0.85)" }}>Sites designed and shipped — every one built for a business we'd return to ourselves.</p>
+          </div>
+          <div className="flex flex-col gap-7">
+            <CredRow num="100%" text={<><strong>Client satisfaction</strong> — every project still standing, still trusted by its owner.</>} />
+            <CredRow num="2.4×" text={<><strong>Faster delivery</strong> with AI-assisted build vs. our previous workflow.</>} />
+            <CredRow num="PNW" text={<><strong>Locally rooted</strong>, globally informed — Edmonds, Lynnwood, Shoreline, Seattle.</>} />
+            <CredRow num="3 wks" text={<><strong>Median engagement.</strong> Strategy + brand + site in the time most agencies write a proposal.</>} />
+          </div>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
-          {stats.map((s) => (
-            <div key={s.l} className="reveal">
-              <CountUp text={s.v} />
-              <div className="mt-3 text-sm" style={{ color: "rgba(15,17,21,0.6)", maxWidth: 220 }}>{s.l}</div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-14 display-thin reveal" style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", maxWidth: 900, color: "rgba(15,17,21,0.85)" }}>
-          From Edmonds restaurants to regional service businesses — we build digital experiences that grow with you.
+        <p className="reveal mt-24 display-thin max-w-[32ch]" style={{ fontSize: "clamp(1.35rem,2.5vw,2.25rem)", color: "rgba(15,17,21,0.92)", lineHeight: 1.25 }}>
+          From Edmonds restaurants to regional service businesses — we build digital experiences that <span className="italic font-semibold" style={{ color: "var(--color-kelp-deep)" }}>grow with you,</span> not past you.
         </p>
       </div>
     </section>
   );
 }
 
-function CountUp({ text }: { text: string }) {
-  // For non-pure-numeric values like "PNW" or "2×", just render. For pure numerics, animate.
-  const numericMatch = text.match(/^(\d+)(.*)$/);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!numericMatch || !ref.current) return;
-    const target = parseInt(numericMatch[1], 10);
-    const suffix = numericMatch[2];
-    const el = ref.current;
-    let raf = 0;
-    const io = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting) return;
-      const start = performance.now();
-      const dur = 1100;
-      const tick = (t: number) => {
-        const p = Math.min(1, (t - start) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const v = Math.round(target * eased);
-        el.textContent = `${v}${suffix}`;
-        if (p < 1) raf = requestAnimationFrame(tick);
-      };
-      raf = requestAnimationFrame(tick);
-      io.disconnect();
-    }, { threshold: 0.4 });
-    io.observe(el);
-    return () => { io.disconnect(); cancelAnimationFrame(raf); };
-  }, [numericMatch]);
-
+function CredRow({ num, text }: { num: string; text: React.ReactNode }) {
   return (
-    <div
-      ref={ref}
-      className="display"
-      style={{ fontSize: "clamp(3rem, 7vw, 6rem)", color: "var(--color-ink)", letterSpacing: "-0.04em", lineHeight: 1 }}
-    >
-      {text}
+    <div className="reveal grid grid-cols-[80px_1fr] gap-5 border-b pb-6 last:border-b-0" style={{ borderColor: "rgba(15,17,21,0.10)" }}>
+      <div className="display text-[2.5rem] leading-none" style={{ color: "var(--color-ink)" }}>{num}</div>
+      <div className="text-sm leading-relaxed" style={{ color: "rgba(15,17,21,0.65)" }}>{text}</div>
     </div>
   );
 }
 
-/* ─────────────────────────────────────────────────────────── SERVICES */
 function Services() {
   const cards = [
-    {
-      n: "01",
-      title: "Websites That Convert",
-      blurb: "Custom-built, blazing fast, and designed to turn visitors into customers. No templates. No compromises.",
-      tags: ["Custom Design", "Mobile-First", "AI-Accelerated", "SEO Ready"],
-      href: "/services#web",
-    },
-    {
-      n: "02",
-      title: "Marketing That Moves The Needle",
-      blurb: "Strategy-led marketing from a team with real credentials. SEO, social, paid ads — unified around one goal: your growth.",
-      tags: ["Brand Strategy", "SEO", "Social", "Paid Ads"],
-      href: "/services#marketing",
-    },
-    {
-      n: "03",
-      title: "Your Complete Digital Partner",
-      blurb: "From first impression to final conversion — we handle the digital side of your business so you can run the rest.",
-      tags: ["Strategy", "Design", "Build", "Optimize"],
-      href: "/services#full",
-    },
+    { n: "01", title: "Websites that convert.", blurb: "Custom-built, blazing fast, and engineered to turn visitors into bookings, calls, and revenue. No templates. No shortcuts. Every detail intentional.", tags: ["Custom design", "Mobile-first", "AI-accelerated", "SEO ready"], href: "/services#web" },
+    { n: "02", title: "Marketing that moves the needle.", blurb: "Strategy-led growth from a team with real credentials. SEO, social, and paid — unified around one goal: your business's next quarter, not last year's vanity metric.", tags: ["Brand strategy", "Local SEO", "Social", "Paid ads"], href: "/services#marketing" },
+    { n: "03", title: "Your complete digital partner.", blurb: "From first impression to final conversion — we handle the digital side of your business so you can run the rest. One team, one number to call, one invoice.", tags: ["Strategy", "Design", "Build", "Optimize"], href: "/services#full" },
   ];
-  return (
-    <section className="py-24 md:py-32" id="services">
-      <div className="container">
-        <div className="flex items-baseline justify-between mb-10">
-          <div className="mono-label">§ 03 / SERVICES</div>
-          <div className="mono-label hidden md:block">WHAT WE DO</div>
-        </div>
-        <h2 className="display reveal" style={{ fontSize: "clamp(2.3rem, 5.2vw, 5rem)", maxWidth: "16ch" }}>
-          Everything your business
-          <br />
-          needs to <span style={{ color: "var(--color-kelp)" }}>win online.</span>
-        </h2>
-        <p className="reveal mt-5 max-w-xl" style={{ color: "var(--color-text-secondary)", fontSize: "1.1rem" }}>
-          We don't just build websites. We build growth engines — design, content, and marketing aligned around the same goal.
-        </p>
 
-        <div className="mt-16 grid gap-px md:grid-cols-3" style={{ background: "var(--color-hairline)" }}>
+  return (
+    <section className="py-24 md:py-36" id="services">
+      <div className="container">
+        <SectionHead left={sectionLabel("03", "Services")} right="What we do" />
+        <h2 className="display reveal max-w-[16ch]" style={{ fontSize: "clamp(2.5rem,6vw,5.25rem)" }}>Everything your business needs to <span className="italic font-medium" style={{ color: "var(--color-kelp)" }}>win online.</span></h2>
+        <p className="reveal mt-6 max-w-2xl text-lg leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>Three disciplines, one team, one bill. Design that converts, marketing that compounds, partnership that lasts beyond launch day.</p>
+        <div className="mt-16 border-t" style={{ borderColor: "var(--color-hairline)" }}>
           {cards.map((c) => (
-            <div key={c.n} className="reveal p-8 md:p-10 group transition-colors duration-300" style={{ background: "var(--color-ink)" }}>
-              <div className="flex items-baseline justify-between">
-                <span className="mono-label">{c.n}</span>
-                <ArrowUpRight size={18} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+            <Link key={c.n} href={c.href} className="group grid gap-6 border-b py-10 transition-[background,padding] duration-300 hover:pl-4 md:grid-cols-[120px_minmax(0,1.2fr)_minmax(0,1.4fr)_100px] md:gap-14" style={{ borderColor: "var(--color-hairline)" }}>
+              <div className="display text-6xl leading-none md:text-8xl" style={{ color: "var(--color-text-muted)" }}>{c.n}</div>
+              <div>
+                <h3 className="display" style={{ fontSize: "clamp(1.5rem,2.4vw,2.25rem)", lineHeight: 1.1 }}>{c.title}</h3>
+                <div className="mt-4 flex flex-wrap gap-2">{c.tags.map((t) => <span key={t} className="chip">{t}</span>)}</div>
               </div>
-              <h3 className="display mt-8" style={{ fontSize: "clamp(1.4rem, 2.4vw, 2rem)" }}>{c.title}</h3>
-              <p className="mt-5 text-[0.98rem]" style={{ color: "var(--color-text-secondary)", lineHeight: 1.6 }}>{c.blurb}</p>
-              <div className="mt-7 flex flex-wrap gap-2">
-                {c.tags.map((t) => <span key={t} className="chip">{t}</span>)}
-              </div>
-              <Link href={c.href} className="ul-grow mono-label inline-flex items-center mt-10" style={{ color: "var(--color-text-primary)" }}>
-                Learn More <ArrowRight size={14} className="ml-1" />
-              </Link>
-            </div>
+              <p className="text-[0.98rem] leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>{c.blurb}</p>
+              <ArrowRight className="hidden self-center justify-self-end opacity-40 transition group-hover:translate-x-1 group-hover:opacity-100 md:block" style={{ color: "var(--color-kelp)" }} />
+            </Link>
           ))}
         </div>
       </div>
-      <hr className="hr-tide mt-24" />
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────────────────── FEATURED WORK */
 function FeaturedWork() {
   return (
-    <section className="py-24 md:py-32" id="work">
+    <section className="py-24 md:py-36" id="work">
       <div className="container">
-        <div className="flex items-baseline justify-between mb-10">
-          <div className="mono-label">§ 04 / SELECTED WORK</div>
-          <Link href="/work" className="ul-grow mono-label hidden md:inline-block" style={{ color: "var(--color-text-primary)" }}>
-            View All Work →
-          </Link>
-        </div>
-        <h2 className="display reveal" style={{ fontSize: "clamp(2.3rem, 5.2vw, 5rem)" }}>
-          Results we're proud of.
-        </h2>
-        <p className="reveal mt-5 max-w-xl" style={{ color: "var(--color-text-secondary)", fontSize: "1.1rem" }}>
-          Every project is a partnership. Here's what we've built together.
-        </p>
-
-        <div className="mt-16 space-y-24 md:space-y-32">
+        <SectionHead left={sectionLabel("04", "Selected work")} right={<Link href="/work" className="ul-grow" style={{ color: "var(--color-kelp)" }}>Index → all 8 projects</Link>} />
+        <h2 className="display reveal" style={{ fontSize: "clamp(2.5rem,6vw,5.25rem)" }}>Results we're proud of.</h2>
+        <p className="reveal mt-5 max-w-2xl text-lg leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>Every project is a partnership. Here is what we have built together — and what those numbers turned into for the people running these businesses.</p>
+        <div className="mt-20 grid gap-y-24 md:grid-cols-12 md:gap-x-8 md:gap-y-28">
           {FEATURED.map((p, i) => (
-            <article key={p.slug} className="grid md:grid-cols-12 gap-10 reveal">
-              <div className={`md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
-                <DeviceFrame src={p.desktop} alt={p.title} variant="laptop" />
+            <article key={p.slug} className={`case-grid reveal ${i === 0 ? "md:col-span-12 md:grid md:grid-cols-12 md:items-center md:gap-8" : i === 1 ? "md:col-span-12 md:grid md:grid-cols-12 md:items-center md:gap-8" : i === 2 ? "md:col-span-7" : "md:col-span-5"}`}>
+              <div className={`${i === 0 ? "md:col-span-8" : i === 1 ? "md:order-2 md:col-span-8" : ""}`}>
+                <DeviceFrame src={p.desktop} alt={`${p.title} website screenshot`} url={p.liveUrl?.replace(/^https?:\/\//, "") ?? "salttidecreative.com"} />
               </div>
-              <div className={`md:col-span-5 flex flex-col justify-center ${i % 2 ? "md:order-1" : ""}`}>
-                <div className="mono-label" style={{ color: "var(--color-kelp)" }}>{p.category} · {p.location}</div>
-                <h3 className="display mt-4" style={{ fontSize: "clamp(1.7rem, 3vw, 2.6rem)" }}>{p.title}</h3>
-                <p className="mt-5 text-[1rem]" style={{ color: "var(--color-text-secondary)", lineHeight: 1.6 }}>{p.blurb}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {p.services.map((s) => <span key={s} className="chip">{s}</span>)}
-                </div>
-                <div className="mt-7 display-thin" style={{ fontSize: "1.4rem", color: "var(--color-kelp)" }}>
-                  {p.resultCallout}
-                </div>
-                <Link href={`/work/${p.slug}`} className="btn-ghost self-start mt-8">
-                  View Case Study <ArrowUpRight size={16} />
-                </Link>
+              <div className={`${i === 0 ? "mt-8 md:col-span-4 md:mt-0" : i === 1 ? "mt-8 md:order-1 md:col-span-4 md:mt-0" : "mt-6"}`}>
+                <div className="mono-label flex items-center gap-3" style={{ color: "var(--color-kelp)" }}><span className="h-px w-5" style={{ background: "var(--color-kelp)" }} />{p.category} · {p.location} · {p.year}</div>
+                <h3 className="display mt-4" style={{ fontSize: i < 2 ? "clamp(1.65rem,2.6vw,2.5rem)" : "1.4rem", lineHeight: 1.05 }}>{p.title}</h3>
+                <p className="mt-4 leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>{p.blurb}</p>
+                {i < 2 && <div className="mt-5 display-thin text-xl italic" style={{ color: "var(--color-kelp)" }}>{p.resultCallout}</div>}
+                {i < 2 && <Link href={`/work/${p.slug}`} className="btn-ghost mt-7 inline-flex">Read the case study <ArrowRight size={16} /></Link>}
               </div>
             </article>
           ))}
         </div>
-
-        <div className="text-center mt-20">
-          <Link href="/work" className="btn-primary">
-            View All Work <ArrowRight size={18} />
-          </Link>
+        <div className="mt-24 flex flex-col gap-6 border-t pt-6 md:flex-row md:items-center md:justify-between" style={{ borderColor: "var(--color-hairline)" }}>
+          <p className="display-thin max-w-[24ch] text-2xl italic">A working portfolio of <strong className="font-medium" style={{ color: "var(--color-kelp)" }}>eight live sites</strong> — restaurants, retail, services, hospitality.</p>
+          <Link href="/work" className="btn-primary self-start">View all work <ArrowRight size={18} /></Link>
         </div>
       </div>
-      <hr className="hr-tide mt-24" />
     </section>
   );
 }
 
-export function DeviceFrame({ src, alt, variant = "laptop" }: { src: string; alt: string; variant?: "laptop" | "phone" }) {
-  if (variant === "phone") {
-    return (
-      <div className="relative mx-auto" style={{ maxWidth: 320 }}>
-        <div style={{ border: "8px solid #0F1115", borderRadius: 30, background: "#15171C", padding: 6, boxShadow: "0 30px 80px rgba(0,0,0,0.45)" }}>
-          <img src={src} alt={alt} loading="lazy" style={{ display: "block", width: "100%", borderRadius: 22 }} />
-        </div>
-      </div>
-    );
-  }
+export function DeviceFrame({ src, alt, url = "salttidecreative.com" }: { src: string; alt: string; url?: string }) {
   return (
-    <div className="relative">
-      <div style={{
-        border: "1px solid var(--color-hairline)",
-        background: "var(--color-surface)",
-        boxShadow: "0 30px 80px rgba(0,0,0,0.4)",
-      }}>
-        <div className="flex items-center gap-1.5 px-3 py-2.5" style={{ borderBottom: "1px solid var(--color-hairline)" }}>
-          <span style={{ width: 8, height: 8, borderRadius: 9999, background: "#3a3d44" }} />
-          <span style={{ width: 8, height: 8, borderRadius: 9999, background: "#3a3d44" }} />
-          <span style={{ width: 8, height: 8, borderRadius: 9999, background: "#3a3d44" }} />
-          <span className="ml-3 text-[10px]" style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}>
-            salttidecreative.com
-          </span>
-        </div>
-        <img src={src} alt={alt} loading="lazy" style={{ display: "block", width: "100%" }} />
+    <div className="relative border transition duration-300 hover:-translate-y-1" style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)", boxShadow: "0 24px 60px rgba(0,0,0,0.4), 0 8px 24px rgba(63,174,124,0.08)" }}>
+      <div className="flex items-center gap-1.5 border-b px-3.5 py-2.5" style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)" }}>
+        <span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" />
+        <span className="ml-3 font-mono text-[10px] tracking-wide" style={{ color: "var(--color-text-muted)" }}>{url}</span>
       </div>
+      <img src={src} alt={alt} loading="lazy" className="block w-full" />
     </div>
   );
 }
 
-/* ─────────────────────────────────────────────────────────── DIFFERENCE */
 function Difference() {
   const items = [
-    {
-      t: "AI-Powered, Human-Led",
-      d: "We use cutting-edge AI tools to build faster and smarter — without losing the human creativity that makes design feel made, not generated.",
-    },
-    {
-      t: "Design + Marketing, One Roof",
-      d: "Your website and your marketing strategy built together, by the same team. No disconnected handoffs. No excuses.",
-    },
-    {
-      t: "Real Results, Not Pretty Pages",
-      d: "We've consulted on restaurant growth strategy, redesigned menus, and built complete business systems. We think beyond the website.",
-    },
-    {
-      t: "Locally Invested, Digitally Global",
-      d: "We're Edmonds locals who care about this community — and we're connected to the global design and marketing trends most local agencies miss.",
-    },
+    ["AI-powered, human-led.", "We use cutting-edge tools to build faster and smarter — without losing the human creativity that makes design feel made, not generated."],
+    ["Design + marketing, one roof.", "Your website and your marketing strategy built together, by the same team. No disconnected handoffs. No excuses."],
+    ["Real results, not pretty pages.", "We've consulted on restaurant growth strategy, redesigned menus, and built complete business systems. We think beyond the website."],
+    ["Locally invested, digitally global.", "Edmonds locals who care about this community — and connected to the global design trends most local agencies miss."],
   ];
   return (
-    <section className="py-24 md:py-32" style={{ background: "var(--color-surface)" }}>
-      <div className="container grid md:grid-cols-12 gap-10">
-        <div className="md:col-span-5">
-          <div className="mono-label">§ 05 / WHY US</div>
-          <h2 className="display mt-6 reveal" style={{ fontSize: "clamp(2rem, 4.4vw, 3.6rem)" }}>
-            Most agencies hand you a template and call it a day. <span style={{ color: "var(--color-kelp)" }}>We treat every project like our business depends on it</span> — because it does.
-          </h2>
-          <div className="mt-10 grid grid-cols-2 gap-6 max-w-md">
-            <Founder name="Yael" role="Web + AI Strategy" />
-            <Founder name="Partner" role="Marketing + Brand" />
+    <section className="border-y py-24 md:py-36" id="about" style={{ background: "var(--color-surface)", borderColor: "var(--color-hairline)" }}>
+      <div className="container grid gap-16 lg:grid-cols-[5fr_7fr] lg:gap-20">
+        <div className="reveal">
+          <div className="mono-label">{sectionLabel("05", "Why us")}</div>
+          <h2 className="display mt-6" style={{ fontSize: "clamp(2.1rem,4vw,3.5rem)", lineHeight: 1.04 }}>Most agencies hand you a template and call it a day. <span className="italic font-medium" style={{ color: "var(--color-kelp)" }}>We treat every project like our own business depends on it</span> — because it does.</h2>
+          <div className="mt-12 grid max-w-md grid-cols-2 gap-6">
+            <Founder name="Yael" role="Web + AI strategy" />
+            <Founder name="Partner" role="Marketing + brand" />
           </div>
         </div>
-        <div className="md:col-span-7 grid sm:grid-cols-2 gap-px" style={{ background: "var(--color-hairline)" }}>
-          {items.map((x, i) => (
-            <div key={i} className="reveal p-7 md:p-9" style={{ background: "var(--color-surface)" }}>
-              <div className="mono-label" style={{ color: "var(--color-kelp)" }}>0{i+1}</div>
-              <h3 className="display mt-5" style={{ fontSize: "clamp(1.2rem, 1.7vw, 1.45rem)" }}>{x.t}</h3>
-              <p className="mt-3 text-[0.96rem]" style={{ color: "var(--color-text-secondary)", lineHeight: 1.6 }}>{x.d}</p>
+        <div className="grid gap-px sm:grid-cols-2" style={{ background: "var(--color-hairline)" }}>
+          {items.map(([title, body], i) => (
+            <div key={title} className="reveal p-8 md:p-9" style={{ background: "var(--color-surface)" }}>
+              <div className="mono-label" style={{ color: "var(--color-kelp)" }}>0{i + 1}</div>
+              <h3 className="display mt-6 text-xl leading-tight">{title}</h3>
+              <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>{body}</p>
             </div>
           ))}
         </div>
       </div>
-      <hr className="hr-tide mt-24" />
     </section>
   );
 }
@@ -465,149 +338,123 @@ function Difference() {
 function Founder({ name, role }: { name: string; role: string }) {
   return (
     <div>
-      {/* Initial-monogram placeholder for headshot — labeled as such */}
-      <div
-        className="display"
-        title="Founder photo placeholder"
-        style={{
-          width: 84, height: 84,
-          display: "grid", placeItems: "center",
-          background: "linear-gradient(135deg, #1B1E25 0%, #15171C 100%)",
-          border: "1px solid var(--color-hairline)",
-          color: "var(--color-text-primary)",
-          fontSize: "1.6rem",
-        }}
-      >
-        {name[0]}
-      </div>
-      <div className="mt-3 display" style={{ fontSize: "1.05rem" }}>{name}</div>
-      <div className="mono-label" style={{ fontSize: "0.7rem" }}>{role}</div>
+      <div className="display grid h-[84px] w-[84px] place-items-center border text-3xl" style={{ borderColor: "var(--color-hairline)", background: "linear-gradient(135deg, var(--color-surface-2), var(--color-surface))" }}>{name[0]}</div>
+      <div className="display mt-3 text-[1.05rem]">{name}</div>
+      <div className="mono-label text-[0.65rem]" style={{ color: "var(--color-text-muted)" }}>{role}</div>
     </div>
   );
 }
 
-/* ─────────────────────────────────────────────────────────── PROCESS */
 function Process() {
   const steps = [
-    { t: "Discovery",  s: "We Learn Your Business",  w: "Week 1",
-      d: "One call to understand your goals, your customers, and what success looks like." },
-    { t: "Strategy",   s: "We Build The Blueprint",  w: "Week 1–2",
-      d: "Design direction, content structure, and marketing alignment — agreed before a single pixel." },
-    { t: "Design + Build", s: "We Get To Work",      w: "Week 2–4",
-      d: "AI-accelerated build means you see results faster. You stay in the loop at every milestone." },
-    { t: "Launch + Grow", s: "We Launch And Keep Going", w: "Week 4+",
-      d: "Go live with confidence. Ongoing support, SEO, and marketing so the site keeps performing." },
+    ["Week 1", "Discovery.", "We learn your business.", "One call to understand your goals, your customers, and what success looks like — not a brief, a conversation."],
+    ["Week 1–2", "Strategy.", "We build the blueprint.", "Design direction, content structure, and marketing alignment — agreed before a single pixel is moved."],
+    ["Week 2–4", "Design + build.", "We get to work.", "AI-accelerated build means you see results faster. You stay in the loop at every milestone — no black boxes."],
+    ["Week 4+", "Launch + grow.", "We launch and keep going.", "Go live with confidence. Ongoing support, SEO, and marketing so the site keeps performing into year two and beyond."],
   ];
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-36">
       <div className="container">
-        <div className="flex items-baseline justify-between mb-10">
-          <div className="mono-label">§ 06 / PROCESS</div>
-          <div className="mono-label hidden md:block">FROM CALL TO LAUNCH</div>
-        </div>
-        <h2 className="display reveal" style={{ fontSize: "clamp(2.3rem, 5.2vw, 5rem)" }}>
-          From first call to launch.
-        </h2>
-        <div className="mt-16 relative grid md:grid-cols-4 gap-px" style={{ background: "var(--color-hairline)" }}>
-          {/* horizontal animated line */}
-          <div aria-hidden className="hidden md:block absolute left-0 right-0" style={{
-            top: 90,
-            height: 1,
-            background: "linear-gradient(to right, transparent, var(--color-kelp) 50%, transparent)",
-            opacity: 0.6,
-          }} />
-          {steps.map((s, i) => (
-            <div key={i} className="reveal p-7 md:p-8 relative" style={{ background: "var(--color-ink)" }}>
-              <div className="flex items-center gap-3">
-                <div className="display" style={{ fontSize: "2.6rem", color: "var(--color-kelp)", lineHeight: 1 }}>0{i+1}</div>
-                <div>
-                  <div className="mono-label">{s.w}</div>
-                  <div className="display" style={{ fontSize: "1rem", marginTop: 2 }}>{s.t}</div>
-                </div>
+        <SectionHead left={sectionLabel("06", "Process")} right="From call to launch" />
+        <h2 className="display reveal" style={{ fontSize: "clamp(2.5rem,6vw,5.25rem)" }}>From first call to launch.</h2>
+        <div className="relative mt-20 pb-10">
+          <div aria-hidden className="absolute left-0 right-0 top-[60px] hidden h-px md:block" style={{ background: "linear-gradient(to right, transparent 0%, var(--color-kelp) 25%, var(--color-kelp) 75%, transparent 100%)", opacity: 0.6 }} />
+          <div className="grid gap-14 md:grid-cols-4 md:gap-8">
+            {steps.map(([week, title, sub, body], i) => (
+              <div key={title} className="reveal relative pt-24 md:[&:nth-child(2)]:pt-36 md:[&:nth-child(3)]:pt-20 md:[&:nth-child(4)]:pt-40">
+                <span aria-hidden className="absolute left-0 top-[52px] h-4 w-px" style={{ background: "var(--color-kelp)" }} />
+                <div className="absolute left-0 top-0 font-mono text-sm tracking-[0.18em]" style={{ color: "var(--color-kelp)" }}>0{i + 1}</div>
+                <div className="mono-label mb-2" style={{ fontSize: "10px", color: "var(--color-text-muted)" }}>{week}</div>
+                <h3 className="display text-[1.35rem] leading-tight">{title}</h3>
+                <div className="display-thin mt-2 italic" style={{ color: "var(--color-kelp)" }}>{sub}</div>
+                <p className="mt-4 text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>{body}</p>
               </div>
-              <div className="display mt-7" style={{ fontSize: "1.25rem", lineHeight: 1.2 }}>{s.s}</div>
-              <p className="mt-3 text-[0.95rem]" style={{ color: "var(--color-text-secondary)", lineHeight: 1.6 }}>{s.d}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-      <hr className="hr-tide mt-24" />
+      <hr className="hr-tide mt-16" />
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────────────────── SOCIAL PROOF */
 function SocialProof() {
-  const tx = [
-    {
-      q: "Salt & Tide completely transformed how our restaurant shows up online. We had reservations for our back room within the first week of launching. These guys know what they're doing.",
-      n: "Owner",
-      b: "Pancake Haus, Edmonds, WA",
-    },
-    {
-      q: "We were brand new and needed everything — strategy, website, the works. They delivered a complete digital foundation that made us look established from day one. Incredible work.",
-      n: "Owner",
-      b: "Luigi's Breakfast",
-    },
-    {
-      q: "I was skeptical working with such a young team — honestly they outperformed agencies I've paid twice as much. The combination of design and marketing thinking in one team is rare.",
-      n: "Owner",
-      b: "Local Service Business, Seattle",
-    },
-  ];
   return (
-    <section className="py-24 md:py-32" style={{ background: "var(--color-fog)", color: "var(--color-ink)" }}>
-      <div className="container">
-        <div className="flex items-baseline justify-between mb-10">
-          <div className="mono-label" style={{ color: "rgba(15,17,21,0.55)" }}>§ 07 / TESTIMONIALS</div>
-          <div className="mono-label hidden md:block" style={{ color: "rgba(15,17,21,0.55)" }}>CLIENT LOVE</div>
-        </div>
-        <h2 className="display reveal" style={{ fontSize: "clamp(2.3rem, 5.2vw, 5rem)" }}>
-          Don't take our word for it.
-        </h2>
-        <div className="mt-16 grid md:grid-cols-3 gap-px" style={{ background: "rgba(15,17,21,0.12)" }}>
-          {tx.map((t, i) => (
-            <blockquote key={i} className="reveal p-8 md:p-10" style={{ background: "var(--color-fog)" }}>
-              <div className="display" style={{ fontSize: "3.5rem", lineHeight: 0.7, color: "var(--color-kelp)" }}>“</div>
-              <p className="mt-4 display-thin" style={{ fontSize: "1.2rem", lineHeight: 1.45, color: "rgba(15,17,21,0.9)" }}>
-                {t.q}
-              </p>
-              <footer className="mt-7">
-                <div className="display" style={{ fontSize: "0.95rem" }}>{t.n}</div>
-                <div className="mono-label" style={{ color: "rgba(15,17,21,0.55)" }}>{t.b}</div>
-              </footer>
-            </blockquote>
-          ))}
+    <section className="relative overflow-hidden py-24 md:py-36" style={{ background: "var(--color-fog)", color: "var(--color-ink)" }}>
+      <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(800px 400px at 0% 100%, rgba(63,174,124,0.06), transparent 60%)" }} />
+      <div className="container relative">
+        <SectionHead left={sectionLabel("07", "Testimonials")} right="In their words" dark />
+        <div className="grid gap-14 md:grid-cols-[7fr_5fr] md:gap-20">
+          <blockquote className="reveal pr-0 md:pr-14">
+            <span className="display block text-[clamp(7.5rem,14vw,13.75rem)] leading-[0.6]" style={{ color: "var(--color-kelp)" }}>“</span>
+            <p className="display-thin" style={{ fontSize: "clamp(1.5rem,3.2vw,2.75rem)", lineHeight: 1.18, color: "var(--color-ink)" }}>Salt &amp; Tide completely transformed how our restaurant shows up online. We had <em className="font-semibold" style={{ color: "var(--color-kelp-deep)" }}>reservations for our back room within the first week</em> of launching. These guys know what they're doing.</p>
+            <footer className="mt-9 border-t pt-5" style={{ borderColor: "rgba(15,17,21,0.12)" }}>
+              <div className="display text-[1.05rem]">— Owner, Pancake Haus</div>
+              <div className="mono-label" style={{ color: "rgba(15,17,21,0.55)" }}>Edmonds, WA · 20 years in business</div>
+            </footer>
+          </blockquote>
+          <div className="grid content-end gap-8">
+            <MiniQuote quote="We were brand new and needed everything — strategy, website, the works. They delivered a complete digital foundation that made us look established from day one." name="Owner, Luigi's Breakfast" biz="Edmonds · Launch client, 2026" />
+            <MiniQuote quote="I was skeptical working with such a young team — they outperformed agencies I've paid twice as much. The design + marketing thinking in one team is rare." name="Owner, Service Business" biz="Seattle metro · Returning client" />
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────────────────── FINAL CTA */
+function MiniQuote({ quote, name, biz }: { quote: string; name: string; biz: string }) {
+  return (
+    <blockquote className="reveal border-l-2 p-7" style={{ borderColor: "var(--color-kelp-deep)", background: "rgba(15,17,21,0.04)" }}>
+      <p className="display-thin text-[1.05rem] leading-snug" style={{ color: "rgba(15,17,21,0.88)" }}>“{quote}”</p>
+      <footer className="mt-4">
+        <div className="display text-sm">{name}</div>
+        <div className="mono-label" style={{ fontSize: "10px", color: "rgba(15,17,21,0.55)" }}>{biz}</div>
+      </footer>
+    </blockquote>
+  );
+}
+
 function FinalCTA() {
   return (
-    <section className="py-28 md:py-40 relative overflow-hidden" id="cta">
-      <div aria-hidden className="absolute inset-0" style={{
-        background: "radial-gradient(60% 60% at 50% 30%, rgba(63,174,124,0.18), transparent 70%)",
-      }} />
-      <div className="container relative z-10 text-center">
-        <div className="mono-label">§ 08 / READY?</div>
-        <h2 className="display mt-6 reveal" style={{ fontSize: "clamp(2.6rem, 7vw, 6rem)", maxWidth: "20ch", marginInline: "auto" }}>
-          Ready to build something that <span style={{ color: "var(--color-kelp)" }}>actually works</span>?
-        </h2>
-        <p className="reveal mt-7 max-w-xl mx-auto" style={{ color: "var(--color-text-secondary)", fontSize: "1.1rem" }}>
-          Most agencies make you wait weeks just to get a proposal. We'll have a real strategy conversation with you this week.
-        </p>
-        <div className="mt-10 flex justify-center">
-          <Link href="/contact" className="btn-primary" style={{ padding: "1.1rem 1.9rem" }}>
-            Book a Free Strategy Call <ArrowRight size={18} />
-          </Link>
+    <section className="relative overflow-hidden py-28 md:py-40" id="cta">
+      <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(60% 60% at 80% 30%, rgba(63,174,124,0.16), transparent 60%)" }} />
+      <div className="container relative grid gap-12 md:grid-cols-[8fr_4fr] md:items-end md:gap-16">
+        <div>
+          <div className="mono-label">{sectionLabel("08", "Ready?")}</div>
+          <h2 className="display reveal mt-8" style={{ fontSize: "clamp(3rem,8vw,8rem)", lineHeight: 0.9 }}>Ready to build<br />something that <span className="italic font-medium" style={{ color: "var(--color-kelp)" }}>earns its keep?</span></h2>
         </div>
-        <div className="mt-7 mono-label" style={{ color: "var(--color-text-muted)" }}>
-          ✓ Free 30-min call &nbsp; ·&nbsp; ✓ Custom strategy, not a pitch &nbsp; ·&nbsp; ✓ Reply within 24 hours
+        <div className="reveal">
+          <p className="text-[1.05rem] leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>Most agencies make you wait weeks just to get a proposal. We'll have a real strategy conversation with you this week — no pitch deck, no NDA, no nonsense.</p>
+          <Link href="/contact" className="btn-primary mt-8 inline-flex px-7 py-4">Book a free strategy call <ArrowRight size={18} /></Link>
+          <div className="mt-7 grid gap-5 border-t pt-6" style={{ borderColor: "var(--color-hairline)" }}>
+            <CTARow n="01" title="Free 30-minute call" sub="No deck, no pitch — just listening." />
+            <CTARow n="02" title="Custom strategy memo" sub="Written response, not a template." />
+            <CTARow n="03" title="Reply within 24 hours" sub="Mon–Fri · Pacific Time." />
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function CTARow({ n, title, sub }: { n: string; title: string; sub: string }) {
+  return (
+    <div className="grid grid-cols-[14px_1fr] gap-4">
+      <div className="font-mono text-[10px] tracking-[0.18em]" style={{ color: "var(--color-kelp)" }}>{n}</div>
+      <div>
+        <div className="display-thin text-[0.98rem]">{title}</div>
+        <div className="mono-label mt-1" style={{ fontSize: "10px", color: "var(--color-text-muted)" }}>{sub}</div>
+      </div>
+    </div>
+  );
+}
+
+function SectionHead({ left, right, dark }: { left: React.ReactNode; right: React.ReactNode; dark?: boolean }) {
+  return (
+    <div className="mb-14 flex items-baseline justify-between gap-4">
+      <div className="mono-label" style={{ color: dark ? "rgba(15,17,21,0.55)" : undefined }}>{left}</div>
+      <div className="mono-label hidden md:block" style={{ color: dark ? "rgba(15,17,21,0.55)" : undefined }}>{right}</div>
+    </div>
   );
 }

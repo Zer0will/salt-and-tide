@@ -27,7 +27,7 @@ export function Nav() {
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-50 transition-[backdrop-filter,background-color,height] duration-300"
+        className="fixed inset-x-0 top-7 z-50 transition-[backdrop-filter,background-color,height] duration-300"
         style={{
           backdropFilter: scrolled ? "blur(14px)" : "blur(0px)",
           background: scrolled ? "rgba(15,17,21,0.72)" : "transparent",
