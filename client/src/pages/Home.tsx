@@ -163,7 +163,7 @@ function Line({ children, accent }: { children: string; accent?: boolean }) {
     <span className="block overflow-hidden" style={{ color: accent ? "var(--color-kelp)" : "inherit", fontStyle: accent ? "italic" : undefined, fontWeight: accent ? 500 : undefined }}>
       {children.split(" ").map((w, wi) => (
         <span key={wi} className="inline-block overflow-hidden align-top" style={{ marginRight: "0.28em" }}>
-          <span className="hero-char inline-block translate-y-[120%]">{w}</span>
+          <span className="hero-char inline-block">{w}</span>
         </span>
       ))}
     </span>
