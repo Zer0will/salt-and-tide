@@ -92,8 +92,10 @@ export function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs" style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}>
           <div>© {new Date().getFullYear()} SALT &amp; TIDE CREATIVE LLC. ALL RIGHTS RESERVED.</div>
           <div className="flex items-center gap-5">
-            <a className="ul-grow" href="#">Privacy</a>
-            <a className="ul-grow" href="#">Terms</a>
+            <Link className="ul-grow" href="/privacy-policy">Privacy</Link>
+            <Link className="ul-grow" href="/terms-of-service">Terms</Link>
+            <Link className="ul-grow" href="/cookie-policy">Cookies</Link>
+            <Link className="ul-grow" href="/accessibility">Accessibility</Link>
             <a className="ul-grow" href="/sitemap.xml">Sitemap</a>
             <span title="Made on the Edmonds waterfront">MADE IN EDMONDS, WA</span>
           </div>

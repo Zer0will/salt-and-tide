@@ -72,4 +72,10 @@
   <url><loc>https://salttidecreative.com/insights/why-seattle-small-businesses-need-a-website</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
   <url><loc>https://salttidecreative.com/insights/restaurant-website-design-guide</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
 
+  <!-- Legal / policy pages -->
+  <url><loc>https://salttidecreative.com/privacy-policy</loc><lastmod>2026-05-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://salttidecreative.com/terms-of-service</loc><lastmod>2026-05-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://salttidecreative.com/cookie-policy</loc><lastmod>2026-05-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://salttidecreative.com/accessibility</loc><lastmod>2026-05-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
 </urlset>
