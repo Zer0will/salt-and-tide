@@ -14,15 +14,14 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Web Design Agency Seattle & Edmonds WA | Salt & Tide"
-        description="Salt & Tide Creative builds high-converting websites and digital marketing strategies for small businesses in Seattle and Edmonds, WA. Free strategy call."
+        title="Web Design + Marketing Studio | Salt & Tide Creative"
+        description="Salt & Tide Creative builds high-converting websites, SEO foundations, and marketing systems for small businesses across Edmonds, Seattle, and Puget Sound."
         path="/"
         keywords={[
           "web design agency Seattle",
-          "web design Edmonds WA",
           "digital marketing agency Seattle",
           "small business website design Seattle",
-          "web designer Edmonds Washington",
+          "Puget Sound web design studio",
         ]}
         jsonLd={[
           localBusinessSchema({

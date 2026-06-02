@@ -27,7 +27,7 @@ export default function InsightArticle() {
     publisher: {
       "@type": "Organization",
       name: ORG_NAME,
-      logo: { "@type": "ImageObject", url: `${SITE_ORIGIN}/og/og-default.jpg` },
+      logo: { "@type": "ImageObject", url: `${SITE_ORIGIN}/og/og-default.png` },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_ORIGIN}/insights/${post.slug}` },
     keywords: post.keywords.join(", "),

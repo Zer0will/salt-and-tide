@@ -13,7 +13,7 @@ Salt & Tide Creative
 Edmonds, WA 98020
 United States
 hello@salttidecreative.com
-+1 (425) 555-0123
++1 (253) 660-8555
 Mon–Fri · 9AM–6PM PT
 https://salttidecreative.com
 ```

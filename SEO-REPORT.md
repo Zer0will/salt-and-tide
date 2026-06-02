@@ -109,7 +109,7 @@ NAP (Name, Address, Phone) inconsistency is the #1 reason Edmonds-area small bus
 
 > **Salt & Tide Creative LLC**
 > Edmonds, WA 98020 · United States
-> hello@salttidecreative.com · +1 (425) 555-0123
+> hello@salttidecreative.com · +1 (253) 660-8555
 > Mon–Fri · 9AM–6PM PT · Serving Seattle & Puget Sound
 
 **Critical action for the founders:** This block must match — character for character — your Google Business Profile and every directory listing (Yelp, Bing Places, Apple Business Connect, Facebook, etc.). See `docs/google-business-profile-guide.md` for the step-by-step setup.
@@ -156,7 +156,7 @@ Every route now emits a complete social-media preview package:
 - `twitter:card = summary_large_image`
 - `twitter:title`, `twitter:description`, `twitter:image`
 
-> **OWNER ACTION:** Replace the placeholder `og/og-default.jpg` with an exported 1200×630 PNG of your brand mark + "Salt & Tide Creative" wordmark. Drop it at `client/public/og/og-default.jpg`. Until then, social shares will still work but show a generic preview.
+> **OWNER ACTION:** Replace the placeholder `og/og-default.png` with an exported 1200×630 PNG of your brand mark + "Salt & Tide Creative" wordmark. Drop it at `client/public/og/og-default.png`. Until then, social shares will still work but show a generic preview.
 
 ---
 
@@ -200,7 +200,7 @@ These items are not code changes; they're owner-driven actions documented in com
 3. **Bing Webmaster Tools** — same as above, ~3% of search but free traffic.
 4. **Local citations** — submit consistent NAP to Yelp, Apple Business Connect, Bing Places, Facebook, Yellow Pages, BBB, and 10–15 PNW directories. List in `docs/local-citation-checklist.md`.
 5. **Replace placeholder names + numbers** — full founder names in `Seo.tsx`, real phone, real LinkedIn/Instagram URLs.
-6. **Drop a real OG image** — `client/public/og/og-default.jpg`, 1200×630 PNG.
+6. **Drop a real OG image** — `client/public/og/og-default.png`, 1200×630 PNG.
 7. **Inline reviews** — once GBP collects 5+ verified reviews, sync them into the `<Seo>` review block.
 8. **Backlinks** — outreach to Edmonds Chamber of Commerce, Edmonds Creative District, Visit Edmonds, and PNW small-business blogs. Even three high-quality local backlinks will measurably move local rankings.
 9. **One new Insights article per month** — minimum cadence to stay competitive.

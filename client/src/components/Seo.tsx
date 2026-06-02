@@ -114,7 +114,7 @@ export function Seo({
 // ---------- Reusable schema builders ----------
 
 export const ORG_NAME = "Salt & Tide Creative";
-export const ORG_PHONE = "+1-425-900-8335";
+export const ORG_PHONE = "+1-253-660-8555";
 export const ORG_EMAIL = "hello@salttidecreative.com";
 export const ORG_LOGO = `${SITE_ORIGIN}/og/og-default.png`;
 export const ORG_AREAS = [

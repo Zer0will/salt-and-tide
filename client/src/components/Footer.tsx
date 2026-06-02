@@ -70,7 +70,7 @@ export function Footer() {
               <div className="mt-2">
                 <a className="ul-grow" href="mailto:hello@salttidecreative.com">hello@salttidecreative.com</a>
                 <span className="mx-2 opacity-40">·</span>
-                <a className="ul-grow" href="tel:+14259008335">+1 (425) 900-8335</a>
+                <a className="ul-grow" href="tel:+12536608555">+1 (253) 660-8555</a>
               </div>
               <div className="mt-2 mono-label" style={{ color: "var(--color-text-muted)" }}>
                 MON–FRI · 9AM–6PM PT · SERVING SEATTLE &amp; PUGET SOUND
