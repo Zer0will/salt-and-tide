@@ -42,8 +42,8 @@ const routeMeta = [
   {
     path: "/services",
     title: "Web Design & Marketing Services | Salt & Tide Creative",
-    description: "Web design, SEO, and digital marketing services from $3,500. Launch, Growth, and Partnership tiers for small businesses in Seattle and Edmonds, WA.",
-    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }]), serviceSchema(), faqSchema()],
+    description: "Web design, local SEO, voice search optimization, and digital marketing services from $3,500 for small businesses in Seattle and Edmonds, WA.",
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }]), serviceSchema(), voiceSearchSchema(), faqSchema()],
   },
   {
     path: "/about",
@@ -173,11 +173,22 @@ function breadcrumbSchema(items) {
 }
 
 function serviceSchema() {
-  return { "@context": "https://schema.org", "@type": "Service", serviceType: "Web Design and Digital Marketing", provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME }, areaServed: ["Seattle, WA", "Edmonds, WA", "Lynnwood, WA"].map((name) => ({ "@type": "Place", name })), offers: [{ "@type": "Offer", name: "Launch Tier", price: "3500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` }, { "@type": "Offer", name: "Growth Tier", price: "6500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` }, { "@type": "Offer", name: "Partnership Tier", price: "8500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` }] };
+  return { "@context": "https://schema.org", "@type": "Service", serviceType: "Web Design, Local SEO, Voice Search Optimization, and Digital Marketing", provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME }, areaServed: ["Seattle, WA", "Edmonds, WA", "Lynnwood, WA"].map((name) => ({ "@type": "Place", name })), offers: [{ "@type": "Offer", name: "Launch Tier", price: "3500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` }, { "@type": "Offer", name: "Growth Tier with Local SEO and Voice Search Optimization", price: "6500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` }, { "@type": "Offer", name: "Partnership Tier", price: "8500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` }] };
+}
+
+function voiceSearchSchema() {
+  return { "@context": "https://schema.org", "@type": "Service", "@id": `${SITE_ORIGIN}/services#voice-search-optimization`, name: "Voice Search Optimization", serviceType: "Voice Search Optimization and Local SEO", provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME }, areaServed: ["Seattle, WA", "Edmonds, WA", "Lynnwood, WA", "Shoreline, WA", "Mukilteo, WA"].map((name) => ({ "@type": "Place", name })), url: `${SITE_ORIGIN}/services#voice-search-optimization`, description: "Conversational SEO, local business schema, FAQ schema, Google Business Profile guidance, and near-me search optimization for small businesses in the Seattle and Edmonds area.", audience: { "@type": "Audience", audienceType: "Restaurants and small businesses" } };
 }
 
 function faqSchema() {
-  return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: ["How long does a typical project take?", "What happens after launch?", "Do you work with clients outside Edmonds?"].map((name) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text: "Contact Salt & Tide Creative for current project timing and scope details." } })) };
+  const entries = [
+    ["How long does a typical project take?", "Tier 1 launches in 2–3 weeks. Tier 2 takes 3–5 weeks. Tier 3 is ongoing. We pace every project so clients have time to review without slowing the build down."],
+    ["What happens after launch?", "Every package includes post-launch support. After that, clients can move to a care retainer, ongoing partnership, or own the site outright."],
+    ["Do you offer voice search optimization?", "Yes. Voice search optimization is included in our local SEO work through conversational service copy, clear FAQ answers, LocalBusiness and FAQ schema, complete contact details, and Google Business Profile guidance."],
+    ["How do you optimize a small business for near me voice searches?", "We focus on accurate business details, service area, hours, reviews, categories, location pages, fast mobile pages, and natural question-and-answer content."],
+    ["Do you work with clients outside Edmonds?", "Yes. Salt & Tide Creative is rooted in Edmonds and works with PNW businesses as well as remote clients across the country."],
+  ];
+  return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: entries.map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })) };
 }
 
 function contactSchema() {

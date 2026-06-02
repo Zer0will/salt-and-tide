@@ -89,9 +89,10 @@ Add each service as its own item, with a short description. Use the exact same n
 | Service | Price (optional) | Description |
 |---|---|---|
 | Launch Tier — Custom Website | from $3,500 | A focused 5-page website built in 2–3 weeks. Strategy, design, build, launch, and 30 days of post-launch support. |
-| Growth Tier — Website + Local SEO | from $6,500 | A 10-page site with full local SEO setup, schema markup, GBP optimization, and a 90-day growth plan. 3–5 weeks. |
+| Growth Tier — Website + Local SEO | from $6,500 | A 10-page site with full local SEO setup, schema markup, GBP optimization, voice-search optimization, and a 90-day growth plan. 3–5 weeks. |
 | Partnership Tier — Full-Service Growth | from $8,500 + $1,000/mo | Ongoing partnership including site, marketing, content, and strategic advisory. |
 | Brand Refresh + Website | starting $4,500 | Logo, identity, and a new site that reflects it. |
+| Voice Search Optimization | starting $750 | Conversational FAQ content, LocalBusiness/Service/FAQ schema, near-me query mapping, and GBP Q&A guidance. |
 | Local SEO Audit | $500 | A 30-page audit of your current site + GBP + citations with prioritized fixes. |
 
 ### Step 2.5 — Products
@@ -109,8 +110,10 @@ Suggested questions:
 3. *"How long does a typical project take?"*
 4. *"Do you handle SEO and marketing too?"*
 5. *"Are you actually based in Edmonds?"*
+6. *"Do you optimize websites for voice search?"*
+7. *"What areas near Seattle do you serve?"*
 
-Each question is a chance to use a primary keyword naturally.
+Each question is a chance to use a primary keyword naturally. For voice search, write the answer like a human would say it out loud: short, specific, and location-aware.
 
 ---
 

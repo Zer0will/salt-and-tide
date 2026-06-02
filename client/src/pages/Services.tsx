@@ -8,6 +8,8 @@ import { Seo, SITE_ORIGIN, ORG_NAME, breadcrumbSchema, ORG_AREAS } from "@/compo
 const FAQS = [
   { q: "How long does a typical project take?", a: "Tier 1 launches in 2–3 weeks. Tier 2 takes 3–5 weeks. Tier 3 is ongoing. We can move faster than most agencies because we use AI to accelerate the build phase — but every project is paced to give you time to review, not to rush you." },
   { q: "What happens after launch?", a: "Every package includes post-launch support (30–60 days). After that, you can either move to a Care retainer, work with us on Tier 3, or simply own the site outright. We don't lock you into anything." },
+  { q: "Do you offer voice search optimization?", a: "Yes. Voice search optimization is included in our local SEO work. We make your site easier for Siri, Alexa, Google Assistant, and AI search tools to understand by using conversational service copy, clear FAQ answers, LocalBusiness and FAQ schema, complete contact details, and Google Business Profile guidance." },
+  { q: "How do you optimize a small business for 'near me' voice searches?", a: "We focus on the signals voice assistants rely on most: accurate business name, phone, service area, hours, reviews, categories, location pages, fast mobile pages, and natural question-and-answer content like 'Who designs websites for restaurants near Edmonds?' or 'How much does a small business website cost in Seattle?'" },
   { q: "Do you work with clients outside Edmonds?", a: "Yes. We're rooted in Edmonds and we love working with PNW businesses, but we work remotely with clients across the country. The work is the same." },
   { q: "Why is your pricing lower than big Seattle agencies?", a: "Two reasons. First, we use AI to accelerate the parts of the work that used to take weeks of manual coding — that's a real efficiency gain we pass on to you. Second, we're a focused two-person studio with low overhead. You're paying for the work, not for a downtown office." },
   { q: "Can you redesign an existing website?", a: "Yes. Most of our work to date has been redesigns of existing sites that weren't pulling their weight. We'll audit what you have, identify what's working, and rebuild what isn't." },
@@ -23,12 +25,25 @@ export default function Services() {
     serviceType: "Web Design and Digital Marketing",
     provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
     areaServed: ORG_AREAS.map((a) => ({ "@type": "Place", name: a })),
-    description: "Custom website design, build, and digital marketing services for small businesses in Seattle and Edmonds, Washington.",
+    description: "Custom website design, build, local SEO, voice search optimization, and digital marketing services for small businesses in Seattle and Edmonds, Washington.",
     offers: [
       { "@type": "Offer", name: "Launch Tier (Up to 5 pages)", price: "3500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` },
       { "@type": "Offer", name: "Growth Tier (Up to 10 pages + SEO)", price: "6500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services` },
       { "@type": "Offer", name: "Partnership Tier (Full-service growth)", price: "8500", priceCurrency: "USD", url: `${SITE_ORIGIN}/services`, eligibleQuantity: { "@type": "QuantitativeValue", unitText: "per engagement" } },
     ],
+  };
+  const voiceSearchLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_ORIGIN}/services#voice-search-optimization`,
+    name: "Voice Search Optimization",
+    serviceType: "Voice Search Optimization and Local SEO",
+    provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
+    areaServed: ORG_AREAS.map((a) => ({ "@type": "Place", name: a })),
+    url: `${SITE_ORIGIN}/services#voice-search-optimization`,
+    description:
+      "Conversational SEO, local business schema, FAQ schema, Google Business Profile guidance, and near-me search optimization for small businesses in the Seattle and Edmonds area.",
+    audience: { "@type": "Audience", audienceType: "Restaurants and small businesses" },
   };
   const faqLd = {
     "@context": "https://schema.org",
@@ -44,12 +59,13 @@ export default function Services() {
     <>
       <Seo
         title="Web Design & Marketing Services | Salt & Tide Creative"
-        description="Web design, SEO, and digital marketing services from $3,500. Launch, Growth, and Partnership tiers for small businesses in Seattle and Edmonds, WA."
+        description="Web design, local SEO, voice search optimization, and digital marketing services from $3,500 for small businesses in Seattle and Edmonds, WA."
         path="/services"
         keywords={[
           "web design pricing Seattle",
           "small business website design cost",
           "local SEO services Edmonds WA",
+          "voice search optimization Seattle",
           "restaurant website design package",
           "digital marketing agency pricing Seattle",
         ]}
@@ -59,6 +75,7 @@ export default function Services() {
             { name: "Services", path: "/services" },
           ]),
           serviceLd,
+          voiceSearchLd,
           faqLd,
         ]}
       />
@@ -66,6 +83,7 @@ export default function Services() {
       <Pillars />
       <Packages />
       <AddOns />
+      <VoiceSearchOptimization />
       <FAQ />
       <CTA />
     </>
@@ -114,6 +132,7 @@ function Pillars() {
       points: [
         "Brand strategy and positioning that actually translates to copy and design",
         "Local SEO (Google Business Profile, reviews, schema, citations)",
+        "Voice search optimization for conversational and near-me searches",
         "Social media strategy with content frameworks your team can run",
         "Paid ads (Meta, Google) — measured against real revenue, not impressions",
         "Email marketing flows: welcome, win-back, retention",
@@ -178,7 +197,7 @@ function Packages() {
         "Up to 5-page custom website",
         "Mobile-first responsive design",
         "Basic SEO setup",
-        "Google Business Profile optimization",
+        "Google Business Profile + voice search foundations",
         "Contact form + analytics",
         "30-day post-launch support",
       ],
@@ -194,7 +213,7 @@ function Packages() {
       bullets: [
         "Up to 10-page custom website",
         "Conversion-optimized design system",
-        "Full local SEO setup + 90-day plan",
+        "Full local SEO + voice search optimization plan",
         "Email marketing (1 flow)",
         "Brand voice + content guidelines",
         "60-day post-launch support",
@@ -291,6 +310,7 @@ function AddOns() {
     "Booking / Reservations Setup",
     "Custom Email Templates",
     "Copywriting (per page)",
+    "Voice Search Optimization",
     "Multi-language Support",
     "Web Care Retainer",
   ];
@@ -313,6 +333,55 @@ function AddOns() {
               </div>
               <Plus size={16} className="opacity-50" />
             </div>
+          ))}
+        </div>
+      </div>
+      <hr className="hr-tide mt-24" />
+    </section>
+  );
+}
+
+function VoiceSearchOptimization() {
+  const checks = [
+    {
+      q: "Answer real spoken questions",
+      a: "We write concise, natural answers for questions people actually ask out loud: who you serve, where you work, what you cost, how fast you deliver, and how to contact you.",
+    },
+    {
+      q: "Make local details unambiguous",
+      a: "Your business name, service area, phone, hours, reviews, and Google Business Profile categories need to match across the site, schema, citations, and listings.",
+    },
+    {
+      q: "Add structured data assistants can parse",
+      a: "We use LocalBusiness, Service, Breadcrumb, and FAQ schema so search engines and AI answer engines can understand your services without guessing from the design alone.",
+    },
+    {
+      q: "Keep pages fast and mobile-first",
+      a: "Most voice searches happen on phones. We pair conversational SEO with fast loading pages, clear tap-to-call CTAs, readable headings, and crawlable HTML.",
+    },
+  ];
+  return (
+    <section id="voice-search-optimization" className="py-20 md:py-28" style={{ background: "var(--color-fog)", color: "var(--color-ink)" }}>
+      <div className="container grid gap-12 md:grid-cols-12">
+        <div className="md:col-span-5">
+          <div className="mono-label" style={{ color: "rgba(15,17,21,0.55)" }}>§ Voice Search Optimization</div>
+          <h2 className="display mt-5 reveal" style={{ fontSize: "clamp(2.1rem, 4.8vw, 4rem)", lineHeight: 1 }}>
+            Be the business people find when they ask out loud.
+          </h2>
+          <p className="reveal mt-6 max-w-xl" style={{ color: "rgba(15,17,21,0.72)", lineHeight: 1.65 }}>
+            Voice SEO is not a separate magic listing. It is strong local SEO, clear listings, conversational answers, and structured data working together so assistants can confidently match your business to spoken searches.
+          </p>
+          <Link href="/contact" className="mt-8 inline-flex" style={{ padding: "1rem 1.35rem", background: "var(--color-ink)", color: "var(--color-fog)", fontFamily: "var(--font-display)", fontWeight: 600 }}>
+            Ask About Voice SEO <ArrowRight size={16} className="ml-2" />
+          </Link>
+        </div>
+        <div className="md:col-span-7 grid gap-px" style={{ background: "rgba(15,17,21,0.12)" }}>
+          {checks.map((item, i) => (
+            <article key={item.q} className="reveal p-7 md:p-8" style={{ background: "var(--color-fog)" }}>
+              <div className="mono-label" style={{ color: "rgba(15,17,21,0.5)" }}>V.{String(i + 1).padStart(2, "0")}</div>
+              <h3 className="display mt-3" style={{ fontSize: "clamp(1.25rem, 2vw, 1.65rem)", color: "var(--color-ink)" }}>{item.q}</h3>
+              <p className="mt-3" style={{ color: "rgba(15,17,21,0.7)", lineHeight: 1.6 }}>{item.a}</p>
+            </article>
           ))}
         </div>
       </div>
