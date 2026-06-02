@@ -1,6 +1,8 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" fill="#0F1115"/>
-  <rect x="2" y="2" width="28" height="28" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1"/>
-  <path d="M6 21 Q 16 8 26 21" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
-  <line x1="4" y1="25" x2="28" y2="25" stroke="#3FAE7C" stroke-width="1.8"/>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Salt &amp; Tide Creative favicon</title>
+  <desc id="desc">A dark square Salt &amp; Tide Creative mark with a white tide arc and kelp-green horizon line.</desc>
+  <rect width="512" height="512" fill="#0F1115"/>
+  <rect x="32" y="32" width="448" height="448" stroke="#F2EEE3" stroke-opacity="0.38" stroke-width="16"/>
+  <path d="M96 330 Q 256 128 416 330" stroke="#F2EEE3" stroke-width="24" stroke-linecap="round" fill="none"/>
+  <line x1="80" y1="394" x2="432" y2="394" stroke="#3FAE7C" stroke-width="28" stroke-linecap="round"/>
 </svg>

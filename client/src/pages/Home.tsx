@@ -102,7 +102,7 @@ function Hero() {
             ref={headlineRef}
             aria-label="We build websites that earn their keep."
             className="display mt-7"
-            style={{ fontSize: "clamp(3rem, 9vw, 9rem)", lineHeight: 0.9, letterSpacing: "-0.035em" }}
+            style={{ fontSize: "clamp(3rem, 9vw, 9rem)", lineHeight: 0.94, letterSpacing: "-0.035em" }}
           >
             <Line>We build</Line>
             <Line>websites that</Line>
@@ -159,9 +159,9 @@ function HeroContours() {
 
 function Line({ children, accent }: { children: string; accent?: boolean }) {
   return (
-    <span className="block overflow-hidden" style={{ color: accent ? "var(--color-kelp)" : "inherit", fontStyle: accent ? "italic" : undefined, fontWeight: accent ? 500 : undefined }}>
+    <span className="block overflow-hidden pb-[0.08em] pr-[0.08em]" style={{ color: accent ? "var(--color-kelp)" : "inherit", fontStyle: accent ? "italic" : undefined, fontWeight: accent ? 500 : undefined }}>
       {children.split(" ").map((w, wi) => (
-        <span key={wi} className="inline-block overflow-hidden align-top" style={{ marginRight: "0.28em" }}>
+        <span key={wi} className="inline-block align-top px-[0.035em]" style={{ marginRight: "0.28em" }}>
           <span className="hero-char inline-block">{w}</span>
         </span>
       ))}
