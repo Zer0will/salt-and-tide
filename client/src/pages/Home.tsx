@@ -318,7 +318,7 @@ function Difference() {
           <h2 className="display mt-6" style={{ fontSize: "clamp(2.1rem,4vw,3.5rem)", lineHeight: 1.04 }}>Most agencies hand you a template and call it a day. <span className="italic font-medium" style={{ color: "var(--color-kelp)" }}>We treat every project like our own business depends on it</span> — because it does.</h2>
           <div className="mt-12 grid max-w-md grid-cols-2 gap-6">
             <Founder name="Yael" role="Web + AI strategy" />
-            <Founder name="Partner" role="Marketing + brand" />
+            <Founder name="Chaz" role="Marketing + brand" />
           </div>
         </div>
         <div className="grid gap-px sm:grid-cols-2" style={{ background: "var(--color-hairline)" }}>

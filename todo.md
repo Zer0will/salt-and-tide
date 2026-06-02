@@ -26,7 +26,7 @@
 - [ ] Organization schema on home
 - [ ] Service schema on /services
 - [ ] CreativeWork schema on each /work/:slug
-- [ ] Person schema on /about (Yael + Alex)
+- [ ] Person schema on /about (Yael + Chaz)
 - [ ] FAQPage schema on /contact (and reuse on /services FAQ)
 - [ ] BreadcrumbList on all interior pages
 - [ ] NAP block in footer (already partially present — formalize)

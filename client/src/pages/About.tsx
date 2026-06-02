@@ -20,7 +20,7 @@ export default function About() {
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      name: "Alex", // OWNER: full name
+      name: "Chaz", // OWNER: full name
       jobTitle: "Co-Founder & Marketing Strategist",
       worksFor: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
       address: { "@type": "PostalAddress", addressLocality: "Edmonds", addressRegion: "WA", addressCountry: "US" },
@@ -123,7 +123,7 @@ function Founders() {
       tags: ["Design Systems", "AI-Assisted Build", "Product Strategy"],
     },
     {
-      name: "Alex",
+      name: "Chaz",
       role: "Co-founder · Marketing + Brand",
       bio: "Leads brand strategy, growth marketing, and client engagements. Background includes consulting on restaurant operations and brand strategy for hospitality groups across the Pacific Northwest.",
       tags: ["Brand Strategy", "Restaurant Marketing", "Growth"],

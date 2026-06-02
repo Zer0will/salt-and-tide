@@ -178,7 +178,7 @@ export function organizationSchema() {
     foundingDate: "2026",
     founders: [
       { "@type": "Person", name: "Yael", jobTitle: "Co-Founder, Web Development" }, // OWNER: full name
-      { "@type": "Person", name: "Alex", jobTitle: "Co-Founder, Marketing Strategy" }, // OWNER: full name
+      { "@type": "Person", name: "Chaz", jobTitle: "Co-Founder, Marketing Strategy" }, // OWNER: full name
     ],
     contactPoint: {
       "@type": "ContactPoint",

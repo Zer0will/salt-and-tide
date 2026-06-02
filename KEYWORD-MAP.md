@@ -1,7 +1,7 @@
 # Keyword Map — Salt & Tide Creative
 
 **Last updated:** May 15, 2026
-**Owner:** Yael & Co-Founder
+**Owner:** Yael & Chaz
 
 This is the master keyword-to-URL assignment for salttidecreative.com. Every public route has been assigned a primary head term and a small cluster of supporting long-tail terms. The site avoids targeting the same head term from multiple URLs (which causes Google to keyword-cannibalize the rankings).
 

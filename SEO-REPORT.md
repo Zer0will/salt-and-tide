@@ -3,7 +3,7 @@
 **Project:** salttidecreative.com
 **Status:** Implementation complete (production-ready)
 **Date:** May 15, 2026
-**Prepared for:** Yael & Co-Founder, Salt & Tide Creative LLC
+**Prepared for:** Yael & Chaz, Salt & Tide Creative LLC
 
 This report documents every search-engine-optimization change applied to the codebase, why it was applied, and what remains for the founders to do off-site (Google Business Profile, citations, link-building).
 
