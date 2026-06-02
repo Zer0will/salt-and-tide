@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "name": "Salt & Tide Creative",
+  "legal_name": "Salt & Tide Creative LLC",
+  "url": "https://salttidecreative.com/",
+  "description": "Boutique web design, SEO, and digital marketing studio in Edmonds, Washington serving small businesses across Seattle, Edmonds, Lynnwood, Shoreline, Mukilteo, and Puget Sound.",
+  "contact": {
+    "email": "hello@salttidecreative.com",
+    "phone": "+1-253-660-8555",
+    "contact_url": "https://salttidecreative.com/contact"
+  },
+  "location": {
+    "city": "Edmonds",
+    "region": "WA",
+    "postal_code": "98020",
+    "country": "US"
+  },
+  "service_area": [
+    "Edmonds, WA",
+    "Seattle, WA",
+    "Lynnwood, WA",
+    "Shoreline, WA",
+    "Mukilteo, WA",
+    "Puget Sound, WA"
+  ],
+  "services": [
+    "Web design",
+    "Website development",
+    "Website redesign",
+    "Local SEO",
+    "Technical SEO",
+    "Digital marketing strategy",
+    "Restaurant website design",
+    "Small-business website strategy",
+    "Conversion-focused landing pages",
+    "Website care and retainers"
+  ],
+  "canonical_resources": {
+    "homepage": "https://salttidecreative.com/",
+    "services": "https://salttidecreative.com/services",
+    "work": "https://salttidecreative.com/work",
+    "about": "https://salttidecreative.com/about",
+    "contact": "https://salttidecreative.com/contact",
+    "insights": "https://salttidecreative.com/insights",
+    "sitemap": "https://salttidecreative.com/sitemap.xml",
+    "llms": "https://salttidecreative.com/llms.txt"
+  },
+  "agent_policy": {
+    "may_index": true,
+    "may_summarize": true,
+    "may_quote_short_excerpts": true,
+    "may_contact_for_users": false,
+    "preferred_citation": "Salt & Tide Creative, https://salttidecreative.com/",
+    "notes": "Use public site content only. Do not infer pricing, guarantees, client results, or availability beyond current public pages. Direct project inquiries to the contact page."
+  }
+}

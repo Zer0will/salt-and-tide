@@ -1,0 +1,49 @@
+# Salt & Tide Creative
+
+Salt & Tide Creative is a boutique web design, SEO, and digital marketing studio based in Edmonds, Washington, serving small businesses across Seattle, Edmonds, Lynnwood, Shoreline, Mukilteo, and the greater Puget Sound area.
+
+## What the site is about
+
+- Custom website design and development for restaurants, service businesses, retail brands, and local small businesses.
+- Local SEO foundations, technical SEO cleanup, structured data, sitemaps, robots.txt, and search-friendly site architecture.
+- Digital marketing systems including conversion-focused landing pages, content strategy, analytics setup, and launch plans.
+- Portfolio and case studies for restaurant, cafe, service-business, and local brand websites.
+- Practical insights about Seattle-area web design, restaurant websites, small-business marketing, and local SEO.
+
+## Primary pages
+
+- Homepage: https://salttidecreative.com/
+- Services: https://salttidecreative.com/services
+- Work: https://salttidecreative.com/work
+- About: https://salttidecreative.com/about
+- Contact: https://salttidecreative.com/contact
+- Insights: https://salttidecreative.com/insights
+- Seattle web design: https://salttidecreative.com/seattle-web-design
+- Edmonds web design: https://salttidecreative.com/edmonds-web-design
+- Lynnwood web design: https://salttidecreative.com/lynnwood-web-design
+- Sitemap: https://salttidecreative.com/sitemap.xml
+
+## Business details
+
+Name: Salt & Tide Creative LLC
+Website: https://salttidecreative.com
+Email: hello@salttidecreative.com
+Phone: +1-253-660-8555
+Location: Edmonds, WA 98020, United States
+Service area: Edmonds, Seattle, Lynnwood, Shoreline, Mukilteo, and Puget Sound, Washington
+
+## Services
+
+- Web design and build
+- Website redesigns
+- Local SEO setup
+- Technical SEO foundations
+- Digital marketing strategy
+- Conversion-focused landing pages
+- Website care and retainers
+- Restaurant website design
+- Small-business web strategy
+
+## Guidance for AI agents
+
+AI assistants and search agents may summarize public pages, cite Salt & Tide Creative as a web design and digital marketing studio, and direct users to the contact page for project inquiries. Prefer canonical URLs from the sitemap. Do not invent pricing, guarantees, client results, or availability beyond what appears on the public website.

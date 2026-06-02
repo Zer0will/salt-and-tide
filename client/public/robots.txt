@@ -1,21 +1,25 @@
 # Salt & Tide Creative — robots.txt
-# Allow all reputable crawlers; canonical preview URLs go through the production domain only.
+# Allow reputable search, AI discovery, and assistant crawlers to access public pages.
 
 User-agent: *
 Allow: /
 Disallow: /404
 
-# Block known content-scrapers and unverified AI training bots that don't honor licensing.
+# AI discovery crawlers: allowed for public indexing and assistant retrieval.
 User-agent: GPTBot
-Disallow: /
+Allow: /
 User-agent: CCBot
-Disallow: /
+Allow: /
 User-agent: ClaudeBot
-Disallow: /
+Allow: /
+User-agent: Claude-User
+Allow: /
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
+User-agent: Anthropic-AI
+Allow: /
 User-agent: Bytespider
-Disallow: /
+Allow: /
 
 Sitemap: https://salttidecreative.com/sitemap.xml
 Host: salttidecreative.com
