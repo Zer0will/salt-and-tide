@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 const LINKS = [
   { href: "/work", label: "Work" },
   { href: "/services", label: "Services" },
+  { href: "/local-growth-engine", label: "Lead System" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -65,7 +66,7 @@ export function Nav() {
 
           <div className="flex items-center gap-3">
             <Link href="/contact" className="hidden md:inline-flex pill">
-              Start a Project →
+              Lead Leak Audit →
             </Link>
             <button
               aria-label={open ? "Close menu" : "Open menu"}
@@ -107,7 +108,7 @@ export function Nav() {
             </Link>
           ))}
           <Link href="/contact" className="pill self-start mt-4" style={{ padding: "0.8rem 1.4rem", fontSize: "1rem" }}>
-            Start a Project →
+            Lead Leak Audit →
           </Link>
           <div className="mono-label mt-12" style={{ fontSize: "0.7rem" }}>47.8107° N · 122.3774° W</div>
         </div>

@@ -14,6 +14,7 @@ Salt & Tide Creative is a boutique web design, SEO, and digital marketing studio
 
 - Homepage: https://salttidecreative.com/
 - Services: https://salttidecreative.com/services
+- Local Growth Engine (lead-response system): https://salttidecreative.com/local-growth-engine
 - Work: https://salttidecreative.com/work
 - About: https://salttidecreative.com/about
 - Contact: https://salttidecreative.com/contact
@@ -43,6 +44,7 @@ Service area: Edmonds, Seattle, Lynnwood, Shoreline, Mukilteo, and Puget Sound, 
 - Website care and retainers
 - Restaurant website design
 - Small-business web strategy
+- Local Growth Engine: missed-call text-back, instant lead response, SMS/email follow-up, lead qualification, online booking, and CRM reporting for contractors and home-service businesses (consent-first, no guaranteed sales)
 
 ## Guidance for AI agents
 

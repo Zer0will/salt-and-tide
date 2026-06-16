@@ -203,6 +203,45 @@ export function websiteSchema() {
   };
 }
 
+export function leadEngineSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_ORIGIN}/local-growth-engine#service`,
+    name: "Local Growth Engine — Lead Response System",
+    serviceType:
+      "Missed-call text-back, lead response automation, SMS and email follow-up, booking, and CRM reporting",
+    provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
+    areaServed: ORG_AREAS.map((a) => ({ "@type": "Place", name: a })),
+    url: `${SITE_ORIGIN}/local-growth-engine`,
+    description:
+      "A done-for-you lead-response system for Pacific Northwest contractors and service businesses: missed-call text-back, instant lead response, consent-based SMS and email follow-up, qualification, booking, and CRM reporting.",
+    audience: {
+      "@type": "Audience",
+      audienceType: "Contractors and home-service businesses in the Pacific Northwest",
+    },
+    offers: [
+      monthlyOffer("Recovery — Missed-Call Text-Back", "200"),
+      monthlyOffer("Response — Instant Lead Response + Booking", "450"),
+      monthlyOffer("Growth Engine — Full Lead System + CRM + Reporting", "850"),
+    ],
+  };
+}
+
+function monthlyOffer(name: string, price: string) {
+  return {
+    "@type": "Offer",
+    name,
+    url: `${SITE_ORIGIN}/local-growth-engine`,
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price,
+      priceCurrency: "USD",
+      unitText: "MONTH",
+    },
+  };
+}
+
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",

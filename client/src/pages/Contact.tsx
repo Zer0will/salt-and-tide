@@ -5,8 +5,8 @@ import { useReveal } from "@/hooks/useReveal";
 import { toast } from "sonner";
 import { Seo, SITE_ORIGIN, ORG_NAME, ORG_PHONE, ORG_EMAIL, breadcrumbSchema } from "@/components/Seo";
 
-const SERVICE_OPTIONS = ["Web Design", "Digital Marketing", "Both", "Not Sure Yet"];
-const BUDGET_OPTIONS  = ["Under $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000+", "Let's discuss"];
+const SERVICE_OPTIONS = ["Lead Leak Audit", "Local Growth Engine", "Web Design", "Digital Marketing", "Both", "Not Sure Yet"];
+const BUDGET_OPTIONS  = ["Under $1,000/mo", "$1,000 – $2,500/mo", "$2,500 – $5,000/mo", "Project budget $5,000+", "Let's discuss"];
 const TIMELINE_OPTIONS = ["ASAP", "1–3 months", "3–6 months", "Just exploring"];
 
 export default function Contact() {
@@ -83,8 +83,8 @@ export default function Contact() {
   return (
     <>
       <Seo
-        title="Contact Salt & Tide Creative | Free Strategy Call"
-        description="Start your project with Salt & Tide Creative. Free 30-minute strategy call for Seattle and Edmonds, WA businesses. We respond within one business day."
+        title="Contact Salt & Tide Creative | Lead Leak Audit"
+        description="Book a free lead leak audit or project call with Salt & Tide Creative for PNW lead systems, websites, SEO, and marketing systems."
         path="/contact"
         keywords={[
           "contact web design agency Seattle",
@@ -119,7 +119,7 @@ export default function Contact() {
         <div className="container grid md:grid-cols-12 gap-10 lg:gap-16">
           {/* FORM */}
           <div className="md:col-span-7 lg:col-span-8">
-            <div className="mono-label mb-8">§ Project Inquiry</div>
+            <div className="mono-label mb-8">§ Lead Leak / Project Inquiry</div>
 
             {submitted ? (
               <SuccessPanel />
@@ -133,6 +133,13 @@ export default function Contact() {
                   <Field label="Business Name" name="business" placeholder="The name of your business" />
                   <Field label="Phone (optional)" name="phone" type="tel" placeholder="+1 (___) ___-____" />
                 </Row>
+
+                <label className="flex gap-3 text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+                  <input name="sms_consent" type="checkbox" value="yes" className="mt-1" />
+                  <span>
+                    If I include a phone number, I agree Salt &amp; Tide may call or text me about this inquiry. Message/data rates may apply. Reply STOP to opt out.
+                  </span>
+                </label>
 
                 <FieldGroup label="Service Interest *">
                   <Pills name="service" required options={SERVICE_OPTIONS} />
@@ -164,6 +171,13 @@ export default function Contact() {
                     options={["", "Google", "Referral", "Social Media", "Local Edmonds Connection", "Other"]}
                   />
                 </FieldGroup>
+
+                <input
+                  type="hidden"
+                  name="sms_consent_language"
+                  value="If I include a phone number, I agree Salt & Tide may call or text me about this inquiry. Message/data rates may apply. Reply STOP to opt out."
+                />
+                <input type="hidden" name="form_source" value="salttidecreative.com/contact" />
 
                 <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between">
                   <button type="submit" className="btn-primary" disabled={submitting}>

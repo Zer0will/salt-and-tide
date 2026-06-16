@@ -46,6 +46,12 @@ const routeMeta = [
     jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }]), serviceSchema(), voiceSearchSchema(), faqSchema()],
   },
   {
+    path: "/local-growth-engine",
+    title: "Local Growth Engine — Lead Response System | Salt & Tide",
+    description: "Missed-call text-back, instant lead response, SMS/email follow-up, qualification, booking, and CRM reporting for PNW contractors and service businesses.",
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Local Growth Engine", path: "/local-growth-engine" }]), leadEngineSchema(), leadEngineFaqSchema()],
+  },
+  {
     path: "/about",
     title: "About Salt & Tide Creative | Edmonds, WA Web Design Studio",
     description: "Meet the founders of Salt & Tide Creative — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses.",
@@ -187,6 +193,51 @@ function faqSchema() {
     ["Do you offer voice search optimization?", "Yes. Voice search optimization is included in our local SEO work through conversational service copy, clear FAQ answers, LocalBusiness and FAQ schema, complete contact details, and Google Business Profile guidance."],
     ["How do you optimize a small business for near me voice searches?", "We focus on accurate business details, service area, hours, reviews, categories, location pages, fast mobile pages, and natural question-and-answer content."],
     ["Do you work with clients outside Edmonds?", "Yes. Salt & Tide Creative is rooted in Edmonds and works with PNW businesses as well as remote clients across the country."],
+  ];
+  return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: entries.map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })) };
+}
+
+function leadEngineSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_ORIGIN}/local-growth-engine#service`,
+    name: "Local Growth Engine — Lead Response System",
+    serviceType: "Missed-call text-back, lead response automation, SMS and email follow-up, booking, and CRM reporting",
+    provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
+    areaServed: ["Edmonds, WA", "Seattle, WA", "Lynnwood, WA", "Shoreline, WA", "Mukilteo, WA", "Bothell, WA", "Kirkland, WA", "Bellevue, WA"].map((name) => ({ "@type": "Place", name })),
+    url: `${SITE_ORIGIN}/local-growth-engine`,
+    description: "A done-for-you lead-response system for Pacific Northwest contractors and service businesses: missed-call text-back, instant lead response, consent-based SMS and email follow-up, qualification, booking, and CRM reporting.",
+    audience: { "@type": "Audience", audienceType: "Contractors and home-service businesses in the Pacific Northwest" },
+    offers: [
+      monthlyOffer("Recovery — Missed-Call Text-Back", "200"),
+      monthlyOffer("Response — Instant Lead Response + Booking", "450"),
+      monthlyOffer("Growth Engine — Full Lead System + CRM + Reporting", "850"),
+    ],
+  };
+}
+
+function monthlyOffer(name, price) {
+  return {
+    "@type": "Offer",
+    name,
+    url: `${SITE_ORIGIN}/local-growth-engine`,
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price,
+      priceCurrency: "USD",
+      unitText: "MONTH",
+    },
+  };
+}
+
+function leadEngineFaqSchema() {
+  const entries = [
+    ["Do you guarantee more sales or booked jobs?", "No. No honest provider can. The system makes sure every call, form, and message gets an instant, consistent response and a clear path to book, so fewer real opportunities slip away. Results depend on your lead volume, pricing, service area, and how you run the conversations."],
+    ["Is automated texting legal? What about TCPA and consent?", "Texting works within consent rules. Missed-call text-back replies to people who just called you. Ongoing SMS follow-up requires consent, identifies the business, and honors STOP and HELP keywords. We do not buy lists or send cold messages."],
+    ["What is A2P 10DLC registration and do I need it?", "U.S. carriers require business texting numbers to be registered (A2P 10DLC) with your legal business name and use case. We guide you through registration during onboarding. Approval timelines depend on the carriers and are outside our control."],
+    ["Can people opt out of messages?", "Always. Every SMS thread supports STOP to opt out and HELP for assistance, honored automatically. Email follow-up includes a working unsubscribe link. Opt-out is a hard rule."],
+    ["What does reporting show me?", "Plain-English numbers: calls captured, response times, conversations started, leads qualified, and bookings created. We report on activity we can measure honestly, not invented revenue figures."],
   ];
   return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: entries.map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })) };
 }

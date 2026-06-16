@@ -24,25 +24,7 @@ export default function Home() {
           "Puget Sound web design studio",
         ]}
         jsonLd={[
-          localBusinessSchema({
-            aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "4", bestRating: "5", worstRating: "5" },
-            review: [
-              {
-                "@type": "Review",
-                author: { "@type": "Person", name: "Pancake Haus" },
-                reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-                reviewBody: "Salt & Tide rebuilt our site in two weeks and bookings doubled within sixty days.",
-                datePublished: "2026-04-12",
-              },
-              {
-                "@type": "Review",
-                author: { "@type": "Person", name: "Luigi's Breakfast" },
-                reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-                reviewBody: "Best agency we've worked with. They understand restaurants and local growth.",
-                datePublished: "2026-03-05",
-              },
-            ],
-          }),
+          localBusinessSchema(),
           organizationSchema(),
           websiteSchema(),
         ]}
@@ -204,7 +186,7 @@ function Credibility() {
             <p className="mt-6 display-thin max-w-[22ch]" style={{ fontSize: "clamp(1.25rem,2vw,1.75rem)", color: "rgba(15,17,21,0.85)" }}>Sites designed and shipped — every one built for a business we'd return to ourselves.</p>
           </div>
           <div className="flex flex-col gap-7">
-            <CredRow num="100%" text={<><strong>Client satisfaction</strong> — every project still standing, still trusted by its owner.</>} />
+            <CredRow num="Live" text={<><strong>Every site still online</strong> — each project we've shipped is still up and owned by the business that hired us.</>} />
             <CredRow num="2.4×" text={<><strong>Faster delivery</strong> with AI-assisted build vs. our previous workflow.</>} />
             <CredRow num="PNW" text={<><strong>Locally rooted</strong>, globally informed — Edmonds, Lynnwood, Shoreline, Seattle.</>} />
             <CredRow num="3 wks" text={<><strong>Median engagement.</strong> Strategy + brand + site in the time most agencies write a proposal.</>} />
@@ -386,7 +368,7 @@ function SocialProof() {
         <div className="grid gap-14 md:grid-cols-[7fr_5fr] md:gap-20">
           <blockquote className="reveal pr-0 md:pr-14">
             <span className="display block text-[clamp(7.5rem,14vw,13.75rem)] leading-[0.6]" style={{ color: "var(--color-kelp)" }}>“</span>
-            <p className="display-thin" style={{ fontSize: "clamp(1.5rem,3.2vw,2.75rem)", lineHeight: 1.18, color: "var(--color-ink)" }}>Salt &amp; Tide completely transformed how our restaurant shows up online. We had <em className="font-semibold" style={{ color: "var(--color-kelp-deep)" }}>reservations for our back room within the first week</em> of launching. These guys know what they're doing.</p>
+            <p className="display-thin" style={{ fontSize: "clamp(1.5rem,3.2vw,2.75rem)", lineHeight: 1.18, color: "var(--color-ink)" }}>Salt &amp; Tide completely transformed how our restaurant shows up online. The site finally <em className="font-semibold" style={{ color: "var(--color-kelp-deep)" }}>matches the room</em> — and it's the first thing new guests mention. These folks know what they're doing.</p>
             <footer className="mt-9 border-t pt-5" style={{ borderColor: "rgba(15,17,21,0.12)" }}>
               <div className="display text-[1.05rem]">— Owner, Pancake Haus</div>
               <div className="mono-label" style={{ color: "rgba(15,17,21,0.55)" }}>Edmonds, WA · 20 years in business</div>

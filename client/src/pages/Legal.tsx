@@ -18,7 +18,7 @@ type LegalPageConfig = {
   sections: LegalSection[];
 };
 
-const LAST_UPDATED = "May 30, 2026";
+const LAST_UPDATED = "June 16, 2026";
 
 const PRIVACY: LegalPageConfig = {
   slug: "privacy-policy",
@@ -53,6 +53,17 @@ const PRIVACY: LegalPageConfig = {
         "Our contact form may use a third-party form processor, email provider, website host, analytics tools, or similar vendors. These providers process information only as needed to operate the website and our business workflows.",
     },
     {
+      title: "Text messaging (SMS) and CRM data",
+      body:
+        "For clients who use our Local Growth Engine lead-response service, we and our messaging providers process phone numbers, message content, call and contact records, and related lead data in a CRM to enable missed-call text-back, follow-up, qualification, booking, and reporting.",
+      bullets: [
+        "SMS consent is never sold or shared with third parties for their own marketing, and phone numbers collected for texting are used only for the messaging the contact agreed to.",
+        "Message and data rates may apply. Message frequency varies by conversation.",
+        "Reply STOP to any text to opt out and HELP for assistance; opt-outs are honored automatically. Email follow-up includes an unsubscribe link.",
+        "Business texting numbers are registered with carriers (A2P 10DLC) using the client's legal business name and use case.",
+      ],
+    },
+    {
       title: "Cookies and analytics",
       body:
         "We may use cookies or similar technologies for basic site functionality, performance measurement, analytics, and spam prevention. See our Cookie Policy for more detail.",
@@ -72,6 +83,7 @@ const PRIVACY: LegalPageConfig = {
       bullets: [
         "You may ask us to update, correct, or delete information you previously submitted.",
         "You may opt out of non-essential marketing emails if we send them in the future.",
+        "You may opt out of any SMS messaging at any time by replying STOP; reply HELP for assistance.",
         "You can control cookies through your browser settings, though some site features may not work as intended.",
       ],
     },
@@ -109,6 +121,17 @@ const TERMS: LegalPageConfig = {
       title: "Project inquiries and proposals",
       body:
         "Submitting a form or booking a call does not create a client relationship by itself. A project begins only when both parties sign or otherwise accept a written agreement, statement of work, proposal, or invoice terms.",
+    },
+    {
+      title: "Lead-response and SMS services",
+      body:
+        "Our Local Growth Engine lead-response service sends text messages and emails on a client's behalf. Clients are responsible for obtaining proper consent from their contacts and for the accuracy of the numbers and content they provide.",
+      bullets: [
+        "Recipients can opt out of texts at any time by replying STOP, or get help by replying HELP; opt-out requests are honored automatically and email follow-up includes an unsubscribe link.",
+        "Message and data rates may apply, and message frequency varies by conversation.",
+        "Use of the service must comply with applicable law and carrier rules, including TCPA and A2P 10DLC registration requirements; we do not support cold texting, purchased lists, or messaging without consent.",
+        "Carrier approval timelines, deliverability, and message filtering are controlled by the carriers and are outside our control.",
+      ],
     },
     {
       title: "Intellectual property",

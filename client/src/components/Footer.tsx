@@ -34,7 +34,7 @@ export function Footer() {
               <span style={{ color: "var(--color-kelp)" }}>that earns its keep.</span>
             </h3>
             <Link href="/contact" className="btn-primary mt-7">
-              Start a Project →
+              Lead Leak Audit →
             </Link>
           </div>
 
@@ -48,6 +48,7 @@ export function Footer() {
           <FootCol title="Capabilities" links={[
             { href: "/services#web", label: "Web Design + Build" },
             { href: "/services#marketing", label: "Digital Marketing" },
+            { href: "/local-growth-engine", label: "Lead System" },
             { href: "/services#full", label: "Full-Service Growth" },
             { href: "/services#addons", label: "Care &amp; Retainers" },
           ]}/>
