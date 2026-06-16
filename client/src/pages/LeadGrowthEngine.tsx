@@ -105,8 +105,8 @@ function Hero() {
           and reporting handled for you.
         </p>
         <div className="mt-9 flex flex-wrap items-center gap-4">
-          <Link href="/contact" className="btn-primary">
-            Get a Lead Leak Audit <ArrowRight size={18} />
+          <Link href="/lead-leak-audit" className="btn-primary">
+            Check My Lead Leaks <ArrowRight size={18} />
           </Link>
           <a href="#how-it-works" className="btn-ghost inline-flex">See how it works</a>
         </div>
@@ -259,8 +259,8 @@ function RoiCalculator() {
                 Potential recaptured revenue from leads that would otherwise have gone unanswered — based only on the numbers you
                 entered above. We don't promise these results; we promise the system responds so the chance exists.
               </p>
-              <Link href="/contact" className="btn-primary mt-8 inline-flex">
-                Get a Lead Leak Audit <ArrowRight size={18} />
+              <Link href="/lead-leak-audit" className="btn-primary mt-8 inline-flex">
+                Check My Lead Leaks <ArrowRight size={18} />
               </Link>
             </div>
           </div>
@@ -396,7 +396,7 @@ function Tiers() {
                 ))}
               </ul>
               <Link
-                href="/contact"
+                href="/lead-leak-audit"
                 className="mt-8 inline-flex"
                 style={{
                   padding: "1rem 1.4rem",
@@ -406,7 +406,7 @@ function Tiers() {
                   fontWeight: 600,
                 }}
               >
-                Start With {t.title} <ArrowRight size={16} className="ml-2" />
+                Check {t.title} Fit <ArrowRight size={16} className="ml-2" />
               </Link>
             </div>
           ))}
@@ -475,8 +475,8 @@ function CTA() {
           A 30-minute Lead Leak Audit — we map where calls and inquiries are slipping through, and show you what the system would
           cover. No pitch deck, no pressure, no guaranteed-results theatrics.
         </p>
-        <Link href="/contact" className="btn-primary mt-9">
-          Get a Lead Leak Audit <ArrowRight size={18} />
+        <Link href="/lead-leak-audit" className="btn-primary mt-9">
+          Check My Lead Leaks <ArrowRight size={18} />
         </Link>
       </div>
     </section>

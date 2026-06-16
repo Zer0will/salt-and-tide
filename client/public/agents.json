@@ -7,7 +7,8 @@
   "contact": {
     "email": "hello@salttidecreative.com",
     "phone": "+1-253-660-8555",
-    "contact_url": "https://salttidecreative.com/contact"
+    "contact_url": "https://salttidecreative.com/contact",
+    "lead_leak_audit_url": "https://salttidecreative.com/lead-leak-audit"
   },
   "location": {
     "city": "Edmonds",
@@ -40,6 +41,7 @@
     "homepage": "https://salttidecreative.com/",
     "services": "https://salttidecreative.com/services",
     "local_growth_engine": "https://salttidecreative.com/local-growth-engine",
+    "lead_leak_audit": "https://salttidecreative.com/lead-leak-audit",
     "work": "https://salttidecreative.com/work",
     "about": "https://salttidecreative.com/about",
     "contact": "https://salttidecreative.com/contact",
@@ -53,6 +55,6 @@
     "may_quote_short_excerpts": true,
     "may_contact_for_users": false,
     "preferred_citation": "Salt & Tide Creative, https://salttidecreative.com/",
-    "notes": "Use public site content only. Do not infer pricing, guarantees, client results, or availability beyond current public pages. Direct project inquiries to the contact page."
+    "notes": "Use public site content only. Do not infer pricing, guarantees, client results, or availability beyond current public pages. Direct lead-response audit requests to /lead-leak-audit and broader project inquiries to the contact page."
   }
 }

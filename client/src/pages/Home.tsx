@@ -98,7 +98,7 @@ function Hero() {
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <Link href="/work" className="btn-primary">See selected work <ArrowRight size={18} /></Link>
-            <Link href="/contact" className="btn-ghost">Start a project <ArrowUpRight size={18} /></Link>
+            <Link href="/lead-leak-audit" className="btn-ghost">Free lead check <ArrowUpRight size={18} /></Link>
             <Link href="/about" className="btn-link">About the studio</Link>
           </div>
 
@@ -406,11 +406,11 @@ function FinalCTA() {
           <h2 className="display reveal mt-8" style={{ fontSize: "clamp(3rem,8vw,8rem)", lineHeight: 0.9 }}>Ready to build<br />something that <span className="italic font-medium" style={{ color: "var(--color-kelp)" }}>earns its keep?</span></h2>
         </div>
         <div className="reveal">
-          <p className="text-[1.05rem] leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>Most agencies make you wait weeks just to get a proposal. We'll have a real strategy conversation with you this week — no pitch deck, no NDA, no nonsense.</p>
-          <Link href="/contact" className="btn-primary mt-8 inline-flex px-7 py-4">Book a free strategy call <ArrowRight size={18} /></Link>
+          <p className="text-[1.05rem] leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>Not ready for a full project form? Send your website or Google listing, business phone, and email. We'll find the first places leads may be slipping through.</p>
+          <Link href="/lead-leak-audit" className="btn-primary mt-8 inline-flex px-7 py-4">Check my lead leaks <ArrowRight size={18} /></Link>
           <div className="mt-7 grid gap-5 border-t pt-6" style={{ borderColor: "var(--color-hairline)" }}>
-            <CTARow n="01" title="Free 30-minute call" sub="No deck, no pitch — just listening." />
-            <CTARow n="02" title="Custom strategy memo" sub="Written response, not a template." />
+            <CTARow n="01" title="30-second intake" sub="No budget gate. No essay required." />
+            <CTARow n="02" title="Lead leak snapshot" sub="3–5 practical friction points." />
             <CTARow n="03" title="Reply within 24 hours" sub="Mon–Fri · Pacific Time." />
           </div>
         </div>

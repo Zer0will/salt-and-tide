@@ -33,8 +33,8 @@ export function Footer() {
               <br />
               <span style={{ color: "var(--color-kelp)" }}>that earns its keep.</span>
             </h3>
-            <Link href="/contact" className="btn-primary mt-7">
-              Lead Leak Audit →
+            <Link href="/lead-leak-audit" className="btn-primary mt-7">
+              Free Lead Check →
             </Link>
           </div>
 
@@ -49,6 +49,7 @@ export function Footer() {
             { href: "/services#web", label: "Web Design + Build" },
             { href: "/services#marketing", label: "Digital Marketing" },
             { href: "/local-growth-engine", label: "Lead System" },
+            { href: "/lead-leak-audit", label: "Lead Leak Snapshot" },
             { href: "/services#full", label: "Full-Service Growth" },
             { href: "/services#addons", label: "Care &amp; Retainers" },
           ]}/>

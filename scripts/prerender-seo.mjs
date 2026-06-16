@@ -52,6 +52,12 @@ const routeMeta = [
     jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Local Growth Engine", path: "/local-growth-engine" }]), leadEngineSchema(), leadEngineFaqSchema()],
   },
   {
+    path: "/lead-leak-audit",
+    title: "Free Lead Leak Snapshot | Salt & Tide Creative",
+    description: "Send your website or Google listing, phone number, and email. Salt & Tide will check where local leads may be slipping through and send a free snapshot.",
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Lead Leak Snapshot", path: "/lead-leak-audit" }]), leadLeakAuditSchema()],
+  },
+  {
     path: "/about",
     title: "About Salt & Tide Creative | Edmonds, WA Web Design Studio",
     description: "Meet the founders of Salt & Tide Creative — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses.",
@@ -244,6 +250,17 @@ function leadEngineFaqSchema() {
 
 function contactSchema() {
   return { "@context": "https://schema.org", "@type": "ContactPage", name: `Contact ${ORG_NAME}`, url: `${SITE_ORIGIN}/contact`, mainEntity: { "@type": "Organization", "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME, email: ORG_EMAIL, telephone: ORG_PHONE, address: { "@type": "PostalAddress", addressLocality: "Edmonds", addressRegion: "WA", postalCode: "98020", addressCountry: "US" } } };
+}
+
+function leadLeakAuditSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: `Free Lead Leak Snapshot | ${ORG_NAME}`,
+    url: `${SITE_ORIGIN}/lead-leak-audit`,
+    description: "A low-friction intake for a free lead-response audit covering missed calls, website forms, booking friction, and follow-up gaps.",
+    mainEntity: { "@type": "Organization", "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME, email: ORG_EMAIL, telephone: ORG_PHONE },
+  };
 }
 
 function creativeWorkSchema(slug, client, category, location, blurb, image) {

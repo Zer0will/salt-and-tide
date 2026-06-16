@@ -10,6 +10,7 @@ import Work from "./pages/Work";
 import CaseStudy from "./pages/CaseStudy";
 import Services from "./pages/Services";
 import LeadGrowthEngine from "./pages/LeadGrowthEngine";
+import LeadLeakAudit from "./pages/LeadLeakAudit";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -27,6 +28,7 @@ function Router() {
       <Route path="/work/:slug" component={CaseStudy} />
       <Route path="/services" component={Services} />
       <Route path="/local-growth-engine" component={LeadGrowthEngine} />
+      <Route path="/lead-leak-audit" component={LeadLeakAudit} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/seattle-web-design">{() => <LocationPage config={SEATTLE} />}</Route>

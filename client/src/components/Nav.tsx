@@ -65,8 +65,8 @@ export function Nav() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link href="/contact" className="hidden md:inline-flex pill">
-              Lead Leak Audit →
+            <Link href="/lead-leak-audit" className="hidden md:inline-flex pill">
+              Free Lead Check →
             </Link>
             <button
               aria-label={open ? "Close menu" : "Open menu"}
@@ -107,8 +107,8 @@ export function Nav() {
               {l.label}
             </Link>
           ))}
-          <Link href="/contact" className="pill self-start mt-4" style={{ padding: "0.8rem 1.4rem", fontSize: "1rem" }}>
-            Lead Leak Audit →
+          <Link href="/lead-leak-audit" className="pill self-start mt-4" style={{ padding: "0.8rem 1.4rem", fontSize: "1rem" }}>
+            Free Lead Check →
           </Link>
           <div className="mono-label mt-12" style={{ fontSize: "0.7rem" }}>47.8107° N · 122.3774° W</div>
         </div>
