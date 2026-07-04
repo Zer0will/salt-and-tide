@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PNW Traffic Control & Supply — Flagging, MUTCD Signs & Equipment | Snohomish & Wenatchee, WA</title>
+<meta name="description" content="Certified flagging crews, MUTCD sign fabrication, and traffic control equipment rental across Washington State. Two yards — Snohomish & Wenatchee. Call (425) 870-0380 for a quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800;900&family=Overpass+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "PNW Traffic Control & Supply",
+  "legalName": "Pacific Northwest Traffic Control & Supply LLC",
+  "telephone": "+1-425-870-0380",
+  "url": "https://www.pnwtrafficsupply.com/",
+  "address": [{
+    "@type": "PostalAddress",
+    "streetAddress": "18109 State Route 9 SE",
+    "addressLocality": "Snohomish",
+    "addressRegion": "WA",
+    "postalCode": "98296"
+  }],
+  "areaServed": "Washington State",
+  "description": "Traffic control flagging services, MUTCD sign fabrication, and safety equipment rental and sales."
+}
+</script>
+<style>
+:root{
+  --orange:#F26A1B;
+  --orange-deep:#D4550B;
+  --yellow:#FFC61E;
+  --asphalt:#17191C;
+  --asphalt-2:#22252A;
+  --concrete:#F2F0EB;
+  --steel:#5B6168;
+  --line:#E3E0D8;
+  --white:#FFFFFF;
+  --radius:6px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{font-family:'Overpass',system-ui,sans-serif;color:var(--asphalt);background:var(--concrete);line-height:1.6;font-size:16px}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.mono{font-family:'Overpass Mono',monospace}
+
+/* Hazard stripe divider */
+.hazard{height:14px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 18px,var(--asphalt) 18px 36px)}
+
+/* Utility bar */
+.util{background:var(--asphalt);color:#C9CDD3;font-size:13px}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;min-height:38px;gap:16px;flex-wrap:wrap}
+.util a{color:var(--yellow);text-decoration:none;font-weight:700}
+.util .locs{display:flex;gap:20px;flex-wrap:wrap}
+.util .loc b{color:#fff;font-weight:600}
+
+/* Nav */
+nav{background:var(--white);position:sticky;top:0;z-index:50;border-bottom:3px solid var(--orange);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .diamond{width:40px;height:40px;background:var(--orange);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border:3px solid var(--asphalt);border-radius:4px;flex-shrink:0}
+.brand .diamond span{transform:rotate(-45deg);font-weight:900;color:var(--asphalt);font-size:15px}
+.brand .name{font-weight:900;font-size:18px;line-height:1.1;letter-spacing:.02em;text-transform:uppercase}
+.brand .name small{display:block;font-weight:600;font-size:11px;color:var(--steel);letter-spacing:.14em}
+.navlinks{display:flex;gap:28px;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.05em}
+.navlinks a{text-decoration:none;padding:6px 0;border-bottom:3px solid transparent}
+.navlinks a:hover,.navlinks a:focus-visible{border-bottom-color:var(--yellow)}
+.btn{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;border-radius:var(--radius);padding:13px 26px;font-size:14px;border:3px solid var(--asphalt);transition:transform .12s ease, box-shadow .12s ease;text-align:center}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);box-shadow:0 4px 0 var(--asphalt)}
+.
+btn-orange{background:var(--orange);color:var(--asphalt)}
+.btn-yellow{background:var(--yellow);color:var(--asphalt)}
+.btn-ghost{background:transparent;color:var(--white);border-color:var(--white)}
+.btn-dark{background:var(--asphalt);color:var(--yellow)}
+@media(max-width:900px){.navlinks{display:none}}
+
+/* Hero */
+.hero{background:var(--asphalt);color:var(--white);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(90deg,var(--yellow) 0 60px,transparent 60px 110px)}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;padding-top:88px;padding-bottom:96px}
+.kicker{display:inline-block;font-family:'Overpass Mono',monospace;font-size:13px;letter-spacing:.18em;color:var(--yellow);text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,4.6vw,58px);font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero p.lead{margin:22px 0 32px;font-size:18px;color:#C9CDD3;max-width:52ch}
+.hero .ctas{display:flex;gap:16px;flex-wrap:wrap}
+.hero .callout{font-family:'Overpass Mono',monospace;margin-top:26px;font-size:14px;color:#9AA0A8}
+.hero .callout a{color:var(--yellow);text-decoration:none;font-weight:700;font-size:17px}
+.sign-stack{display:flex;flex-direction:column;align-items:center;gap:0;user-select:none}
+.big-diamond{width:min(300px,70vw);aspect-ratio:1;background:var(--orange);transform:rotate(45deg);border:8px solid var(--asphalt);outline:4px solid var(--white);border-radius:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.big-diamond .inner{transform:rotate(-45deg);text-align:center;font-weight:900;text-transform:uppercase;color:var(--asphalt);font-size:clamp(18px,2.4vw,26px);line-height:1.15;letter-spacing:.02em}
+.sign-post{width:14px;height:90px;background:linear-gradient(180deg,#8B9096,#5B6168);margin-top:-8px;border-radius:0 0 4px 4px}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-top:60px;padding-bottom:70px}.sign-stack{display:none}}
+
+/* Trust strip */
+.trust{background:var(--white);border-bottom:1px solid var(--line)}
+.trust .wrap{display:flex;justify-content:space-between;gap:18px;padding:22px 24px;flex-wrap:wrap}
+.trust .item{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em}
+.trust .tick{width:22px;height:22px;background:var(--yellow);border:2px solid var(--asphalt);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0}
+
+/* Sections */
+section{padding:84px 0}
+.eyebrow{font-family:'Overpass Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange-deep);font-weight:600;margin-bottom:12px}
+h2{font-size:clamp(28px,3.4vw,42px);font-weight:900;text-transform:uppercase;line-height:1.1;margin-bottom:14px}
+.sub{color:var(--steel);max-width:64ch;font-size:17px}
+
+/* Services */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px}
+.card{background:var(--white);border:2px solid var(--asphalt);border-radius:var(--radius);padding:28px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 4px 0 rgba(23,25,28,.9);transition:transform .12s ease}
+.card:hover{transform:translateY(-4px)}
+.card .tag{align-self:flex-start;background:var(--asphalt);color:var(--yellow);font-family:'Overpass Mono',monospace;font-size:11px;letter-spacing:.14em;padding:4px 10px 2px;border-radius:3px;text-transform:uppercase}
+.card h3{font-size:19px;font-weight:800;text-transform:uppercase;line-height:1.2}
+.card p{font-size:14.5px;color:var(--steel)}
+.card a.more{margin-top:auto;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--orange-deep);text-decoration:none}
+.card a.more:hover{text-decoration:underline}
+@media(max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.
+cards{grid-template-columns:1fr}}
+
+/* Equipment */
+.equip{background:var(--asphalt);color:var(--white)}
+.equip .eyebrow{color:var(--yellow)}
+.equip .sub{color:#C9CDD3}
+.equip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.egg{background:var(--asphalt-2);border:1px solid #33373D;border-left:6px solid var(--orange);border-radius:var(--radius);padding:22px 22px 18px}
+.egg .acro{font-family:'Overpass Mono',monospace;font-weight:600;color:var(--yellow);font-size:14px;letter-spacing:.1em}
+.egg h3{font-size:18px;font-weight:800;text-transform:uppercase;margin:6px 0 8px}
+.egg p{font-size:14px;color:#AEB3BA}
+.egg .rs{margin-top:12px;font-family:'Overpass Mono',monospace;font-size:12px;color:var(--yellow);letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:900px){.equip-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.equip-grid{grid-template-columns:1fr}}
+
+/* Stats */
+.stats{background:var(--yellow)}
+.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+.stat .num{font-weight:900;font-size:clamp(38px,5vw,58px);line-height:1}
+.stat .lab{font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin-top:6px}
+@media(max-width:700px){.stats .wrap{grid-template-columns:1fr;gap:32px}}
+
+/* Locations */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.locbox{background:var(--white);border:2px solid var(--asphalt);border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 0 rgba(23,25,28,.9)}
+.locbox .head{background:var(--asphalt);color:var(--white);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.locbox .head h3{font-size:18px;font-weight:800;text-transform:uppercase}
+.locbox .head .pill{background:var(--orange);color:var(--asphalt);font-family:'Overpass Mono',monospace;font-size:11px;letter-spacing:.12em;padding:4px 10px 2px;border-radius:3px;text-transform:uppercase;font-weight:600}
+.locbox .body{padding:24px}
+.locbox .body p{color:var(--steel);font-size:15px;margin-bottom:10px}
+.locbox .body a.tel{font-weight:800;color:var(--orange-deep);text-decoration:none;font-size:17px}
+.photo-slot{background:repeating-linear-gradient(-45deg,#E9E6DE 0 14px,#F2F0EB 14px 28px);border:2px dashed #C9C4B8;border-radius:var(--radius);height:170px;display:flex;align-items:center;justify-content:center;color:#9A958A;font-family:'Overpass Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+@media(max-width:800px){.loc-grid{grid-template-columns:1fr}}
+
+/* Quote form */
+.quote{background:var(--white)}
+.quote-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;margin-top:12px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--concrete);border:2px solid var(--asphalt);border-radius:var(--radius);padding:28px;box-shadow:0 4px 0 rgba(23,25,28,.9)}
+label{font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px}
+input,select,textarea{width:100%;padding:12px 14px;border:2px solid var(--asphalt);border-radius:4px;font-family:inherit;font-size:15px;background:var(--white)}
+input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.full{grid-column:1/-1}
+form button{grid-column:1/-1;cursor:pointer;font-family:inherit}
+.q-side p{color:var(--steel);font-size:16px;margin-bottom:18px}
+.q-side .direct{background:var(--asphalt);color:var(--white);border-radius:var(--radius);padding:24px;margin-top:8px}
+.q-side .direct .mono{color:var(--yellow);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.q-side .direct a{color:var(--white);font-weight:900;font-size:26px;text-decoration:none;display:block;margin-top:6px}
+@media(max-width:900px){.quote-grid{grid-template-columns:1fr}form{grid-template-columns:1fr}}
+
+/* Careers strip */
+.careers{background:var(--orange)}
+.careers .
+wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.careers h2{margin-bottom:6px;font-size:clamp(22px,2.6vw,32px)}
+.careers p{font-weight:600;max-width:56ch}
+
+/* Footer */
+footer{background:var(--asphalt);color:#AEB3BA;padding:56px 0 96px;font-size:14px}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+footer h4{color:var(--white);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.1em;margin-bottom:14px}
+footer a{color:#AEB3BA;text-decoration:none;display:block;margin-bottom:8px}
+footer a:hover{color:var(--yellow)}
+footer .fine{grid-column:1/-1;border-top:1px solid #33373D;padding-top:20px;font-size:12.5px;color:#7A8087}
+@media(max-width:800px){footer .wrap{grid-template-columns:1fr 1fr}}
+
+/* Sticky mobile call bar */
+.callbar{position:fixed;bottom:0;left:0;right:0;z-index:60;display:none;background:var(--asphalt);border-top:3px solid var(--yellow);padding:10px 14px;gap:10px}
+.callbar a{flex:1;padding:12px;font-size:14px}
+@media(max-width:700px){.callbar{display:flex}}
+</style>
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <div class="locs">
+      <span class="loc"><b>Snohomish HQ</b> · 18109 SR-9 SE</span>
+      <span class="loc"><b>Wenatchee Yard</b> · Serving Central WA</span>
+    </div>
+    <span>Mon–Fri 7am–5pm · Emergency response available · <a href="tel:+14258700380">(425) 870-0380</a></span>
+  </div>
+</div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="diamond"><span>PNW</span></span>
+      <span class="name">PNW Traffic Control<small>&amp; SUPPLY · WASHINGTON STATE</small></span>
+    </a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#equipment">Equipment</a>
+      <a href="#locations">Locations</a>
+      <a href="#careers">Careers</a>
+    </div>
+    <a class="btn btn-orange" href="#quote">Get a Quote</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Flagging · Signs · Equipment · Statewide</span>
+      <h1>Your work zone, <em>handled</em> — crews, signs &amp; equipment from one call.</h1>
+      <p class="lead">Over a decade keeping Washington road projects safe and moving. Professional flagging staff, MUTCD-compliant sign fabrication in our own shop, and a full rental fleet — dispatched from Snohomish and Wenatchee.</p>
+      <div class="ctas">
+        <a class="btn btn-yellow" href="#quote">Request a Quote</a>
+        <a class="btn btn-ghost" href="tel:+14258700380">Call (425) 870-0380</a>
+      </div>
+      <p class="callout">GC comparing vendors? Prequalification brochure available on request → <a href="#quote">get it here</a></p>
+    </div>
+    <div class="sign-stack" aria-hidden="true">
+      <div class="big-diamond"><div class="inner">Road Work<br>Ahead?<br><span style="font-size:.7em">We're Already There.</span></div></div>
+      <div class="sign-post"></div>
+    </div>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap">
+    <span class="item"><span class="tick">✓</span> Certified Flaggers &amp; TCS Personnel</span>
+    <span class="item"><span class="tick">✓</span> MUTCD-Compliant Sign Shop</span>
+    <span class="item"><span class="tick">✓</span> Licensed &amp; Insured · WA LLC</span>
+    <span class="item"><span class="tick">✓</span> Blue Book Listed · NUCA of WA</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <p class="eyebrow">What We Do</p>
+    <h2>Four services. One vendor. Zero gaps in your work zone.</h2>
+    <p class="sub">Most projects need all four — and coordinating separate vendors is where schedules slip. We staff it, sign it, equip it, and plan it under one roof.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="tag">Staffing</span>
+        <h3>Flagging &amp; Traffic Control</h3>
+        <p>Certified flaggers and TCS personnel who arrive equipped — signage, trucks, cones, and barrels included. Day or night shifts.</p>
+        <a class="more" href="#quote">Staff my project →</a>
+      </div>
+<div class="card">
+        <span class="tag">Fabrication</span>
+        <h3>Custom Sign Shop</h3>
+        <p>MUTCD regulatory signage designed and produced in-house. Roll-ups, rigid signs, custom and construction signage — fast turnaround.</p>
+        <a class="more" href="#quote">Order signs →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Rent / Buy</span>
+        <h3>Equipment Rental &amp; Sales</h3>
+        <p>PCMS boards, TMA trucks, arrow boards, AFADs, temporary signals, barrels — rent for the job or buy for your fleet.</p>
+        <a class="more" href="#equipment">See the fleet →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Supply</span>
+        <h3>Safety Supplies &amp; Apparel</h3>
+        <p>Hi-vis apparel, PPE, and work-zone consumables to keep your crew compliant and stocked between projects.</p>
+        <a class="more" href="#quote">Stock up →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard" aria-hidden="true"></div>
+
+<section class="equip" id="equipment">
+  <div class="wrap">
+    <p class="eyebrow">The Fleet</p>
+    <h2>Equipment your traffic control plan actually calls for.</h2>
+    <p class="sub">Named the way your TCP names it — so your PM can match line items to our yard in one read.</p>
+    <div class="equip-grid">
+      <div class="egg"><span class="acro">PCMS</span><h3>Portable Changeable Message Signs</h3><p>Programmable message boards for advance warning, detours, and lane closures.</p><span class="rs">Rent · Sale</span></div>
+      <div class="egg"><span class="acro">TMA</span><h3>Truck-Mounted Attenuators</h3><p>Crash-cushion trucks that shield your crew in active lanes and rolling operations.</p><span class="rs">Rent · Dispatch</span></div>
+      <div class="egg"><span class="acro">AFAD</span><h3>Automated Flagger Assistance Devices</h3><p>Remote-operated flagging stations that take your people out of the lane.</p><span class="rs">Rent · Sale</span></div>
+      <div class="egg"><span class="acro">ARROW</span><h3>Arrow Boards</h3><p>Trailer-mounted directional boards for merges, tapers, and shoulder work.</p><span class="rs">Rent · Sale</span></div>
+      <div class="egg"><span class="acro">SIGNAL</span><h3>Temporary Traffic Signals</h3><p>Portable signal systems for one-lane bridges, haul routes, and long-duration closures.</p><span class="rs">Rent</span></div>
+      <div class="egg"><span class="acro">CHANNEL</span><h3>Barrels, Cones &amp; Barricades</h3><p>Full channelizing inventory, delivered to site in project quantities.</p><span class="rs">Rent · Sale</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="num">10+</div><div class="lab">Years in Washington work zones</div></div>
+    <div class="stat"><div class="num">2</div><div class="lab">Yards — Snohomish &amp; Wenatchee</div></div>
+    <div class="stat"><div class="num">1</div><div class="lab">Call to staff, sign &amp; equip your project</div></div>
+  </div>
+</section>
+
+<section id="locations">
+  <div class="wrap">
+    <p class="eyebrow">Where We Work</p>
+    <h2>West side. East side. Same crew standard.</h2>
+    <p class="sub">Two yards mean shorter mobilization anywhere from Puget Sound to Central Washington — no cross-state trucking fees baked into your quote.</p>
+    <div class="loc-grid">
+      <div class="locbox">
+        <div class="head"><h3>Snohomish — Headquarters</h3><span class="pill">West WA</span></div>
+        <div class="body">
+          <div class="photo-slot">[ Photo: Snohomish yard / crew ]</div>
+          <p>18109 State Route 9 SE, Snohomish, WA 98296<br>Serving King, Snohomish, Skagit &amp; the greater Puget Sound region.</p>
+          <a class="tel" href="tel:+14258700380">(425) 870-0380</a>
+        </div>
+      </div>
+      <div class="locbox">
+        <div class="head"><h3>Wenatchee — Equipment Yard</h3><span class="pill">Central WA</span></div>
+        <div class="body">
+          <div class="photo-slot">[ Photo: Wenatchee yard / equipment ]</div>
+<p>Serving Chelan, Douglas, Grant &amp; Central Washington corridors.<br>Equipment staging and rapid dispatch east of the passes.</p>
+          <a class="tel" href="tel:+14258700380">(425) 870-0380</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard" aria-hidden="true"></div>
+
+<section class="quote" id="quote">
+  <div class="wrap">
+    <p class="eyebrow">Get a Quote</p>
+    <h2>Tell us the project. We'll price it fast.</h2>
+    <div class="quote-grid">
+      <div class="q-side">
+        <p>Send the basics and we'll come back with an estimate — flagging crews, signage, equipment, or all three. Bidding a job? Ask for our prequalification brochure.</p>
+        <p>Prefer to talk it through? A real person answers.</p>
+        <div class="direct">
+          <span class="mono">Call or text — fastest response</span>
+          <a href="tel:+14258700380">(425) 870-0380</a>
+        </div>
+      </div>
+      <form action="#" method="post">
+        <div><label for="fname">Name</label><input id="fname" name="name" type="text" autocomplete="name" required></div>
+        <div><label for="fcompany">Company</label><input id="fcompany" name="company" type="text" autocomplete="organization"></div>
+        <div><label for="femail">Email</label><input id="femail" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="fphone">Phone</label><input id="fphone" name="phone" type="tel" autocomplete="tel"></div>
+        <div><label for="ftype">What do you need?</label>
+          <select id="ftype" name="need">
+            <option>Flagging crew / TCS</option>
+            <option>Sign fabrication</option>
+            <option>Equipment rental</option>
+            <option>Equipment purchase</option>
+            <option>Safety supplies / apparel</option>
+            <option>Multiple / full project</option>
+          </select>
+        </div>
+        <div><label for="fdate">Project start date</label><input id="fdate" name="start" type="date"></div>
+        <div class="full"><label for="floc">Project location</label><input id="floc" name="location" type="text" placeholder="City / highway / job site"></div>
+        <div class="full"><label for="fdetails">Project details</label><textarea id="fdetails" name="details" rows="4" placeholder="Lane closures, duration, equipment on your TCP…"></textarea></div>
+        <button class="btn btn-dark" type="submit">Send Quote Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="careers" id="careers">
+  <div class="wrap">
+    <div>
+      <h2>We're hiring across the PNW.</h2>
+      <p>Flaggers, TCS personnel, drivers, and yard crew. Paid certification pathways for motivated people who want to grow with us.</p>
+    </div>
+    <a class="btn btn-dark" href="#quote">Apply Now</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>PNW Traffic Control &amp; Supply</h4>
+      <p style="max-width:44ch;margin-bottom:14px">Pacific Northwest Traffic Control &amp; Supply LLC. Built on a customer-service-first approach — over a decade of Washington work-zone experience.</p>
+      <a href="tel:+14258700380">(425) 870-0380</a>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <a href="#services">Flagging &amp; TCS</a>
+      <a href="#services">Sign Fabrication</a>
+      <a href="#equipment">Equipment Rental</a>
+      <a href="#services">Safety Supplies</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#locations">Locations</a>
+      <a href="#careers">Careers</a>
+      <a href="#quote">Get a Quote</a>
+    </div>
+    <div>
+      <h4>Forms &amp; Downloads</h4>
+      <a href="#quote">Prequalification Brochure</a>
+      <a href="#quote">Credit Application</a>
+      <a href="#quote">W-9 Request</a>
+    </div>
+    <p class="fine">© 2026 Pacific Northwest Traffic Control &amp; Supply LLC · Snohomish &amp; Wenatchee, WA · Redesign concept by Salt Tide Creative</p>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-yellow" href="tel:+14258700380">Call Now</a>
+<a class="btn btn-orange" href="#quote">Get Quote</a>
+</div>
+
+</body>
+</html>
