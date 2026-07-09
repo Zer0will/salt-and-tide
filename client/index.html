@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
 
-    <!-- Site-wide JSON-LD: Organization + WebSite (route components add page-level schema) -->
+    <!-- Site-wide JSON-LD: Organization + WebSite + LocalBusiness baseline (route components add page-level schema) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -58,7 +58,7 @@
           "url": "https://salttidecreative.com",
           "logo": "https://salttidecreative.com/og/og-default.png",
           "foundingDate": "2026",
-          "areaServed": ["Edmonds, WA", "Seattle, WA", "Lynnwood, WA", "Shoreline, WA", "Mukilteo, WA"],
+          "areaServed": ["Edmonds, WA", "Seattle, WA", "Lynnwood, WA", "Shoreline, WA", "Mukilteo, WA", "Bothell, WA", "Kirkland, WA", "Bellevue, WA"],
           "sameAs": [
             "https://www.linkedin.com/company/salt-tide-creative",
             "https://www.instagram.com/salttidecreative"
@@ -79,6 +79,58 @@
           "name": "Salt & Tide Creative",
           "inLanguage": "en-US",
           "publisher": { "@id": "https://salttidecreative.com/#organization" }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://salttidecreative.com/#localbusiness",
+          "name": "Salt & Tide Creative",
+          "description": "Web design and digital marketing agency serving small businesses in Seattle and Edmonds, Washington.",
+          "url": "https://salttidecreative.com",
+          "telephone": "+1-253-660-8555",
+          "email": "hello@salttidecreative.com",
+          "image": "https://salttidecreative.com/og/og-default.png",
+          "logo": "https://salttidecreative.com/og/og-default.png",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Edmonds",
+            "addressRegion": "WA",
+            "postalCode": "98020",
+            "addressCountry": "US"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": 47.8107, "longitude": -122.3774 },
+          "areaServed": ["Edmonds, WA", "Seattle, WA", "Lynnwood, WA", "Shoreline, WA", "Mukilteo, WA", "Bothell, WA", "Kirkland, WA", "Bellevue, WA"],
+          "serviceType": ["Web Design", "Web Development", "Digital Marketing", "SEO", "Brand Strategy"],
+          "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Salt & Tide Creative services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom website design and development" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website redesigns" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO and technical SEO foundations" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Conversion-focused landing pages" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local Growth Engine lead-response systems" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website care and marketing retainers" } }
+            ]
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": { "@type": "Organization", "name": "Luigi's Breakfast" },
+              "reviewBody": "We were brand new and needed everything — strategy, website, the works. They delivered a complete digital foundation that made us look established from day one."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Organization", "name": "Seattle metro service business" },
+              "reviewBody": "I was skeptical working with such a young team — they outperformed agencies I've paid twice as much. The design and marketing thinking in one team is rare."
+            }
+          ]
         }
       ]
     }

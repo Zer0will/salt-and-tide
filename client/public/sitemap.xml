@@ -3,14 +3,14 @@
 
   <url>
     <loc>https://salttidecreative.com/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://salttidecreative.com/services</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -31,21 +31,21 @@
 
   <url>
     <loc>https://salttidecreative.com/work</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://salttidecreative.com/about</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://salttidecreative.com/contact</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -53,38 +53,38 @@
   <!-- Location landing pages -->
   <url>
     <loc>https://salttidecreative.com/seattle-web-design</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://salttidecreative.com/edmonds-web-design</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://salttidecreative.com/lynnwood-web-design</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Case studies -->
-  <url><loc>https://salttidecreative.com/work/luigis-breakfast</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://salttidecreative.com/work/pancake-haus</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://salttidecreative.com/work/walnut-street-coffee</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://salttidecreative.com/work/medina-painting</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://salttidecreative.com/work/lgm-landscaping</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://salttidecreative.com/work/island-hawaiian-bbq</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://salttidecreative.com/work/plate-of-africa</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://salttidecreative.com/work/forevergreen</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://salttidecreative.com/work/luigis-breakfast</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://salttidecreative.com/work/pancake-haus</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://salttidecreative.com/work/walnut-street-coffee</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://salttidecreative.com/work/medina-painting</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://salttidecreative.com/work/lgm-landscaping</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://salttidecreative.com/work/island-hawaiian-bbq</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://salttidecreative.com/work/plate-of-africa</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://salttidecreative.com/work/forevergreen</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <!-- Insights / blog -->
-  <url><loc>https://salttidecreative.com/insights</loc><lastmod>2026-05-18</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://salttidecreative.com/insights/how-much-does-a-website-cost-seattle</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://salttidecreative.com/insights/why-seattle-small-businesses-need-a-website</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://salttidecreative.com/insights/restaurant-website-design-guide</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://salttidecreative.com/insights</loc><lastmod>2026-07-09</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://salttidecreative.com/insights/how-much-does-a-website-cost-seattle</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://salttidecreative.com/insights/why-seattle-small-businesses-need-a-website</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://salttidecreative.com/insights/restaurant-website-design-guide</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
 
   <!-- Legal / policy pages -->
   <url><loc>https://salttidecreative.com/privacy-policy</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>

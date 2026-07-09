@@ -152,6 +152,8 @@ export function localBusinessSchema(extra: Record<string, unknown> = {}) {
     geo: { "@type": "GeoCoordinates", latitude: 47.8107, longitude: -122.3774 },
     areaServed: ORG_AREAS.map((a) => ({ "@type": "Place", name: a })),
     serviceType: ["Web Design", "Web Development", "Digital Marketing", "SEO", "Brand Strategy"],
+    hasOfferCatalog: serviceCatalogSchema(),
+    review: testimonialReviewSchema(),
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -161,10 +163,52 @@ export function localBusinessSchema(extra: Record<string, unknown> = {}) {
       },
     ],
     sameAs: [
-      // Add your real LinkedIn and Instagram URLs here once pages are live
+      // Add real LinkedIn and Instagram URLs here once pages are live.
     ],
     ...extra,
   };
+}
+
+function serviceCatalogSchema() {
+  return {
+    "@type": "OfferCatalog",
+    name: "Salt & Tide Creative services",
+    itemListElement: [
+      "Custom website design and development",
+      "Website redesigns",
+      "Local SEO and technical SEO foundations",
+      "Conversion-focused landing pages",
+      "Local Growth Engine lead-response systems",
+      "Website care and marketing retainers",
+    ].map((name) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name,
+        provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
+        areaServed: ORG_AREAS.map((area) => ({ "@type": "Place", name: area })),
+      },
+    })),
+  };
+}
+
+function testimonialReviewSchema() {
+  return [
+    {
+      "@type": "Review",
+      author: { "@type": "Organization", name: "Luigi's Breakfast" },
+      itemReviewed: { "@id": `${SITE_ORIGIN}/#localbusiness` },
+      reviewBody:
+        "We were brand new and needed everything — strategy, website, the works. They delivered a complete digital foundation that made us look established from day one.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Organization", name: "Seattle metro service business" },
+      itemReviewed: { "@id": `${SITE_ORIGIN}/#localbusiness` },
+      reviewBody:
+        "I was skeptical working with such a young team — they outperformed agencies I've paid twice as much. The design and marketing thinking in one team is rare.",
+    },
+  ];
 }
 
 export function organizationSchema() {

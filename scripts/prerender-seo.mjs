@@ -166,10 +166,55 @@ function localBusinessSchema(extra = {}) {
     logo: DEFAULT_IMAGE,
     priceRange: "$$",
     address: { "@type": "PostalAddress", addressLocality: "Edmonds", addressRegion: "WA", postalCode: "98020", addressCountry: "US" },
-    areaServed: ["Edmonds, WA", "Seattle, WA", "Lynnwood, WA", "Shoreline, WA", "Mukilteo, WA"].map((name) => ({ "@type": "Place", name })),
+    geo: { "@type": "GeoCoordinates", latitude: 47.8107, longitude: -122.3774 },
+    areaServed: ["Edmonds, WA", "Seattle, WA", "Lynnwood, WA", "Shoreline, WA", "Mukilteo, WA", "Bothell, WA", "Kirkland, WA", "Bellevue, WA"].map((name) => ({ "@type": "Place", name })),
     serviceType: ["Web Design", "Web Development", "Digital Marketing", "SEO", "Brand Strategy"],
+    hasOfferCatalog: serviceCatalogSchema(),
+    review: testimonialReviewSchema(),
+    openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "18:00" }],
+    sameAs: [],
     ...extra,
   };
+}
+
+function serviceCatalogSchema() {
+  return {
+    "@type": "OfferCatalog",
+    name: "Salt & Tide Creative services",
+    itemListElement: [
+      "Custom website design and development",
+      "Website redesigns",
+      "Local SEO and technical SEO foundations",
+      "Conversion-focused landing pages",
+      "Local Growth Engine lead-response systems",
+      "Website care and marketing retainers",
+    ].map((name) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name,
+        provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
+        areaServed: ["Edmonds, WA", "Seattle, WA", "Lynnwood, WA", "Shoreline, WA", "Mukilteo, WA", "Bothell, WA", "Kirkland, WA", "Bellevue, WA"].map((area) => ({ "@type": "Place", name: area })),
+      },
+    })),
+  };
+}
+
+function testimonialReviewSchema() {
+  return [
+    {
+      "@type": "Review",
+      author: { "@type": "Organization", name: "Luigi's Breakfast" },
+      itemReviewed: { "@id": `${SITE_ORIGIN}/#localbusiness` },
+      reviewBody: "We were brand new and needed everything — strategy, website, the works. They delivered a complete digital foundation that made us look established from day one.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Organization", name: "Seattle metro service business" },
+      itemReviewed: { "@id": `${SITE_ORIGIN}/#localbusiness` },
+      reviewBody: "I was skeptical working with such a young team — they outperformed agencies I've paid twice as much. The design and marketing thinking in one team is rare.",
+    },
+  ];
 }
 
 function organizationSchema() {

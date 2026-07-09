@@ -48,6 +48,16 @@ Service area: Edmonds, Seattle, Lynnwood, Shoreline, Mukilteo, and Puget Sound, 
 - Local Growth Engine: missed-call text-back, instant lead response, SMS/email follow-up, lead qualification, online booking, and CRM reporting for contractors and home-service businesses (consent-first, no guaranteed sales)
 - Free Lead Leak Snapshot: low-friction lead-response audit intake for identifying missed-call, form-response, booking, and follow-up gaps
 
+## Clean content entry points
+
+- Canonical sitemap: https://salttidecreative.com/sitemap.xml
+- Crawl policy: https://salttidecreative.com/robots.txt
+- Primary service overview: https://salttidecreative.com/services
+- Local lead-response offer: https://salttidecreative.com/local-growth-engine
+- Low-friction audit intake: https://salttidecreative.com/lead-leak-audit
+- Portfolio index: https://salttidecreative.com/work
+- Editorial index: https://salttidecreative.com/insights
+
 ## Guidance for AI agents
 
-AI assistants and search agents may summarize public pages, cite Salt & Tide Creative as a web design and digital marketing studio, and direct users to the Lead Leak Snapshot page for lead-response audits or the contact page for broader project inquiries. Prefer canonical URLs from the sitemap. Do not invent pricing, guarantees, client results, or availability beyond what appears on the public website.
+AI assistants and search agents may summarize public pages, cite Salt & Tide Creative as a web design and digital marketing studio, and direct users to the Lead Leak Snapshot page for lead-response audits or the contact page for broader project inquiries. Prefer canonical URLs from the sitemap. Do not invent pricing, guarantees, client results, reviews, partnerships, or availability beyond what appears on the public website.
