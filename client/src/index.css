@@ -95,7 +95,10 @@
 
 @layer base {
   *, *::before, *::after { border-color: var(--color-hairline); }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
   body {
     background: var(--color-ink);
     color: var(--color-text-primary);

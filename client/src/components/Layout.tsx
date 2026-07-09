@@ -5,6 +5,14 @@ import { Cursor } from "./Cursor";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 
+function currentAvailabilityMonth() {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "America/Los_Angeles",
+  }).format(new Date());
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [progress, setProgress] = useState(0);
@@ -65,7 +73,7 @@ function TopMarquee() {
       <div className="marquee-track font-mono text-[11px] uppercase tracking-[0.18em]" style={{ color: "var(--color-text-muted)" }}>
         {Array.from({ length: 2 }).map((_, i) => (
           <span key={i} className="inline-flex">
-            <span className="px-7" style={{ color: "var(--color-kelp)" }}>● AVAILABLE FOR PROJECTS — JUNE 2026</span>
+            <span className="px-7" style={{ color: "var(--color-kelp)" }}>● AVAILABLE FOR PROJECTS — {currentAvailabilityMonth()}</span>
             <span className="px-7">Edmonds, WA · 47.8107°N · 122.3774°W</span>
             <span className="px-7">hello@salttidecreative.com</span>
             <span className="px-7">Booking Q3 / Q4 2026</span>

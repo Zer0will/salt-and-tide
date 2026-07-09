@@ -1,5 +1,5 @@
 // SALT & TIDE — Pacific Brutalist. Home page ported from redesign/index.html while preserving the existing logo/nav system.
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
@@ -259,7 +259,12 @@ function FeaturedWork() {
           {FEATURED.map((p, i) => (
             <article key={p.slug} className={`case-grid reveal ${i === 0 ? "md:col-span-12 md:grid md:grid-cols-12 md:items-center md:gap-8" : i === 1 ? "md:col-span-12 md:grid md:grid-cols-12 md:items-center md:gap-8" : i === 2 ? "md:col-span-7" : "md:col-span-5"}`}>
               <div className={`${i === 0 ? "md:col-span-8" : i === 1 ? "md:order-2 md:col-span-8" : ""}`}>
-                <DeviceFrame src={p.desktop} alt={`${p.title} website screenshot`} url={p.liveUrl?.replace(/^https?:\/\//, "") ?? "salttidecreative.com"} />
+                <DeviceFrame
+                  desktopSrc={p.desktop}
+                  mobileSrc={p.mobile}
+                  alt={`${p.title} website screenshot`}
+                  url={p.liveUrl?.replace(/^https?:\/\//, "") ?? "salttidecreative.com"}
+                />
               </div>
               <div className={`${i === 0 ? "mt-8 md:col-span-4 md:mt-0" : i === 1 ? "mt-8 md:order-1 md:col-span-4 md:mt-0" : "mt-6"}`}>
                 <div className="mono-label flex items-center gap-3" style={{ color: "var(--color-kelp)" }}><span className="h-px w-5" style={{ background: "var(--color-kelp)" }} />{p.category} · {p.location} · {p.year}</div>
@@ -280,14 +285,89 @@ function FeaturedWork() {
   );
 }
 
-export function DeviceFrame({ src, alt, url = "salttidecreative.com" }: { src: string; alt: string; url?: string }) {
+type DeviceView = "desktop" | "mobile";
+
+export function DeviceFrame({
+  desktopSrc,
+  mobileSrc,
+  alt,
+  url = "salttidecreative.com",
+}: {
+  desktopSrc: string;
+  mobileSrc: string;
+  alt: string;
+  url?: string;
+}) {
+  const [devicePreference, setDevicePreference] = useState<DeviceView | null>(null);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobileViewport(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  const activeView: DeviceView = devicePreference ?? (isMobileViewport ? "mobile" : "desktop");
+  const isMobilePreview = activeView === "mobile";
+  const activeSrc = isMobilePreview ? mobileSrc : desktopSrc;
+
   return (
-    <div className="relative border transition duration-300 hover:-translate-y-1" style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)", boxShadow: "0 24px 60px rgba(0,0,0,0.4), 0 8px 24px rgba(63,174,124,0.08)" }}>
-      <div className="flex items-center gap-1.5 border-b px-3.5 py-2.5" style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)" }}>
-        <span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" />
-        <span className="ml-3 font-mono text-[10px] tracking-wide" style={{ color: "var(--color-text-muted)" }}>{url}</span>
+    <div className="group/device">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+        <div className="mono-label" style={{ color: "var(--color-text-muted)" }}>
+          Showing {isMobilePreview ? "mobile" : "desktop"} design
+        </div>
+        <div className="inline-flex border" style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)" }}>
+          {(["desktop", "mobile"] as DeviceView[]).map((view) => {
+            const active = activeView === view;
+            return (
+              <button
+                key={view}
+                type="button"
+                onClick={() => setDevicePreference(view)}
+                className="px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] transition"
+                style={{
+                  background: active ? "var(--color-kelp)" : "transparent",
+                  color: active ? "var(--color-ink)" : "var(--color-text-secondary)",
+                }}
+                aria-pressed={active}
+                aria-label={`Preview ${view} version without opening the project`}
+              >
+                {view}
+              </button>
+            );
+          })}
+        </div>
       </div>
-      <img src={src} alt={alt} loading="lazy" className="block w-full" />
+      <div
+        className={`relative mx-auto border transition-all duration-500 ease-out group-hover/device:-translate-y-1 ${
+          isMobilePreview ? "max-w-[265px] rounded-[2rem] p-2" : "max-w-full rounded-none"
+        }`}
+        style={{
+          borderColor: "var(--color-hairline)",
+          background: "var(--color-surface)",
+          boxShadow: "0 24px 60px rgba(0,0,0,0.4), 0 8px 24px rgba(63,174,124,0.08)",
+        }}
+      >
+        <div
+          className={`flex items-center gap-1.5 border-b px-3.5 py-2.5 ${isMobilePreview ? "rounded-t-[1.45rem]" : ""}`}
+          style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)" }}
+        >
+          <span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" />
+          <span className="ml-3 truncate font-mono text-[10px] tracking-wide" style={{ color: "var(--color-text-muted)" }}>{url}</span>
+        </div>
+        <div className={`overflow-hidden ${isMobilePreview ? "rounded-b-[1.45rem]" : ""}`}>
+          <img
+            key={activeSrc}
+            src={activeSrc}
+            alt={`${alt} — ${activeView} preview`}
+            loading="lazy"
+            className={`block w-full transition duration-500 ease-out ${isMobilePreview ? "max-h-[520px] object-cover object-top" : "object-contain"}`}
+          />
+        </div>
+      </div>
     </div>
   );
 }
