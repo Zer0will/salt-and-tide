@@ -8,6 +8,14 @@ import { Seo, localBusinessSchema, websiteSchema, organizationSchema } from "@/c
 
 const sectionLabel = (n: string, label: string) => `§ ${n} / ${label}`;
 
+function currentAvailabilityMonth() {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "America/Los_Angeles",
+  }).format(new Date());
+}
+
 export default function Home() {
   useReveal();
 
@@ -110,7 +118,7 @@ function Hero() {
 
         <aside className="hidden flex-col gap-6 pt-4 lg:flex" aria-label="Studio status">
           <StatusKicker label="Status"><span className="inline-flex items-center gap-2 mono-label" style={{ color: "var(--color-kelp)" }}><span className="live-dot" /> 1 slot remaining</span></StatusKicker>
-          <StatusKicker label="Next opening">June 2026 <span className="ml-2 font-mono text-[11px]" style={{ color: "var(--color-text-secondary)" }}>/ 4-wk engagement</span></StatusKicker>
+          <StatusKicker label="Next opening">{currentAvailabilityMonth()} <span className="ml-2 font-mono text-[11px]" style={{ color: "var(--color-text-secondary)" }}>/ 4-wk engagement</span></StatusKicker>
           <StatusKicker label="Response time">≈ 4 hrs <span className="ml-2 font-mono text-[11px]" style={{ color: "var(--color-text-secondary)" }}>Mon–Fri</span></StatusKicker>
           <StatusKicker label="From the desk">Edmonds, WA</StatusKicker>
         </aside>
