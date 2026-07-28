@@ -163,7 +163,8 @@ export function localBusinessSchema(extra: Record<string, unknown> = {}) {
       },
     ],
     sameAs: [
-      // Add real LinkedIn and Instagram URLs here once pages are live.
+      "https://www.instagram.com/salttidecreative/",
+      "https://share.google/jvwuOWUdfh3jCB8Al",
     ],
     ...extra,
   };

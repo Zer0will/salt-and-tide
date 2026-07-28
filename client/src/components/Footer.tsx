@@ -83,8 +83,8 @@ export function Footer() {
             <div className="mono-label">Find Us</div>
             <div className="mt-4 text-sm flex gap-5 md:justify-end" style={{ color: "var(--color-text-secondary)" }}>
               <a className="ul-grow" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a className="ul-grow" href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-              <a className="ul-grow" href="https://g.co/" target="_blank" rel="noreferrer">Google</a>
+              <a className="ul-grow" href="https://www.instagram.com/salttidecreative/" target="_blank" rel="noreferrer">Instagram</a>
+              <a className="ul-grow" href="https://share.google/jvwuOWUdfh3jCB8Al" target="_blank" rel="noreferrer">Google</a>
             </div>
           </div>
         </div>
