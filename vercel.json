@@ -1,7 +1,4 @@
 {
   "outputDirectory": "dist/public",
-  "buildCommand": "vite build",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "buildCommand": "pnpm run build"
 }
