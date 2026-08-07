@@ -1,7 +1,7 @@
 // SALT & TIDE — Paid ad landing pages. Message-matched, low-friction capture.
 import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, Check, Mail, Phone, Search, Smartphone, MapPin, Utensils, MousePointerClick } from "lucide-react";
+import { ArrowRight, Check, Mail, Search, Smartphone, MapPin, Utensils, MousePointerClick } from "lucide-react";
 import { toast } from "sonner";
 import { Seo, SITE_ORIGIN, ORG_NAME, ORG_EMAIL, ORG_PHONE, breadcrumbSchema } from "@/components/Seo";
 
@@ -15,8 +15,6 @@ type PageConfig = {
   seoDescription: string;
   heroTitle: React.ReactNode;
   heroBody: string;
-  image: string;
-  imageAlt: string;
   primaryCta: string;
   secondaryCta: string;
   formTitle: string;
@@ -40,9 +38,7 @@ const CONFIGS: Record<Variant, PageConfig> = {
     seoDescription: "Web design and local SEO for Edmonds, Seattle, and Puget Sound businesses that need a clearer, more professional first impression.",
     heroTitle: <>Build a better <span style={{ color: "var(--color-kelp)" }}>first impression.</span></>,
     heroBody: "Your website is often the first conversation a potential customer has with your business. If it feels dated, confusing, or hard to use on a phone, they may leave before they ever contact you.",
-    image: "/ads/website-first-impression.jpg",
-    imageAlt: "Salt & Tide Creative ad: Your website should work as hard as you do",
-    primaryCta: "Learn More",
+    primaryCta: "Fill Out the Form",
     secondaryCta: "Request a Website Review",
     formTitle: "Tell us what your website needs to do better.",
     formIntro: "Send your website and the outcome you want. We’ll reply with a practical next step — not a generic agency pitch.",
@@ -63,9 +59,7 @@ const CONFIGS: Record<Variant, PageConfig> = {
     seoDescription: "Request a free website audit from Salt & Tide Creative. See what may be costing you calls, leads, and local business opportunities.",
     heroTitle: <>See what may be <span style={{ color: "var(--color-kelp)" }}>costing you calls.</span></>,
     heroBody: "Is your website helping your business — or quietly costing you opportunities? Request a free website audit and get clear, practical feedback on the most important improvement to make first.",
-    image: "/ads/free-website-audit.jpg",
-    imageAlt: "Salt & Tide Creative ad: Free website audit, see what may be costing you calls",
-    primaryCta: "Sign Up",
+    primaryCta: "Fill Out the Form",
     secondaryCta: "Get My Free Audit",
     formTitle: "Request your free website audit.",
     formIntro: "No pressure. Send your website and contact info. We’ll review the major friction points and send back practical feedback.",
@@ -86,9 +80,7 @@ const CONFIGS: Record<Variant, PageConfig> = {
     seoDescription: "Polished restaurant and café websites for independent Puget Sound food businesses: menus, reservations, hours, mobile UX, and local SEO.",
     heroTitle: <>Your food looks great. <span style={{ color: "var(--color-kelp)" }}>Your website should too.</span></>,
     heroBody: "Your food might be incredible — but does your website make people want to visit? We create polished restaurant websites that showcase your food, simplify reservations, display essential information, and look great on every phone.",
-    image: "/ads/restaurant-website-ad.jpg",
-    imageAlt: "Salt & Tide Creative ad: Your food looks great, your website should too",
-    primaryCta: "Learn More",
+    primaryCta: "Fill Out the Form",
     secondaryCta: "Plan My Restaurant Site",
     formTitle: "Tell us about your restaurant or café.",
     formIntro: "Send your current site, Instagram, or menu link. We’ll reply with what your guest experience needs online.",
@@ -207,14 +199,13 @@ function AdLandingPage({ config }: { config: PageConfig }) {
         title={config.seoTitle}
         description={config.seoDescription}
         path={config.path}
-        image={config.image}
         keywords={["Puget Sound web design", "Edmonds web design", "Seattle local SEO", "small business website"]}
         jsonLd={jsonLd}
       />
 
       <section style={{ paddingTop: "clamp(132px, 15vh, 190px)", paddingBottom: "clamp(48px, 7vh, 88px)" }}>
-        <div className="container grid gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-6">
+        <div className="container">
+          <div className="max-w-3xl">
             <div className="mono-label" style={{ color: "var(--color-kelp)" }}>§ {config.eyebrow}</div>
             <h1 className="display mt-5" style={{ fontSize: "clamp(2.75rem, 7.5vw, 6.8rem)", lineHeight: 0.9, maxWidth: "12ch" }}>
               {config.heroTitle}
@@ -223,18 +214,12 @@ function AdLandingPage({ config }: { config: PageConfig }) {
               {config.heroBody}
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href="#request" className="btn-primary">{config.primaryCta} <ArrowRight size={18} /></a>
-              <a href={`tel:${ORG_PHONE.replace(/[^+\d]/g, "")}`} className="pill">Call {ORG_PHONE}</a>
+              <a href="#request" className="btn-primary w-full justify-center sm:w-auto">{config.primaryCta} <ArrowRight size={18} /></a>
             </div>
             <div className="mt-8 grid gap-px sm:grid-cols-3" style={{ background: "var(--color-hairline)", maxWidth: 760 }}>
               <TrustMetric value="24h" label="Typical reply" />
               <TrustMetric value="PNW" label="Edmonds + Seattle" />
               <TrustMetric value="Mobile" label="Designed first" />
-            </div>
-          </div>
-          <div className="lg:col-span-6">
-            <div className="relative overflow-hidden" style={{ border: "1px solid var(--color-hairline)", background: "var(--color-surface)", boxShadow: "0 30px 80px rgba(0,0,0,0.38)" }}>
-              <img src={config.image} alt={config.imageAlt} className="block w-full object-cover" loading="eager" />
             </div>
           </div>
         </div>
@@ -247,11 +232,10 @@ function AdLandingPage({ config }: { config: PageConfig }) {
             <div className="mono-label" style={{ color: "var(--color-kelp)" }}>§ Next step</div>
             <h2 className="display mt-5" style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>{config.secondaryCta}</h2>
             <p className="mt-5 max-w-md" style={{ color: "var(--color-text-secondary)", lineHeight: 1.65 }}>
-              Keep it simple: basic contact info, business name, website status, what you need, timeframe, and budget. Built for quick mobile completion.
+Keep it simple: fill out the quick form with basic contact info, business name, website status, what you need, timeframe, and budget. Built for mobile completion.
             </p>
             <div className="mt-8 grid gap-px" style={{ background: "var(--color-hairline)", maxWidth: 520 }}>
               <ContactStrip icon={<Mail size={17} />} label="Email" value={ORG_EMAIL} href={`mailto:${ORG_EMAIL}`} />
-              <ContactStrip icon={<Phone size={17} />} label="Phone" value={ORG_PHONE} href={`tel:${ORG_PHONE.replace(/[^+\d]/g, "")}`} />
               <ContactStrip icon={<MapPin size={17} />} label="Area" value="Edmonds · Seattle · Puget Sound" />
             </div>
           </div>
