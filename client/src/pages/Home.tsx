@@ -264,6 +264,8 @@ function FeaturedWork() {
                   mobileSrc={p.mobile}
                   alt={`${p.title} website screenshot`}
                   url={p.liveUrl?.replace(/^https?:\/\//, "") ?? "salttidecreative.com"}
+                  caseStudyHref={`/work/${p.slug}`}
+                  projectTitle={p.title}
                 />
               </div>
               <div className={`${i === 0 ? "mt-8 md:col-span-4 md:mt-0" : i === 1 ? "mt-8 md:order-1 md:col-span-4 md:mt-0" : "mt-6"}`}>
@@ -292,11 +294,15 @@ export function DeviceFrame({
   mobileSrc,
   alt,
   url = "salttidecreative.com",
+  caseStudyHref,
+  projectTitle,
 }: {
   desktopSrc: string;
   mobileSrc: string;
   alt: string;
   url?: string;
+  caseStudyHref?: string;
+  projectTitle?: string;
 }) {
   const [devicePreference, setDevicePreference] = useState<DeviceView | null>(null);
   const [isMobileViewport, setIsMobileViewport] = useState(false);
@@ -312,12 +318,42 @@ export function DeviceFrame({
   const activeView: DeviceView = devicePreference ?? (isMobileViewport ? "mobile" : "desktop");
   const isMobilePreview = activeView === "mobile";
   const activeSrc = isMobilePreview ? mobileSrc : desktopSrc;
+  const previewFrame = (
+    <div
+      className={`relative mx-auto border transition-all duration-500 ease-out group-hover/device:-translate-y-1 ${
+        isMobilePreview ? "max-w-[265px] rounded-[2rem] p-2" : "max-w-full rounded-none"
+      }`}
+      style={{
+        borderColor: "var(--color-hairline)",
+        background: "var(--color-surface)",
+        boxShadow: "0 24px 60px rgba(0,0,0,0.4), 0 8px 24px rgba(63,174,124,0.08)",
+      }}
+    >
+      <div
+        className={`flex items-center gap-1.5 border-b px-3.5 py-2.5 ${isMobilePreview ? "rounded-t-[1.45rem]" : ""}`}
+        style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)" }}
+      >
+        <span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" />
+        <span className="ml-3 truncate font-mono text-[10px] tracking-wide" style={{ color: "var(--color-text-muted)" }}>{url}</span>
+      </div>
+      <div className={`overflow-hidden ${isMobilePreview ? "rounded-b-[1.45rem]" : ""}`}>
+        <img
+          key={activeSrc}
+          src={activeSrc}
+          alt={`${alt} — ${activeView} preview`}
+          loading="lazy"
+          className={`block w-full transition duration-500 ease-out ${isMobilePreview ? "max-h-[520px] object-cover object-top" : "object-contain"}`}
+        />
+      </div>
+    </div>
+  );
 
   return (
     <div className="group/device">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
         <div className="mono-label" style={{ color: "var(--color-text-muted)" }}>
           Showing {isMobilePreview ? "mobile" : "desktop"} design
+          {caseStudyHref && <span className="ml-2" style={{ color: "var(--color-kelp)" }}>· click preview for case study</span>}
         </div>
         <div className="inline-flex border" style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)" }}>
           {(["desktop", "mobile"] as DeviceView[]).map((view) => {
@@ -341,33 +377,17 @@ export function DeviceFrame({
           })}
         </div>
       </div>
-      <div
-        className={`relative mx-auto border transition-all duration-500 ease-out group-hover/device:-translate-y-1 ${
-          isMobilePreview ? "max-w-[265px] rounded-[2rem] p-2" : "max-w-full rounded-none"
-        }`}
-        style={{
-          borderColor: "var(--color-hairline)",
-          background: "var(--color-surface)",
-          boxShadow: "0 24px 60px rgba(0,0,0,0.4), 0 8px 24px rgba(63,174,124,0.08)",
-        }}
-      >
-        <div
-          className={`flex items-center gap-1.5 border-b px-3.5 py-2.5 ${isMobilePreview ? "rounded-t-[1.45rem]" : ""}`}
-          style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)" }}
+      {caseStudyHref ? (
+        <Link
+          href={caseStudyHref}
+          aria-label={`Read the ${projectTitle ?? alt} case study`}
+          className="block cursor-pointer outline-none transition focus-visible:ring-2 focus-visible:ring-[var(--color-kelp)]"
         >
-          <span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" /><span className="h-2 w-2 rounded-full bg-[#3a3d44]" />
-          <span className="ml-3 truncate font-mono text-[10px] tracking-wide" style={{ color: "var(--color-text-muted)" }}>{url}</span>
-        </div>
-        <div className={`overflow-hidden ${isMobilePreview ? "rounded-b-[1.45rem]" : ""}`}>
-          <img
-            key={activeSrc}
-            src={activeSrc}
-            alt={`${alt} — ${activeView} preview`}
-            loading="lazy"
-            className={`block w-full transition duration-500 ease-out ${isMobilePreview ? "max-h-[520px] object-cover object-top" : "object-contain"}`}
-          />
-        </div>
-      </div>
+          {previewFrame}
+        </Link>
+      ) : (
+        previewFrame
+      )}
     </div>
   );
 }
