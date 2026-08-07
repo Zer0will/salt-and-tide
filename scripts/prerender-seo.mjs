@@ -78,6 +78,35 @@ const routeMeta = [
     image: DEFAULT_IMAGE,
     jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Restaurant Websites", path: "/restaurant-websites" }]), adLandingServiceSchema("Restaurant Website Design", "/restaurant-websites")],
   },
+
+  {
+    path: "/restaurant-online-ordering",
+    title: "Restaurant Online Ordering Websites | Salt & Tide Creative",
+    description: "Clearer restaurant websites that help customers go from hungry to ordered with fewer steps, stronger mobile UX, and easier online ordering paths.",
+    image: DEFAULT_IMAGE,
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Restaurant Online Ordering", path: "/restaurant-online-ordering" }]), adLandingServiceSchema("Restaurant Online Ordering Websites", "/restaurant-online-ordering")],
+  },
+  {
+    path: "/bakery-cafe-online-ordering",
+    title: "Bakery & Café Online Ordering Websites | Salt & Tide Creative",
+    description: "Polished websites for local bakeries and cafés that make it easier to browse products, choose pickup times, and place orders from a phone.",
+    image: DEFAULT_IMAGE,
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Bakery & Café Online Ordering", path: "/bakery-cafe-online-ordering" }]), adLandingServiceSchema("Bakery & Café Online Ordering Websites", "/bakery-cafe-online-ordering")],
+  },
+  {
+    path: "/painting-company-websites",
+    title: "Websites for Local Painting Companies | Salt & Tide Creative",
+    description: "Websites for local painters that showcase finished projects, transformations, workmanship, reviews, and a simple estimate request path.",
+    image: DEFAULT_IMAGE,
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Painting Company Websites", path: "/painting-company-websites" }]), adLandingServiceSchema("Websites for Local Painting Companies", "/painting-company-websites")],
+  },
+  {
+    path: "/contractor-websites",
+    title: "Contractor & Remodeler Websites | Salt & Tide Creative",
+    description: "Websites for local contractors and remodelers designed to build trust before the estimate and create a clear path to request a quote.",
+    image: DEFAULT_IMAGE,
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contractor & Remodeler Websites", path: "/contractor-websites" }]), adLandingServiceSchema("Contractor & Remodeler Websites", "/contractor-websites")],
+  },
   {
     path: "/about",
     title: "About Salt & Tide Creative | Edmonds, WA Web Design Studio",

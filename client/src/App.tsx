@@ -11,7 +11,7 @@ import CaseStudy from "./pages/CaseStudy";
 import Services from "./pages/Services";
 import LeadGrowthEngine from "./pages/LeadGrowthEngine";
 import LeadLeakAudit from "./pages/LeadLeakAudit";
-import { BetterFirstImpressionLanding, FreeWebsiteAuditLanding, RestaurantWebsitesLanding } from "./pages/AdLandingPage";
+import { BetterFirstImpressionLanding, FreeWebsiteAuditLanding, RestaurantWebsitesLanding, RestaurantOrderingLanding, BakeryCafeOrderingLanding, PaintingCompanyLanding, ContractorWebsitesLanding } from "./pages/AdLandingPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -33,6 +33,10 @@ function Router() {
       <Route path="/better-first-impression" component={BetterFirstImpressionLanding} />
       <Route path="/free-website-audit" component={FreeWebsiteAuditLanding} />
       <Route path="/restaurant-websites" component={RestaurantWebsitesLanding} />
+      <Route path="/restaurant-online-ordering" component={RestaurantOrderingLanding} />
+      <Route path="/bakery-cafe-online-ordering" component={BakeryCafeOrderingLanding} />
+      <Route path="/painting-company-websites" component={PaintingCompanyLanding} />
+      <Route path="/contractor-websites" component={ContractorWebsitesLanding} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/seattle-web-design">{() => <LocationPage config={SEATTLE} />}</Route>

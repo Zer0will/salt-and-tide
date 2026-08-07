@@ -5,7 +5,7 @@ import { ArrowRight, Check, Mail, Search, Smartphone, MapPin, Utensils, MousePoi
 import { toast } from "sonner";
 import { Seo, SITE_ORIGIN, ORG_NAME, ORG_EMAIL, ORG_PHONE, breadcrumbSchema } from "@/components/Seo";
 
-type Variant = "first-impression" | "free-audit" | "restaurant";
+type Variant = "first-impression" | "free-audit" | "restaurant" | "restaurant-ordering" | "bakery-ordering" | "painting" | "contractor";
 
 type PageConfig = {
   variant: Variant;
@@ -72,6 +72,91 @@ const CONFIGS: Record<Variant, PageConfig> = {
     fitTitle: "Use this if you suspect…",
     fitItems: ["People visit the site but do not call", "Your site looks fine on desktop but awkward on mobile", "Your Google/social traffic lands somewhere weak", "You want a clear first step before spending on a redesign"],
   },
+
+  "restaurant-ordering": {
+    variant: "restaurant-ordering",
+    path: "/restaurant-online-ordering",
+    eyebrow: "Restaurant Online Ordering",
+    seoTitle: "Restaurant Online Ordering Websites | Salt & Tide Creative",
+    seoDescription: "Clearer restaurant websites that help customers go from hungry to ordered with fewer steps, stronger mobile UX, and easier online ordering paths.",
+    heroTitle: <>Make it easier to go from <span style={{ color: "var(--color-kelp)" }}>hungry to ordered.</span></>,
+    heroBody: "A customer finds your restaurant, likes what they see, and is ready to order. Then your website makes them call, download a menu, or hunt for a separate ordering link. Every extra step gives them another reason to leave. Salt & Tide Creative helps local restaurants create a clearer online-ordering experience that makes it easier for customers to order from their phone.",
+    primaryCta: "Request a Free Review",
+    secondaryCta: "Request a Free Review",
+    formTitle: "Request a free review of your restaurant website.",
+    formIntro: "Send your website, menu, or ordering link. We’ll look for the biggest friction points between a hungry visitor and a completed order.",
+    serviceValue: "Restaurant Online Ordering Campaign",
+    proofKicker: "Ordering friction check",
+    proofTitle: "When someone is ready to order, the path should be obvious.",
+    proofBody: "We look at the steps customers have to take on mobile and identify where menus, ordering links, pickup details, and calls to action create unnecessary drop-off.",
+    bullets: ["Mobile ordering path review", "Menu and pickup flow clarity", "CTA hierarchy for hungry visitors", "Local SEO and trust basics"],
+    auditItems: ["Can a phone visitor find the menu and order path fast?", "Are pickup, delivery, hours, and location clear?", "Is the ordering CTA visible before someone gets frustrated?", "Does the site reduce dependence on calls and PDF menus?"],
+    fitTitle: "Good fit if your site currently makes customers…",
+    fitItems: ["Call just to place a simple order", "Download or pinch-zoom a PDF menu", "Search for a separate ordering link", "Bounce to Instagram or third-party platforms before ordering"],
+  },
+  "bakery-ordering": {
+    variant: "bakery-ordering",
+    path: "/bakery-cafe-online-ordering",
+    eyebrow: "Bakery + Café Online Ordering",
+    seoTitle: "Bakery & Café Online Ordering Websites | Salt & Tide Creative",
+    seoDescription: "Polished websites for local bakeries and cafés that make it easier to browse products, choose pickup times, and place orders from a phone.",
+    heroTitle: <>Turn browsers into <span style={{ color: "var(--color-kelp)" }}>orders.</span></>,
+    heroBody: "Your pastries stop people from scrolling. Your website should make it just as easy for them to order. Give customers a simple way to browse your products, select a pickup time, and place an order from their phone. Salt & Tide Creative creates polished websites for local bakeries and cafés that want to turn more interest into convenient online orders.",
+    primaryCta: "Learn More",
+    secondaryCta: "Plan My Ordering Page",
+    formTitle: "Tell us about your bakery or café ordering flow.",
+    formIntro: "Send your current website, Instagram, menu, or ordering link. We’ll reply with the clearest next step for turning mobile interest into orders.",
+    serviceValue: "Bakery Café Online Ordering Campaign",
+    proofKicker: "Built for mobile orders",
+    proofTitle: "Beautiful products still need a simple path to purchase.",
+    proofBody: "A stronger bakery or café site makes browsing, pickup timing, product details, and order requests feel natural on a phone.",
+    bullets: ["Product browsing clarity", "Pickup-time and order flow UX", "Mobile-first visual design", "Local SEO for nearby customers"],
+    auditItems: ["Can customers browse what you sell without digging?", "Is pickup timing clear before they contact you?", "Does the page turn visual interest into an order step?", "Are phone visitors guided instead of sent to scattered links?"],
+    fitTitle: "Built for bakeries and cafés that want…",
+    fitItems: ["More convenient pickup orders", "A cleaner alternative to DMs and scattered links", "A polished home for seasonal products", "A site that feels as good as the product looks"],
+  },
+  painting: {
+    variant: "painting",
+    path: "/painting-company-websites",
+    eyebrow: "Painting Company Websites",
+    seoTitle: "Websites for Local Painting Companies | Salt & Tide Creative",
+    seoDescription: "Websites for local painters that showcase finished projects, transformations, workmanship, reviews, and a simple estimate request path.",
+    heroTitle: <>Give them a reason to <span style={{ color: "var(--color-kelp)" }}>choose you.</span></>,
+    heroBody: "Before homeowners call a painting company, they look for proof. They want to see finished projects, transformations, professional workmanship, and evidence that they can trust you with their home. If your best work is buried in your camera roll or social media page, your website isn’t making the strongest case for your business. Salt & Tide Creative builds websites that help local painters showcase their work and make requesting an estimate simple.",
+    primaryCta: "Get Quote",
+    secondaryCta: "Request a Quote Review",
+    formTitle: "Tell us about your painting company website.",
+    formIntro: "Send your website, Google listing, or project photos link. We’ll reply with the clearest way to make your proof and estimate request path stronger.",
+    serviceValue: "Painting Company Website Campaign",
+    proofKicker: "Proof before contact",
+    proofTitle: "Your website should make your best work easy to believe in.",
+    proofBody: "We structure painting company websites around the evidence homeowners need: before/after work, service areas, reviews, process, professionalism, and a simple quote request.",
+    bullets: ["Before-and-after project proof", "Service and location clarity", "Review and trust signal placement", "Simple estimate request path"],
+    auditItems: ["Can homeowners quickly see finished work?", "Are transformations and workmanship easy to compare?", "Does the page explain where you work and what you paint?", "Is requesting an estimate simple on mobile?"],
+    fitTitle: "Good fit if your best proof is stuck in…",
+    fitItems: ["Your camera roll", "A social media feed", "Old project posts nobody sees", "A website that does not show enough finished work"],
+  },
+  contractor: {
+    variant: "contractor",
+    path: "/contractor-websites",
+    eyebrow: "Contractor + Remodeler Websites",
+    seoTitle: "Contractor & Remodeler Websites | Salt & Tide Creative",
+    seoDescription: "Websites for local contractors and remodelers designed to build trust before the estimate and create a clear path to request a quote.",
+    heroTitle: <>Build trust before the <span style={{ color: "var(--color-kelp)" }}>estimate.</span></>,
+    heroBody: "Customers don’t wait until the estimate to decide whether they trust your business. They evaluate your projects, reviews, services, professionalism, and website before they ever contact you. Salt & Tide Creative creates contractor websites designed around the information homeowners need — and a clear path to request a quote.",
+    primaryCta: "Get Quote",
+    secondaryCta: "Request a Quote Review",
+    formTitle: "Tell us about your contractor website.",
+    formIntro: "Send your current website or Google listing. We’ll review whether the page gives homeowners enough proof and a clear quote request path.",
+    serviceValue: "Contractor Website Campaign",
+    proofKicker: "Trust before the call",
+    proofTitle: "Homeowners decide whether you feel credible before they reach out.",
+    proofBody: "A stronger contractor website organizes services, project proof, reviews, service areas, and quote requests around how homeowners actually choose who to contact.",
+    bullets: ["Project proof and case examples", "Services and service-area clarity", "Review and credibility signals", "Quote request flow for mobile visitors"],
+    auditItems: ["Can homeowners understand what you do in seconds?", "Is project proof easy to find and trust?", "Are reviews, process, and professionalism visible?", "Is requesting a quote obvious without extra searching?"],
+    fitTitle: "Useful for local businesses like…",
+    fitItems: ["Remodelers", "General contractors", "Home service specialists", "Trades that need more trust before the estimate"],
+  },
   restaurant: {
     variant: "restaurant",
     path: "/restaurant-websites",
@@ -105,6 +190,22 @@ export function FreeWebsiteAuditLanding() {
 
 export function RestaurantWebsitesLanding() {
   return <AdLandingPage config={CONFIGS.restaurant} />;
+}
+
+export function RestaurantOrderingLanding() {
+  return <AdLandingPage config={CONFIGS["restaurant-ordering"]} />;
+}
+
+export function BakeryCafeOrderingLanding() {
+  return <AdLandingPage config={CONFIGS["bakery-ordering"]} />;
+}
+
+export function PaintingCompanyLanding() {
+  return <AdLandingPage config={CONFIGS.painting} />;
+}
+
+export function ContractorWebsitesLanding() {
+  return <AdLandingPage config={CONFIGS.contractor} />;
 }
 
 function AdLandingPage({ config }: { config: PageConfig }) {
