@@ -58,6 +58,27 @@ const routeMeta = [
     jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Lead Leak Snapshot", path: "/lead-leak-audit" }]), leadLeakAuditSchema()],
   },
   {
+    path: "/better-first-impression",
+    title: "Build a Better First Impression | Salt & Tide Creative",
+    description: "Web design and local SEO for Edmonds, Seattle, and Puget Sound businesses that need a clearer, more professional first impression.",
+    image: `${SITE_ORIGIN}/ads/website-first-impression.jpg`,
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Better First Impression", path: "/better-first-impression" }]), adLandingServiceSchema("Build a Better First Impression", "/better-first-impression")],
+  },
+  {
+    path: "/free-website-audit",
+    title: "Get Your Free Website Audit | Salt & Tide Creative",
+    description: "Request a free website audit from Salt & Tide Creative. See what may be costing you calls, leads, and local business opportunities.",
+    image: `${SITE_ORIGIN}/ads/free-website-audit.jpg`,
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Free Website Audit", path: "/free-website-audit" }]), adLandingServiceSchema("Free Website Audit", "/free-website-audit")],
+  },
+  {
+    path: "/restaurant-websites",
+    title: "Restaurant Website Design | Salt & Tide Creative",
+    description: "Polished restaurant and café websites for independent Puget Sound food businesses: menus, reservations, hours, mobile UX, and local SEO.",
+    image: `${SITE_ORIGIN}/ads/restaurant-website-ad.jpg`,
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Restaurant Websites", path: "/restaurant-websites" }]), adLandingServiceSchema("Restaurant Website Design", "/restaurant-websites")],
+  },
+  {
     path: "/about",
     title: "About Salt & Tide Creative | Edmonds, WA Web Design Studio",
     description: "Meet the founders of Salt & Tide Creative — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses.",
@@ -305,6 +326,18 @@ function leadLeakAuditSchema() {
     url: `${SITE_ORIGIN}/lead-leak-audit`,
     description: "A low-friction intake for a free lead-response audit covering missed calls, website forms, booking friction, and follow-up gaps.",
     mainEntity: { "@type": "Organization", "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME, email: ORG_EMAIL, telephone: ORG_PHONE },
+  };
+}
+
+function adLandingServiceSchema(name, path) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    url: `${SITE_ORIGIN}${path}`,
+    provider: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME, email: ORG_EMAIL, telephone: ORG_PHONE },
+    areaServed: ["Edmonds, WA", "Seattle, WA", "Puget Sound"].map((area) => ({ "@type": "Place", name: area })),
+    serviceType: "Web design, website redesign, local SEO, and website audit intake",
   };
 }
 

@@ -11,6 +11,7 @@ import CaseStudy from "./pages/CaseStudy";
 import Services from "./pages/Services";
 import LeadGrowthEngine from "./pages/LeadGrowthEngine";
 import LeadLeakAudit from "./pages/LeadLeakAudit";
+import { BetterFirstImpressionLanding, FreeWebsiteAuditLanding, RestaurantWebsitesLanding } from "./pages/AdLandingPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -29,6 +30,9 @@ function Router() {
       <Route path="/services" component={Services} />
       <Route path="/local-growth-engine" component={LeadGrowthEngine} />
       <Route path="/lead-leak-audit" component={LeadLeakAudit} />
+      <Route path="/better-first-impression" component={BetterFirstImpressionLanding} />
+      <Route path="/free-website-audit" component={FreeWebsiteAuditLanding} />
+      <Route path="/restaurant-websites" component={RestaurantWebsitesLanding} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/seattle-web-design">{() => <LocationPage config={SEATTLE} />}</Route>
