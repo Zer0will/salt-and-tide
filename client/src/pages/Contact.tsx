@@ -4,6 +4,7 @@ import { ArrowRight, Mail, Phone, Clock, MapPin, Check } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { toast } from "sonner";
 import { Seo, SITE_ORIGIN, ORG_NAME, ORG_PHONE, ORG_EMAIL, breadcrumbSchema } from "@/components/Seo";
+import { trackWhopEvent } from "@/lib/whop";
 
 const SERVICE_OPTIONS = ["Lead Leak Audit", "Local Growth Engine", "Web Design", "Digital Marketing", "Both", "Not Sure Yet"];
 const BUDGET_OPTIONS  = ["Under $1,000/mo", "$1,000 – $2,500/mo", "$2,500 – $5,000/mo", "Project budget $5,000+", "Let's discuss"];
@@ -48,6 +49,9 @@ export default function Contact() {
         throw new Error((body as any)?.error ?? "Submission failed");
       }
 
+      trackWhopEvent("lead", {
+        source: "contact_form",
+      });
       setSubmitted(true);
       toast.success("Message sent. We'll reply within 24 hours.");
       form.reset();

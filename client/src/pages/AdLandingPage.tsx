@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { ArrowRight, Check, Mail, Search, Smartphone, MapPin, Utensils, MousePointerClick } from "lucide-react";
 import { toast } from "sonner";
 import { Seo, SITE_ORIGIN, ORG_NAME, ORG_EMAIL, ORG_PHONE, breadcrumbSchema } from "@/components/Seo";
+import { trackWhopEvent } from "@/lib/whop";
 
 type Variant = "first-impression" | "free-audit" | "restaurant" | "restaurant-ordering" | "bakery-ordering" | "painting" | "contractor";
 
@@ -267,6 +268,10 @@ function AdLandingPage({ config }: { config: PageConfig }) {
         const body = await res.json().catch(() => ({}));
         throw new Error((body as any)?.error ?? "Submission failed");
       }
+      trackWhopEvent("lead", {
+        source: "campaign_form",
+        page_variant: config.variant,
+      });
       setSubmitted(true);
       toast.success("Request received. We'll reply within 24 hours.");
       form.reset();
