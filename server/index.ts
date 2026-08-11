@@ -34,6 +34,7 @@ function applySecurityHeaders(_req: Request, res: Response, next: NextFunction) 
 
 async function startServer() {
   const app = express();
+  app.disable("x-powered-by");
   const server = createServer(app);
 
   app.set("trust proxy", 1);
