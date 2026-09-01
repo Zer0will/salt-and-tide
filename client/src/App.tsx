@@ -20,6 +20,7 @@ import { SEATTLE, EDMONDS, LYNNWOOD } from "./data/locations";
 import Insights from "./pages/Insights";
 import InsightArticle from "./pages/InsightArticle";
 import LegalPage from "./pages/Legal";
+import KochiDemo from "./pages/KochiDemo";
 
 function Router() {
   return (
@@ -30,6 +31,7 @@ function Router() {
       <Route path="/services" component={Services} />
       <Route path="/local-growth-engine" component={LeadGrowthEngine} />
       <Route path="/lead-leak-audit" component={LeadLeakAudit} />
+      <Route path="/kochi" component={KochiDemo} />
       <Route path="/better-first-impression" component={BetterFirstImpressionLanding} />
       <Route path="/free-website-audit" component={FreeWebsiteAuditLanding} />
       <Route path="/restaurant-websites" component={RestaurantWebsitesLanding} />

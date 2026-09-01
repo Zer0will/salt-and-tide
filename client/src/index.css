@@ -173,6 +173,32 @@
   /* Kelp text accent */
   .kelp { color: var(--color-kelp); }
 
+  .kochi-demo-stage {
+    height: min(860px, calc(100vh - 64px));
+    min-height: 680px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .kochi-demo-frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #07080b;
+  }
+
+  @media (max-width: 640px) {
+    .kochi-demo-stage {
+      height: calc(100vh - 42px);
+      min-height: 620px;
+      margin-left: -1.25rem;
+      margin-right: -1.25rem;
+      border-left: 0;
+      border-right: 0;
+    }
+  }
+
   /* Grain texture overlay (svg fractalNoise data URL) */
   .grain::before {
     content: "";

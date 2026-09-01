@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const SITE_ORIGIN = "https://salttidecreative.com";
-const OUT_DIR = path.resolve("dist/public");
+const OUT_DIR = path.resolve("dist");
 const INDEX_PATH = path.join(OUT_DIR, "index.html");
 const DEFAULT_IMAGE = `${SITE_ORIGIN}/og/og-default.png`;
 const ORG_NAME = "Salt & Tide Creative";
@@ -56,6 +56,12 @@ const routeMeta = [
     title: "Free Lead Leak Snapshot | Salt & Tide Creative",
     description: "Send your website or Google listing, phone number, and email. Salt & Tide will check where local leads may be slipping through and send a free snapshot.",
     jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Lead Leak Snapshot", path: "/lead-leak-audit" }]), leadLeakAuditSchema()],
+  },
+  {
+    path: "/kochi",
+    title: "Kochi Po-cha Ordering Demo | Salt & Tide Creative",
+    description: "A Salt & Tide Creative owned preview of Kochi Po-cha's QR table-ordering experience: mobile menu, guest names, shared cart, and closeout flow.",
+    jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Kochi Po-cha Ordering Demo", path: "/kochi" }]), kochiDemoSchema()],
   },
   {
     path: "/better-first-impression",
@@ -355,6 +361,18 @@ function leadLeakAuditSchema() {
     url: `${SITE_ORIGIN}/lead-leak-audit`,
     description: "A low-friction intake for a free lead-response audit covering missed calls, website forms, booking friction, and follow-up gaps.",
     mainEntity: { "@type": "Organization", "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME, email: ORG_EMAIL, telephone: ORG_PHONE },
+  };
+}
+
+function kochiDemoSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: "Kochi Po-cha QR Table Ordering Demo",
+    url: `${SITE_ORIGIN}/kochi`,
+    image: DEFAULT_IMAGE,
+    description: "A restaurant-owned QR table-ordering preview built by Salt & Tide Creative for Kochi Po-cha, demonstrating mobile menu browsing, guest identity, shared table carts, and check closeout.",
+    creator: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
   };
 }
 
