@@ -60,7 +60,7 @@ const routeMeta = [
   {
     path: "/kochi",
     title: "Kochi Po-cha Ordering Demo | Salt & Tide Creative",
-    description: "A Salt & Tide Creative owned preview of Kochi Po-cha's QR table-ordering experience: mobile menu, guest names, shared cart, and closeout flow.",
+    description: "A preview of a mobile QR table-ordering experience for Kochi Po-cha, prepared by Salt & Tide Creative.",
     jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Kochi Po-cha Ordering Demo", path: "/kochi" }]), kochiDemoSchema()],
   },
   {
@@ -371,7 +371,7 @@ function kochiDemoSchema() {
     name: "Kochi Po-cha QR Table Ordering Demo",
     url: `${SITE_ORIGIN}/kochi`,
     image: DEFAULT_IMAGE,
-    description: "A restaurant-owned QR table-ordering preview built by Salt & Tide Creative for Kochi Po-cha, demonstrating mobile menu browsing, guest identity, shared table carts, and check closeout.",
+    description: "A mobile QR table-ordering preview prepared by Salt & Tide Creative for Kochi Po-cha, demonstrating menu browsing, guest identity, shared table carts, and check closeout.",
     creator: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
   };
 }
