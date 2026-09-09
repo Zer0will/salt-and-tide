@@ -65,8 +65,7 @@ export default function Work() {
             Work that <span style={{ color: "var(--color-kelp)" }}>earns its keep.</span>
           </h1>
           <p className="mt-7 max-w-2xl" style={{ color: "var(--color-text-secondary)", fontSize: "1.15rem", lineHeight: 1.55 }}>
-            Restaurants, service businesses, and small operators across the greater Seattle area. Every project below is a real
-            client engagement — link out to the live work or read the case study.
+            Website showcases for local businesses, previews, and educational projects. Explore the design and scope of each project, then open the linked site.
           </p>
         </div>
         <hr className="hr-tide mt-16" />
@@ -77,7 +76,7 @@ export default function Work() {
         <div className="container py-4 flex flex-wrap gap-2 items-center">
           <span className="mono-label mr-2 hidden sm:inline">Filter:</span>
           {FILTERS.map((f) => (
-            <button key={f.k} className={`filter-pill ${active === f.k ? "is-active" : ""}`} onClick={() => setActive(f.k)}>
+            <button key={f.k} className={`filter-pill ${active === f.k ? "is-active" : ""}`} aria-pressed={active === f.k} onClick={() => setActive(f.k)}>
               {f.l}
             </button>
           ))}
@@ -123,7 +122,7 @@ export default function Work() {
                         opacity: 0.6,
                       }} />
                       <div className="absolute top-4 left-4 mono-label" style={{ color: "var(--color-text-primary)" }}>
-                        {String(i+1).padStart(2,"0")} / {p.category.toUpperCase()}
+                        {p.projectType.toUpperCase()}
                       </div>
                       <div className="absolute top-4 right-4 inline-flex items-center justify-center" style={{
                         width: 38, height: 38, border: "1px solid var(--color-hairline)", background: "rgba(15,17,21,0.55)",

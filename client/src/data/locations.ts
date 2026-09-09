@@ -60,16 +60,16 @@ export const EDMONDS: LocationPageConfig = {
       d: "Salt & Tide is registered in Washington and headquartered in Edmonds. We meet on the waterfront, not in a Slack DM \u2014 unless you prefer Slack.",
     },
     {
-      t: "Edmonds Creative District network",
-      d: "We're plugged into the Edmonds Chamber of Commerce, Creative District, and the Edmonds small-business community. Referrals are real.",
+      t: "Independent business focus",
+      d: "Our work focuses on the independent businesses that make Edmonds distinctive, from neighborhood cafes to local service providers.",
     },
     {
       t: "Restaurant + retail focus",
       d: "Restaurants, breakfast spots, retailers, and service operators are our specialty \u2014 the exact mix Edmonds runs on.",
     },
     {
-      t: "Same-week response",
-      d: "Local clients get same-week meetings. Most projects start within two weeks of the first call.",
+      t: "Direct communication",
+      d: "We reply within one business day and agree on a start date during project scoping.",
     },
   ],
   faq: [
@@ -83,7 +83,7 @@ export const EDMONDS: LocationPageConfig = {
     },
     {
       q: "Do you work with restaurants in downtown Edmonds?",
-      a: "Yes \u2014 our portfolio includes Pancake Haus and Luigi's Breakfast, both Edmonds operators. Restaurant marketing is a core capability.",
+      a: "Yes \u2014 our portfolio includes Pancake Haus in Edmonds and Luigi's Breakfast in Redmond Ridge. Restaurant marketing is a core capability.",
     },
     {
       q: "What's your typical Edmonds project timeline?",

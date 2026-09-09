@@ -16,7 +16,8 @@ export default function CaseStudy() {
   const next = PROJECTS[(idx + 1) % PROJECTS.length];
 
   // Compute SEO copy specific to this case study.
-  const isRestaurant = /restaurant|cafe|hospitality/i.test(p.category);
+  const isEducational = p.projectType.startsWith("Educational");
+  const isRestaurant = !isEducational && /restaurant|cafe|hospitality/i.test(p.category);
   const seoTitle = `${p.client} — ${isRestaurant ? "Restaurant Website Design" : "Web Design"} Case Study | Salt & Tide`;
   const seoDescTemplate = `${p.client} (${p.location}) — ${p.blurb} See the strategy, design, and result behind this ${p.category.toLowerCase()} project by Salt & Tide Creative.`;
   const seoDescription = seoDescTemplate.length > 160 ? seoDescTemplate.slice(0, 157) + "…" : seoDescTemplate;
@@ -31,7 +32,7 @@ export default function CaseStudy() {
     description: p.blurb,
     keywords: [p.category, "web design", p.location, "Seattle", "Edmonds WA"].join(", "),
     creator: { "@type": "Organization", "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
-    about: { "@type": "LocalBusiness", name: p.client, address: { "@type": "PostalAddress", addressLocality: p.location } },
+    about: isEducational ? { "@type": "CreativeWork", name: p.client } : { "@type": "LocalBusiness", name: p.client, address: { "@type": "PostalAddress", addressLocality: p.location } },
     datePublished: `${p.year}-01-01`,
   };
 
@@ -66,7 +67,7 @@ export default function CaseStudy() {
           </Link>
           <div className="mt-8 grid md:grid-cols-12 gap-8">
             <div className="md:col-span-8">
-              <div className="mono-label" style={{ color: "var(--color-kelp)" }}>{p.category} · {p.location} · {p.year}</div>
+              <div className="mono-label" style={{ color: "var(--color-kelp)" }}>{p.projectType} · {p.category} · {p.location} · {p.year}</div>
               <h1 className="display mt-5" style={{ fontSize: "clamp(2.4rem, 6vw, 5.2rem)", lineHeight: 0.95 }}>
                 {p.title}
               </h1>
@@ -76,7 +77,7 @@ export default function CaseStudy() {
             </div>
             <aside className="md:col-span-4">
               <dl className="grid grid-cols-2 gap-y-5 gap-x-6 mt-2">
-                <div><dt className="mono-label">Client</dt><dd className="mt-1.5 display" style={{ fontSize: "1rem" }}>{p.client}</dd></div>
+                <div><dt className="mono-label">Project</dt><dd className="mt-1.5 display" style={{ fontSize: "1rem" }}>{p.client}</dd></div>
                 <div><dt className="mono-label">Year</dt><dd className="mt-1.5 display" style={{ fontSize: "1rem" }}>{p.year}</dd></div>
                 <div className="col-span-2"><dt className="mono-label">Services</dt>
                   <dd className="mt-2 flex flex-wrap gap-2">{p.services.map((s) => <span key={s} className="chip">{s}</span>)}</dd>

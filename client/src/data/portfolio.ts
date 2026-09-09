@@ -5,6 +5,7 @@ export type Project = {
   slug: string;
   title: string;
   client: string;
+  projectType: string;
   category: string;     // restaurant | service | retail | hospitality
   location: string;
   year: string;
@@ -25,30 +26,32 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     slug: "luigis-breakfast",
-    title: "Luigi's — Launch-Ready From Day One",
+    projectType: "Website showcase",
+    title: "Luigi’s — Breakfast in Redmond Ridge",
     client: "Luigi's Breakfast",
     category: "Restaurant Launch",
-    location: "Edmonds, WA",
+    location: "Redmond Ridge, WA",
     year: "2026",
     liveUrl: "https://luigisrestaurant.online/",
     desktop: "/screenshots/luigis-breakfast-desktop.jpg",
     mobile:  "/screenshots/luigis-breakfast-mobile.jpg",
     full:    "/screenshots/luigis-breakfast-full.jpg",
-    blurb: "A new breakfast concept needed brand, site, and a growth plan before doors opened.",
+    blurb: "A food-led website with a readable menu, family story, hours, and directions.",
     challenge:
-      "Luigi's was opening with no online footprint, no audience, and a 60-day runway to first service. Every reservation, every walk-in had to be earned from zero. They didn't need a website — they needed a launch.",
+      "A first-time visitor needs to understand the food, find current hours, and decide how to visit from a phone.",
     approach:
-      "We led with strategy. Positioning, target customer, menu narrative, and a six-week local-marketing roadmap all locked before a single page was designed. Then we built a fast, mobile-first site engineered for one job: drive reservations and weekend walk-ins.",
+      "The design brings breakfast photography together with an HTML menu, category navigation, a family story, and visible telephone and directions links.",
     result:
-      "Luigi's opened with a complete digital foundation: a launch site, Google Business Profile, social presence, and a clear playbook for the first 90 days. They looked established on day one — not new.",
-    services: ["Brand Strategy", "Web Design & Build", "Local SEO", "Launch Playbook"],
-    resultCallout: "Full launch foundation delivered in 3 weeks",
+      "The public site brings the menu, daily hours, Redmond Ridge address, and call-ahead information into one place.",
+    services: ["Web Design & Build", "Menu Experience", "Visitor Information"],
+    resultCallout: "Menu, hours, and directions in a focused visitor experience",
     filters: ["all", "restaurant", "web", "strategy"],
     featured: true,
   },
   {
     slug: "pancake-haus",
-    title: "Pancake Haus — Menu That Sells",
+    projectType: "Website showcase",
+    title: "Pancake Haus — A Digital Home for a Local Favorite",
     client: "Pancake Haus",
     category: "Restaurant",
     location: "Edmonds, WA",
@@ -57,20 +60,21 @@ export const PROJECTS: Project[] = [
     desktop: "/screenshots/pancake-haus-desktop.jpg",
     mobile:  "/screenshots/pancake-haus-mobile.jpg",
     full:    "/screenshots/pancake-haus-full.jpg",
-    blurb: "An Edmonds breakfast institution: full menu redesign + digital refresh built around average ticket.",
+    blurb: "A warm restaurant website with an extensive breakfast menu and clear visitor information.",
     challenge:
-      "Pancake Haus had loyal customers but a menu and digital presence that under-sold the experience. The menu read like a list; the site read like a brochure. Neither was doing the work of growing average ticket or weekend covers.",
+      "A restaurant with a long menu needs a page that remains easy to scan and useful on a phone.",
     approach:
-      "We treated the menu as a sales document, not a list — re-architected categories around margin and reorder behavior, rewrote item copy for crave, and rebuilt the site to mirror the in-store warmth.",
+      "The site uses menu categories, food photography, prominent directions, and a consistent visual identity across its visitor and shop pages.",
     result:
-      "A menu engineered to lift average check and a digital home that finally matches the reputation. The kind of foundation a 20-year breakfast institution should have had a decade ago.",
-    services: ["Menu Strategy", "Web Design & Build", "Brand Refresh"],
-    resultCallout: "Menu redesign + brand refresh built around revenue",
+      "The showcase brings together the menu, photos, hours, gift-card information, and shop. Contact delivery remains a separate integration to complete.",
+    services: ["Web Design & Build", "Menu Experience", "Visual Identity"],
+    resultCallout: "A digital showcase for an Edmonds breakfast spot established in 1969",
     filters: ["all", "restaurant", "web", "strategy"],
     featured: true,
   },
   {
     slug: "walnut-street-coffee",
+    projectType: "Website preview",
     title: "Walnut Street Coffee — A Cafe With Presence",
     client: "Walnut Street Coffee",
     category: "Cafe / Hospitality",
@@ -86,7 +90,7 @@ export const PROJECTS: Project[] = [
     approach:
       "Editorial typography, real photography of the shop and the people, hours and location pinned at every scroll depth, and a frictionless mobile experience for someone deciding where to go in the next ten minutes.",
     result:
-      "A site that finally feels like the cafe — and a foundation for online ordering, gift cards, and email when they're ready to add them.",
+      "A preview of the cafe’s menu, story, and visit information. Online gift cards and newsletter delivery require verified services before activation.",
     services: ["Web Design & Build", "Content Strategy", "Local SEO"],
     resultCallout: "A digital home that finally feels like the shop",
     filters: ["all", "restaurant", "web"],
@@ -94,7 +98,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "medina-painting",
-    title: "Medina Painting — A Service Business That Books Itself",
+    projectType: "Website showcase",
+    title: "Medina Painting — Project Work Front and Center",
     client: "Medina Painting",
     category: "Service Business",
     location: "Greater Seattle",
@@ -103,19 +108,20 @@ export const PROJECTS: Project[] = [
     desktop: "/screenshots/medina-painting-desktop.jpg",
     mobile:  "/screenshots/medina-painting-mobile.jpg",
     full:    "/screenshots/medina-painting-full.jpg",
-    blurb: "Painting contractor site engineered for trust, proof, and direct booking.",
+    blurb: "A painting contractor website organized around services, project photography, and estimate inquiries.",
     challenge:
       "Painting is a trust purchase. Without a real portfolio, clear pricing posture, and an obvious path to a quote, leads go to the competitor with the better website — not the better painter.",
     approach:
       "Three priorities: proof (real project photography surfaced fast), trust (licensing, insurance, and process visible without scrolling forever), and conversion (a quote form that takes ninety seconds, not five minutes).",
     result:
-      "A site small contractors actually wish they had: it answers the questions before the call, qualifies the lead, and lets the team focus on quoting jobs they'll actually win.",
+      "Services, gallery, company information, and contact options are presented in a consistent design. Estimate requests need a configured delivery service or a clearly labelled email handoff.",
     services: ["Web Design & Build", "Lead Capture", "Local SEO"],
-    resultCallout: "Quote-form built to qualify leads before the call",
+    resultCallout: "Project evidence and a clear path to an estimate",
     filters: ["all", "service", "web"],
   },
   {
     slug: "lgm-landscaping",
+    projectType: "Website showcase",
     title: "LGM Landscaping — Field Work, Digital Front",
     client: "LGM Landscaping",
     category: "Service Business",
@@ -127,21 +133,22 @@ export const PROJECTS: Project[] = [
     full:    "/screenshots/lgm-landscaping-full.jpg",
     blurb: "A landscaping crew with a website that finally matches the quality of the work.",
     challenge:
-      "Great work, no proof online. Most leads were word-of-mouth and Google Maps drive-bys — leaving 80% of potential customers untouched.",
+      "A landscaping website needs to make the crew’s work and service area easy to understand before a visitor asks for an estimate.",
     approach:
       "Lead with the photography. Service grid people can scan in five seconds. Seasonal callouts for retainers and recurring contracts. Phone CTA persistent on mobile.",
     result:
-      "A site that earns the call before the call. The crew kept doing what they're great at; the website finally pulls its weight.",
+      "The site organizes services, project imagery, and an estimate form into a single-page experience. Actual lead results have not been measured in this showcase.",
     services: ["Web Design & Build", "Photography Direction", "Local SEO"],
-    resultCallout: "Lead capture and seasonal retainer push, built in",
+    resultCallout: "Services, project imagery, and an estimate request in one place",
     filters: ["all", "service", "web"],
   },
   {
     slug: "island-hawaiian-bbq",
+    projectType: "Website showcase",
     title: "Island Hawaiian BBQ — Built For The Lunch Rush",
     client: "Island Hawaiian BBQ",
     category: "Restaurant",
-    location: "Greater Seattle",
+    location: "Everett, WA",
     year: "2026",
     liveUrl: "https://island-hawaiian-bbq-web.vercel.app/",
     desktop: "/screenshots/island-hawaiian-bbq-desktop.jpg",
@@ -151,56 +158,58 @@ export const PROJECTS: Project[] = [
     challenge:
       "QSR success is decided on phones, in the five-minute window before lunch. The previous site loaded slow, hid the menu, and made directions a chore.",
     approach:
-      "Top of mobile is hours, address, phone — full stop. Menu is one tap away with photos that sell. Order-online and directions stay sticky as you scroll.",
+      "The site separates a detailed HTML menu from visitor information and links to the restaurant’s online ordering provider.",
     result:
-      "A QSR site that does the one job it has: convert lunch traffic before someone else gets the order.",
+      "The showcase includes a photographed menu, daily hours, and location information. Direct route loading needs a hosting configuration repair.",
     services: ["Web Design & Build", "Menu Photography", "Local SEO"],
-    resultCallout: "Mobile-first QSR site engineered for the lunch rush",
+    resultCallout: "A menu and visitor experience for an Everett restaurant",
     filters: ["all", "restaurant", "web"],
   },
   {
     slug: "plate-of-africa",
-    title: "Plate of Africa — A Story Worth Showing Up For",
+    projectType: "Educational project",
+    title: "Plate of Africa — A Restaurant Concept",
     client: "Plate of Africa",
-    category: "Restaurant",
-    location: "Greater Seattle",
-    year: "2026",
+    category: "Restaurant Concept",
+    location: "TSA project",
+    year: "2025",
     liveUrl: "https://official-plate-of-africa.vercel.app/",
     desktop: "/screenshots/plate-of-africa-desktop.jpg",
     mobile:  "/screenshots/plate-of-africa-mobile.jpg",
     full:    "/screenshots/plate-of-africa-full.jpg",
-    blurb: "A culture-rich restaurant that needed a site as warm as its kitchen.",
+    blurb: "An educational restaurant website exploring African plant-based food, storytelling, and visitor journeys.",
     challenge:
-      "Plate of Africa serves cuisine most of their visitors haven't tried. The site had to do education and invitation simultaneously — without dimming the brand's heat.",
+      "The project explores how a fictional restaurant can introduce its cuisine and make a large set of visitor information easy to navigate.",
     approach:
-      "Lead with story and dish photography. Menu reads like a guided tour, not a list. Reservation and directions front-and-center for the first-time visitor.",
+      "The original TSA project combines a categorized menu, editorial story pages, and interactive demonstrations of reservations and other forms. Original team and resource credits remain on the References page.",
     result:
-      "A site that introduces newcomers without alienating regulars — and pulls its weight as the restaurant's primary on-ramp.",
-    services: ["Web Design & Build", "Brand Voice", "Local SEO"],
-    resultCallout: "Editorial site that doubles as an on-ramp for first-timers",
+      "An interactive educational showcase. Reservations, contact requests, and applications are demonstrations; they do not represent live restaurant operations.",
+    services: ["Website Design", "Menu Experience", "Interactive Prototyping"],
+    resultCallout: "Educational restaurant concept · Original TSA credits preserved",
     filters: ["all", "restaurant", "web"],
   },
   {
     slug: "forevergreen",
-    title: "Forevergreen — Premium Service, Premium Site",
+    projectType: "Educational website",
+    title: "ForeverGreen — Making Green Energy Understandable",
     client: "Forevergreen",
-    category: "Service Business",
-    location: "Greater Seattle",
+    category: "Educational Resource",
+    location: "United States",
     year: "2026",
     liveUrl: "https://forevergreen-five.vercel.app/index.html",
     desktop: "/screenshots/forevergreen-desktop.jpg",
     mobile:  "/screenshots/forevergreen-mobile.jpg",
     full:    "/screenshots/forevergreen-full.jpg",
-    blurb: "A high-end service brand with a digital presence that justifies the price.",
+    blurb: "An educational site about home energy options, everyday practices, and solar estimates.",
     challenge:
-      "Forevergreen's pricing sits above commodity competitors. Without a website that signals premium, every quote starts from the wrong anchor.",
+      "Home energy information can be difficult to compare. Visitors need clear explanations and visible assumptions behind any estimate.",
     approach:
-      "Editorial tone, deliberate whitespace, real photography, and a quote form that pre-qualifies — designed to attract clients who value the work, not shoppers chasing the lowest bid.",
+      "The site separates solutions, incentives, everyday practices, and a solar calculator, with consistent navigation and relevant imagery.",
     result:
-      "A site that signals quality before a single conversation — and a foundation for a higher-margin lead pipeline.",
-    services: ["Web Design & Build", "Brand Positioning", "Lead Capture"],
-    resultCallout: "Premium positioning built into every page",
-    filters: ["all", "service", "web", "strategy"],
+      "A green-energy learning experience. Calculator assumptions and incentive dates are part of the review process; results are illustrative rather than a personalized quote.",
+    services: ["Web Design & Build", "Information Design", "Interactive Calculator"],
+    resultCallout: "Clear energy information with an illustrative calculator",
+    filters: ["all", "web", "strategy"],
   },
 ];
 

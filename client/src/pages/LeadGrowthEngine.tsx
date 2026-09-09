@@ -218,7 +218,8 @@ function RoiCalculator() {
   const [jobValue, setJobValue] = useState(450);
   const [recoverRate, setRecoverRate] = useState(20); // % of recaptured conversations that turn into booked work
 
-  const conversationsPerMonth = Math.round(missedPerWeek * 4.33);
+  const [conversationRate, setConversationRate] = useState(50);
+  const conversationsPerMonth = Math.round(missedPerWeek * 4.33 * conversationRate / 100);
   const recoveredJobs = (conversationsPerMonth * recoverRate) / 100;
   const lowJobs = Math.floor(recoveredJobs * 0.6);
   const highJobs = Math.ceil(recoveredJobs);
@@ -240,6 +241,7 @@ function RoiCalculator() {
           </p>
           <div className="mt-8 space-y-7">
             <Slider label="Missed or unanswered calls per week" value={missedPerWeek} min={0} max={50} step={1} suffix=" calls" onChange={setMissedPerWeek} />
+            <Slider label="Share of missed callers who reply" value={conversationRate} min={0} max={100} step={5} suffix="%" onChange={setConversationRate} />
             <Slider label="Average value of a booked job" value={jobValue} min={50} max={5000} step={50} prefix="$" onChange={setJobValue} />
             <Slider label="Share of recaptured conversations you'd book" value={recoverRate} min={0} max={100} step={5} suffix="%" onChange={setRecoverRate} />
           </div>
@@ -247,7 +249,7 @@ function RoiCalculator() {
         <div className="md:col-span-7">
           <div className="grid h-full content-between gap-px" style={{ background: "rgba(15,17,21,0.12)" }}>
             <div className="grid sm:grid-cols-2 gap-px" style={{ background: "rgba(15,17,21,0.12)" }}>
-              <Metric label="Conversations recaptured / mo" value={`~${conversationsPerMonth}`} sub="Missed calls answered by text instead of silence" />
+              <Metric label="Estimated conversations / mo" value={`~${conversationsPerMonth}`} sub="Missed calls × 4.33 weeks × your reply-rate estimate" />
               <Metric label="Potential booked jobs / mo" value={`${lowJobs}–${highJobs}`} sub="From your own booking-rate estimate" />
             </div>
             <div className="p-8 md:p-10" style={{ background: "var(--color-ink)", color: "var(--color-text-primary)" }}>
@@ -438,6 +440,8 @@ function FAQ() {
             return (
               <div key={i} className="reveal border-b" style={{ borderColor: "var(--color-hairline)" }}>
                 <button
+                  aria-expanded={active}
+                  aria-controls={`growth-faq-${i}`}
                   onClick={() => setOpen(active ? null : i)}
                   className="w-full flex items-start justify-between gap-6 py-6 text-left"
                 >
@@ -445,6 +449,8 @@ function FAQ() {
                   <span className="mt-1.5 flex-shrink-0">{active ? <Minus size={18} /> : <Plus size={18} />}</span>
                 </button>
                 <div
+                  id={`growth-faq-${i}`}
+                  hidden={!active}
                   className="overflow-hidden transition-[max-height,opacity] duration-300"
                   style={{ maxHeight: active ? 600 : 0, opacity: active ? 1 : 0 }}
                 >

@@ -17,25 +17,25 @@ The full brainstorm document is in `ideas.md` at the project root.
 | `/work/:slug` | Case study template — hero, metadata, browser-frame mockup, Challenge/Approach/Result, mobile phone-frame, full page preview, next-project link |
 | `/services` | Three pillars, pricing tiers, add-ons, FAQ, CTA |
 | `/about` | Origin story, founders, four values, the meaning of "Salt & Tide", location, CTA |
-| `/contact` | Inquiry form (EmailJS-ready) with side rail and success state |
+| `/contact` | Inquiry form (Formspree) with side rail and success state |
 
-Eight case studies are pre-populated using real screenshots of the founders' demo sites, located in `client/src/data/portfolio.ts`.
+Eight case studies are pre-populated using real screenshots of the project showcases, located in `client/src/data/portfolio.ts`.
 
 ## Tech Stack
 
-The frontend uses React 19 with TypeScript, Vite 7, Tailwind CSS 4, Wouter for client-side routing, GSAP and `@emailjs/browser` for motion and form delivery, and the shadcn/ui primitives included in the template (Sonner toasts, Tooltip, ErrorBoundary). All screenshots and other large media live on Manus storage and are referenced through `manus-storage` URLs — there are no large binaries inside the repo.
+The frontend uses React 19 with TypeScript, Vite 7, Tailwind CSS 4, Wouter for client-side routing, GSAP and Formspree for motion and form delivery, and the shadcn/ui primitives included in the template (Sonner toasts, Tooltip, ErrorBoundary). All screenshots and other large media live on Manus storage and are referenced through `manus-storage` URLs — there are no large binaries inside the repo.
 
-## EmailJS Setup (Contact Form)
+## Contact delivery
 
-The contact form is wired to EmailJS but ships in a graceful-fallback mode: if the three required environment variables are not set, the form still validates, accepts input, displays a success state, and logs the payload to the console. To send real emails, add the following variables under **Settings → Secrets** in the project management UI:
+Contact, campaign, and lead-audit forms submit to the configured `VITE_FORMSPREE_ENDPOINT`. Set it to the verified form endpoint in the deployment environment. Without it, the interface provides the studio email and does not report a successful submission. A non-success response preserves the visitor’s input.
 
-```
-VITE_EMAILJS_SERVICE_ID
-VITE_EMAILJS_TEMPLATE_ID
-VITE_EMAILJS_PUBLIC_KEY
-```
+Package links preselect the service and project budget on Contact. Campaign budget and timeframe fields are optional. The free audit defaults to a website audit request.
 
-The form posts the following fields to EmailJS, which can be referenced as `{{name}}`, `{{email}}`, `{{business}}`, `{{phone}}`, `{{service}}`, `{{budget}}`, `{{timeline}}`, `{{message}}`, and `{{source}}` inside the EmailJS template.
+Before merging a delivery change, verify receipt at an authorized test destination. Do not place credentials in source files.
+
+## Quality review
+
+Portfolio entries distinguish showcases, previews, and educational work. Results describe the demonstrated experience; they do not assert unmeasured increases in sales or bookings. The static route generator uses the same portfolio/article data as the client to keep content and metadata aligned.
 
 ## Local Development
 

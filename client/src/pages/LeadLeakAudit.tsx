@@ -7,6 +7,13 @@ import { toast } from "sonner";
 import { useReveal } from "@/hooks/useReveal";
 import { Seo, SITE_ORIGIN, ORG_NAME, ORG_EMAIL, ORG_PHONE, breadcrumbSchema } from "@/components/Seo";
 
+const AUDIT_DETAILS = [
+  "Review the call-to-contact path and what a caller can do next.",
+  "Check whether the main action is visible and useful on a phone.",
+  "Trace the steps from inquiry to confirmation and find dead ends.",
+  "Prioritize one practical improvement based on the observed gaps.",
+];
+
 const AUDIT_POINTS = [
   "What happens when your main number goes unanswered",
   "Whether your website gives leads a fast next step",
@@ -21,6 +28,7 @@ export default function LeadLeakAudit() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
     setSubmitting(true);
 
     const form = e.currentTarget;
@@ -59,7 +67,7 @@ export default function LeadLeakAudit() {
       }
 
       setSubmitted(true);
-      toast.success("Audit request received. We'll send your snapshot within 24 hours.");
+      toast.success("Audit request received. We'll send your snapshot within one business day.");
       form.reset();
     } catch (err) {
       console.error(err);
@@ -148,9 +156,7 @@ export default function LeadLeakAudit() {
                 <span className="mono-label" style={{ color: "var(--color-kelp)", minWidth: 32 }}>{String(i + 1).padStart(2, "0")}</span>
                 <div>
                   <h3 className="display" style={{ fontSize: "clamp(1.15rem, 2vw, 1.45rem)" }}>{point}</h3>
-                  <p className="mt-2 text-sm" style={{ color: "var(--color-text-secondary)", lineHeight: 1.55 }}>
-                    We keep it practical: what a real customer sees, how quickly they get a response, and what one small system could improve first.
-                  </p>
+                  <p className="mt-2 text-sm" style={{ color: "var(--color-text-secondary)", lineHeight: 1.55 }}>{AUDIT_DETAILS[i]}</p>
                 </div>
               </div>
             ))}
@@ -206,7 +212,7 @@ function AuditForm({ onSubmit, submitting }: { onSubmit: (e: React.FormEvent<HTM
       <label className="flex gap-3 text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
         <input name="sms_consent" type="checkbox" value="yes" className="mt-1" />
         <span>
-          If I include a phone number, I agree Salt &amp; Tide may call or text me about this audit. Message/data rates may apply. Reply STOP to opt out.
+          I agree Salt &amp; Tide may call or text me about this audit. Message/data rates may apply. Reply STOP to opt out.
         </span>
       </label>
 
@@ -215,7 +221,7 @@ function AuditForm({ onSubmit, submitting }: { onSubmit: (e: React.FormEvent<HTM
       <input
         type="hidden"
         name="sms_consent_language"
-        value="If I include a phone number, I agree Salt & Tide may call or text me about this audit. Message/data rates may apply. Reply STOP to opt out."
+        value="I agree Salt & Tide may call or text me about this audit. Message/data rates may apply. Reply STOP to opt out."
       />
 
       <div className="pt-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -263,7 +269,7 @@ function SuccessPanel() {
       </div>
       <h2 className="display mt-6" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}>Snapshot request received.</h2>
       <p className="mt-4 max-w-xl" style={{ color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-        We'll review your website or listing, call path, and booking friction, then send back the clearest lead leaks within 24 hours.
+        We'll review your website or listing, call path, and booking friction, then send back the clearest lead leaks within one business day.
       </p>
       <div className="mt-6 grid gap-px sm:grid-cols-2" style={{ background: "var(--color-hairline)" }}>
         <a href={`mailto:${ORG_EMAIL}`} className="p-5 block" style={{ background: "var(--color-ink)" }}>

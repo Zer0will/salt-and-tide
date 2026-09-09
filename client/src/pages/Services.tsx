@@ -281,7 +281,7 @@ function Packages() {
               </ul>
               <div className="mt-7 mono-label" style={{ color: t.best ? "var(--color-text-secondary)" : "rgba(15,17,21,0.55)" }}>{t.timeline}</div>
               <Link
-                href="/contact"
+                href={`/contact?package=${t.title.toLowerCase()}`}
                 className="mt-8 inline-flex"
                 style={{
                   padding: "1rem 1.4rem",
@@ -411,6 +411,8 @@ function FAQ() {
             return (
               <div key={i} className="reveal border-b" style={{ borderColor: "var(--color-hairline)" }}>
                 <button
+                  aria-expanded={active}
+                  aria-controls={`services-faq-${i}`}
                   onClick={() => setOpen(active ? null : i)}
                   className="w-full flex items-start justify-between gap-6 py-6 text-left"
                 >
@@ -418,6 +420,8 @@ function FAQ() {
                   <span className="mt-1.5 flex-shrink-0">{active ? <Minus size={18} /> : <Plus size={18} />}</span>
                 </button>
                 <div
+                  id={`services-faq-${i}`}
+                  hidden={!active}
                   className="overflow-hidden transition-[max-height,opacity] duration-300"
                   style={{ maxHeight: active ? 400 : 0, opacity: active ? 1 : 0 }}
                 >

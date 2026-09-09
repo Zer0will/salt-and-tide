@@ -215,6 +215,7 @@ function AdLandingPage({ config }: { config: PageConfig }) {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
     setSubmitting(true);
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -223,8 +224,6 @@ function AdLandingPage({ config }: { config: PageConfig }) {
     const email = String(data.get("email") ?? "").trim();
     const phone = String(data.get("phone") ?? "").trim();
     const serviceInterest = String(data.get("service_interest") ?? "").trim();
-    const timeframe = String(data.get("timeframe") ?? "").trim();
-    const budget = String(data.get("budget") ?? "").trim();
 
     if (!name) {
       toast.error("Name is required.");
@@ -238,8 +237,8 @@ function AdLandingPage({ config }: { config: PageConfig }) {
       return;
     }
 
-    if (!serviceInterest || !timeframe || !budget) {
-      toast.error("Choose a service, timeframe, and budget so we can qualify the request quickly.");
+    if (!serviceInterest) {
+      toast.error("Choose what you would like help with.");
       setSubmitting(false);
       return;
     }
@@ -273,7 +272,7 @@ function AdLandingPage({ config }: { config: PageConfig }) {
         page_variant: config.variant,
       });
       setSubmitted(true);
-      toast.success("Request received. We'll reply within 24 hours.");
+      toast.success("Request received. We'll reply within one business day.");
       form.reset();
     } catch (err) {
       console.error(err);
@@ -313,7 +312,7 @@ function AdLandingPage({ config }: { config: PageConfig }) {
         <div className="container">
           <div className="max-w-3xl">
             <div className="mono-label" style={{ color: "var(--color-kelp)" }}>§ {config.eyebrow}</div>
-            <h1 className="display mt-5" style={{ fontSize: "clamp(2.75rem, 7.5vw, 6.8rem)", lineHeight: 0.9, maxWidth: "12ch" }}>
+            <h1 className="display mt-5" style={{ fontSize: "clamp(2.5rem, 5.8vw, 5.25rem)", lineHeight: 1.03, maxWidth: "18ch" }}>
               {config.heroTitle}
             </h1>
             <p className="mt-7 max-w-xl" style={{ color: "var(--color-text-secondary)", fontSize: "1.13rem", lineHeight: 1.62 }}>
@@ -323,7 +322,7 @@ function AdLandingPage({ config }: { config: PageConfig }) {
               <a href="#request" className="btn-primary w-full justify-center sm:w-auto">{config.primaryCta} <ArrowRight size={18} /></a>
             </div>
             <div className="mt-8 grid gap-px sm:grid-cols-3" style={{ background: "var(--color-hairline)", maxWidth: 760 }}>
-              <TrustMetric value="24h" label="Typical reply" />
+              <TrustMetric value="1 day" label="Business-day reply" />
               <TrustMetric value="PNW" label="Edmonds + Seattle" />
               <TrustMetric value="Mobile" label="Designed first" />
             </div>
@@ -338,7 +337,7 @@ function AdLandingPage({ config }: { config: PageConfig }) {
             <div className="mono-label" style={{ color: "var(--color-kelp)" }}>§ Next step</div>
             <h2 className="display mt-5" style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>{config.secondaryCta}</h2>
             <p className="mt-5 max-w-md" style={{ color: "var(--color-text-secondary)", lineHeight: 1.65 }}>
-Keep it simple: fill out the quick form with basic contact info, business name, website status, what you need, timeframe, and budget. Built for mobile completion.
+Share your name, a way to reach you, and what you would like help with. Your website and any project details help us give more useful feedback. Budget and timing are optional.
             </p>
             <div className="mt-8 grid gap-px" style={{ background: "var(--color-hairline)", maxWidth: 520 }}>
               <ContactStrip icon={<Mail size={17} />} label="Email" value={ORG_EMAIL} href={`mailto:${ORG_EMAIL}`} />
@@ -428,6 +427,7 @@ function RequestForm({ config, onSubmit, submitting }: { config: PageConfig; onS
   return (
     <form
       onSubmit={onSubmit}
+      aria-busy={submitting}
       className="space-y-5 rounded-[1.35rem] p-5 md:rounded-none md:p-9"
       style={{ border: "1px solid var(--color-hairline)", background: "var(--color-surface)" }}
     >
@@ -452,19 +452,20 @@ function RequestForm({ config, onSubmit, submitting }: { config: PageConfig; onS
       <RadioCards
         label="What do you need? *"
         name="service_interest"
-        options={["Website", "Redesign", "SEO", "Not sure"]}
+        options={config.variant.includes("ordering") ? ["Online ordering", "Menu experience", "Website", "Not sure"] : config.variant === "free-audit" ? ["Website audit", "Mobile experience", "Local SEO", "Not sure"] : ["Website", "Redesign", "SEO", "Not sure"]}
+        defaultValue={config.variant.includes("ordering") ? "Online ordering" : config.variant === "free-audit" ? "Website audit" : "Website"}
       />
 
       <div className="grid gap-5 sm:grid-cols-2">
         <SelectField
-          label="Desired starting timeframe *"
+          label="Starting timeframe (optional)"
           name="timeframe"
           options={["ASAP", "This month", "1–3 months", "3+ months", "Just exploring"]}
         />
         <SelectField
-          label="Budget range *"
+          label="Project budget (optional)"
           name="budget"
-          options={["Under $1,000", "$1,000–$2,500", "$2,500–$5,000", "$5,000+", "Not sure yet"]}
+          options={["Under $3,500", "$3,500–$6,500", "$6,500–$8,500", "$8,500+", "Not sure yet"]}
         />
       </div>
 
@@ -490,7 +491,7 @@ function RequestForm({ config, onSubmit, submitting }: { config: PageConfig; onS
 
       <div className="sticky bottom-3 z-20 -mx-1 rounded-[1.15rem] p-1 md:static md:mx-0 md:p-0" style={{ background: "rgba(15,17,21,0.86)", backdropFilter: "blur(14px)" }}>
         <button type="submit" className="btn-primary min-h-[54px] w-full justify-center text-[0.96rem]" disabled={submitting}>
-          {submitting ? "Sending…" : config.secondaryCta} <ArrowRight size={18} />
+          {submitting ? "Sending…" : config.variant === "free-audit" ? "Request my free audit" : "Request a project review"} <ArrowRight size={18} />
         </button>
         <div className="mono-label mt-3 text-center" style={{ color: "var(--color-text-muted)", fontSize: "0.62rem" }}>NO PRESSURE · PRACTICAL FEEDBACK</div>
       </div>
@@ -501,9 +502,10 @@ function RequestForm({ config, onSubmit, submitting }: { config: PageConfig; onS
 function WebsiteField() {
   return (
     <div>
-      <div className="mono-label mb-2.5">Website URL</div>
+      <label htmlFor="campaign-website" className="block mono-label mb-2.5">Website, listing, or ordering URL</label>
       <div className="grid gap-3">
         <input
+          id="campaign-website"
           name="website_or_listing"
           type="url"
           inputMode="url"
@@ -520,21 +522,21 @@ function WebsiteField() {
   );
 }
 
-function RadioCards({ label, name, options }: { label: string; name: string; options: string[] }) {
+function RadioCards({ label, name, options, defaultValue }: { label: string; name: string; options: string[]; defaultValue?: string }) {
   return (
     <fieldset>
       <legend className="mono-label mb-2.5">{label}</legend>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {options.map((option) => (
           <label key={option} className="group relative min-h-[52px] cursor-pointer">
-            <input className="peer sr-only" type="radio" name={name} value={option} required />
+            <input className="peer sr-only" type="radio" name={name} value={option} defaultChecked={option === defaultValue} required />
             <span
               className="flex h-full items-center justify-center rounded-[0.95rem] border px-3 py-3 text-center text-[0.92rem] transition md:rounded-none"
               style={{ borderColor: "var(--color-hairline)", color: "var(--color-text-secondary)", background: "var(--color-ink)" }}
             >
               {option}
             </span>
-            <span className="pointer-events-none absolute inset-0 rounded-[0.95rem] border-2 border-transparent peer-checked:border-[var(--color-kelp)] md:rounded-none" />
+            <span className="pointer-events-none absolute inset-0 rounded-[0.95rem] border-2 border-transparent peer-checked:border-[var(--color-kelp)] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-[var(--color-kelp)] md:rounded-none" />
           </label>
         ))}
       </div>
@@ -548,7 +550,6 @@ function SelectField({ label, name, options }: { label: string; name: string; op
       <div className="mono-label mb-2.5">{label}</div>
       <select
         name={name}
-        required
         defaultValue=""
         className="w-full rounded-[0.9rem] border bg-transparent px-4 py-4 text-[16px] outline-none transition-colors duration-200 focus:border-[color:var(--color-text-primary)] md:rounded-none"
         style={{ borderColor: "var(--color-hairline)", color: "var(--color-text-primary)", fontFamily: "var(--font-body)", background: "var(--color-ink)" }}

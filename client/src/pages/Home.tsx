@@ -3,18 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
+import { STUDIO_AVAILABILITY } from "@/lib/studio";
 import { FEATURED } from "@/data/portfolio";
 import { Seo, localBusinessSchema, websiteSchema, organizationSchema } from "@/components/Seo";
 
 const sectionLabel = (n: string, label: string) => `§ ${n} / ${label}`;
 
-function currentAvailabilityMonth() {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    year: "numeric",
-    timeZone: "America/Los_Angeles",
-  }).format(new Date());
-}
 
 export default function Home() {
   useReveal();
@@ -38,93 +32,52 @@ export default function Home() {
         ]}
       />
       <Hero />
-      <Credibility />
-      <div className="seam" aria-hidden />
-      <Services />
       <FeaturedWork />
+      <Services />
+      <Credibility />
       <Difference />
       <Process />
-      <SocialProof />
       <FinalCTA />
     </>
   );
 }
 
 function Hero() {
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    const el = headlineRef.current;
-    if (!el) return;
-    const words = el.querySelectorAll<HTMLElement>(".hero-char");
-    words.forEach((c, i) => {
-      c.style.transition = `transform 900ms ${220 + i * 70}ms var(--ease-out-pacific)`;
-      requestAnimationFrame(() => { c.style.transform = "translateY(0)"; });
-    });
-  }, []);
-
+  const project = FEATURED[0];
   return (
-    <section id="hero" className="relative isolate min-h-[100dvh] overflow-hidden pt-[140px] pb-20">
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(55% 50% at 82% 18%, rgba(63,174,124,0.16), transparent 70%), radial-gradient(60% 45% at 8% 86%, rgba(63,174,124,0.07), transparent 70%)",
-        }}
-      />
+    <section id="hero" className="relative isolate overflow-hidden pt-36 pb-16 lg:pt-40 lg:pb-20">
       <HeroContours />
-
-      <div className="container relative z-10 grid gap-14 lg:grid-cols-[88px_minmax(0,1fr)_240px] lg:gap-8">
-        <aside className="hidden flex-col gap-5 pt-3 lg:flex" aria-hidden>
-          <div className="accent-bar" />
-          <div className="mono-label" style={{ color: "var(--color-text-muted)" }}>{sectionLabel("01", "Hero")}</div>
-          <div className="mono-label [writing-mode:vertical-rl] rotate-180 mt-4" style={{ letterSpacing: "0.3em", color: "var(--color-text-muted)" }}>Plate I of VIII</div>
-        </aside>
-
+      <div className="container grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
         <div className="min-w-0">
-          <div className="mono-label inline-flex items-center gap-3" style={{ color: "var(--color-kelp)" }}>
-            <span className="h-px w-7" style={{ background: "var(--color-kelp)" }} />
-            Web Design &amp; Marketing — Pacific Northwest
-          </div>
-
-          <h1
-            ref={headlineRef}
-            aria-label="We build websites that earn their keep."
-            className="display mt-7"
-            style={{ fontSize: "clamp(3rem, 9vw, 9rem)", lineHeight: 0.94, letterSpacing: "-0.035em" }}
-          >
-            <Line>We build</Line>
-            <Line>websites that</Line>
-            <Line accent>earn their keep.</Line>
+          <div className="mono-label" style={{ color: "var(--color-kelp)" }}>Edmonds · Seattle · Puget Sound</div>
+          <h1 className="display mt-6" style={{ fontSize: "clamp(2.8rem, 5.8vw, 5.8rem)", lineHeight: 1.02, letterSpacing: "-0.035em" }}>
+            Websites for<br /><span style={{ color: "var(--color-kelp)" }}>what comes next.</span>
           </h1>
-
-          <p className="mt-8 max-w-2xl text-[clamp(1rem,1.05vw,1.125rem)] leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
-            Salt &amp; Tide is a boutique <strong style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>web design and digital marketing studio</strong> for restaurants and small businesses in <strong style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>Edmonds, Washington</strong> and the greater <strong style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>Seattle</strong> area. Strategy, design, and growth — under one roof, by the same team.
+          <p className="mt-6 max-w-xl text-lg leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+            Web design and digital marketing for local businesses. Help customers find your menu, explore your work, and take the next step.
           </p>
-          <span className="sr-only">Salt &amp; Tide Creative — web design agency serving Edmonds, Lynnwood, Shoreline, Mukilteo, and Seattle, WA.</span>
-
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <Link href="/work" className="btn-primary">See selected work <ArrowRight size={18} /></Link>
-            <Link href="/lead-leak-audit" className="btn-ghost">Free lead check <ArrowUpRight size={18} /></Link>
-            <Link href="/about" className="btn-link">About the studio</Link>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link href="/free-website-audit" className="btn-primary justify-center">Get a free website audit <ArrowRight size={18} /></Link>
+            <Link href="/work" className="btn-ghost justify-center">Explore our work <ArrowUpRight size={18} /></Link>
           </div>
-
-          <div className="mt-16 flex flex-wrap items-center gap-6 border-t pt-6" style={{ borderColor: "var(--color-hairline)" }}>
-            <span className="mono-label" style={{ color: "var(--color-text-muted)" }}>In good company</span>
-            <ClientRoster />
+          <p className="mt-5 text-sm" style={{ color: "var(--color-text-secondary)" }}>A two-person studio. A reply within one business day.</p>
+        </div>
+        <div className="min-w-0">
+          <Link href={`/work/${project.slug}`} className="block group" aria-label={`Explore the ${project.client} website project`}>
+            <div className="border p-2" style={{ borderColor: "var(--color-hairline)", background: "var(--color-surface)" }}>
+              <img src={project.desktop} alt="Luigi’s breakfast website with food photography and clear menu navigation" width={1600} height={1000} fetchPriority="high" className="w-full aspect-[4/3] object-cover object-top" />
+            </div>
+            <div className="mt-4 flex items-center justify-between gap-4">
+              <span className="display text-lg">{project.client}</span>
+              <span className="inline-flex items-center gap-2 text-sm" style={{ color: "var(--color-kelp)" }}>Explore project <ArrowUpRight size={16} /></span>
+            </div>
+          </Link>
+          <div className="mt-6 border-t pt-4 text-sm flex flex-wrap justify-between gap-2" style={{ borderColor: "var(--color-hairline)", color: "var(--color-text-secondary)" }}>
+            <span>{STUDIO_AVAILABILITY}</span><Link href="/about" className="ul-grow">Meet Yael &amp; Chaz</Link>
           </div>
         </div>
-
-        <aside className="hidden flex-col gap-6 pt-4 lg:flex" aria-label="Studio status">
-          <StatusKicker label="Status"><span className="inline-flex items-center gap-2 mono-label" style={{ color: "var(--color-kelp)" }}><span className="live-dot" /> 1 slot remaining</span></StatusKicker>
-          <StatusKicker label="Next opening">{currentAvailabilityMonth()} <span className="ml-2 font-mono text-[11px]" style={{ color: "var(--color-text-secondary)" }}>/ 4-wk engagement</span></StatusKicker>
-          <StatusKicker label="Response time">≈ 4 hrs <span className="ml-2 font-mono text-[11px]" style={{ color: "var(--color-text-secondary)" }}>Mon–Fri</span></StatusKicker>
-          <StatusKicker label="From the desk">Edmonds, WA</StatusKicker>
-        </aside>
       </div>
-
-      <hr className="hr-tide absolute bottom-0 left-0 right-0" />
+      <hr className="hr-tide absolute bottom-0 inset-x-0" />
     </section>
   );
 }
@@ -147,41 +100,6 @@ function HeroContours() {
   );
 }
 
-function Line({ children, accent }: { children: string; accent?: boolean }) {
-  return (
-    <span className="block overflow-hidden pb-[0.08em] pr-[0.08em]" style={{ color: accent ? "var(--color-kelp)" : "inherit", fontStyle: accent ? "italic" : undefined, fontWeight: accent ? 500 : undefined }}>
-      {children.split(" ").map((w, wi) => (
-        <span key={wi} className="inline-block align-top px-[0.035em]" style={{ marginRight: "0.28em" }}>
-          <span className="hero-char inline-block">{w}</span>
-        </span>
-      ))}
-    </span>
-  );
-}
-
-function StatusKicker({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="border-t pt-3" style={{ borderColor: "var(--color-hairline)" }}>
-      <div className="mono-label mb-2" style={{ fontSize: "10px", color: "var(--color-text-muted)" }}>{label}</div>
-      <div className="display-thin text-lg tracking-tight">{children}</div>
-    </div>
-  );
-}
-
-function ClientRoster() {
-  const list = ["Pancake Haus", "Luigi's", "Walnut St. Coffee", "Medina Painting", "LGM Landscaping"];
-  return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-      {list.map((n, i) => (
-        <span key={n} className="inline-flex items-center gap-5 display-thin text-[0.98rem]" style={{ color: "var(--color-text-secondary)" }}>
-          {n}
-          {i < list.length - 1 && <span className="h-1 w-1 rounded-full opacity-60" style={{ background: "var(--color-text-muted)" }} />}
-        </span>
-      ))}
-    </div>
-  );
-}
-
 function Credibility() {
   return (
     <section className="relative overflow-hidden py-24 md:py-36" style={{ background: "var(--color-fog)", color: "var(--color-ink)" }}>
@@ -190,14 +108,14 @@ function Credibility() {
         <SectionHead left={sectionLabel("02", "Credibility")} right="By the numbers" dark />
         <div className="grid items-end gap-12 md:grid-cols-[1.4fr_1fr] md:gap-20">
           <div className="reveal border-b pb-10 md:border-b-0 md:border-r md:pb-0 md:pr-16" style={{ borderColor: "rgba(15,17,21,0.10)" }}>
-            <div className="display font-extrabold" style={{ fontSize: "clamp(6rem,14vw,13.75rem)", lineHeight: 0.86, letterSpacing: "-0.06em", color: "var(--color-ink)" }}>8<span className="align-top text-[0.45em]" style={{ color: "var(--color-kelp-deep)" }}>+</span></div>
-            <p className="mt-6 display-thin max-w-[22ch]" style={{ fontSize: "clamp(1.25rem,2vw,1.75rem)", color: "rgba(15,17,21,0.85)" }}>Sites designed and shipped — every one built for a business we'd return to ourselves.</p>
+            <div className="display font-extrabold" style={{ fontSize: "clamp(5rem,9vw,8rem)", lineHeight: 0.86, letterSpacing: "-0.06em", color: "var(--color-ink)" }}>8<span className="align-top text-[0.45em]" style={{ color: "var(--color-kelp-deep)" }}>+</span></div>
+            <p className="mt-6 display-thin max-w-[22ch]" style={{ fontSize: "clamp(1.25rem,2vw,1.75rem)", color: "rgba(15,17,21,0.85)" }}>Website projects across restaurants, local services, and educational concepts.</p>
           </div>
           <div className="flex flex-col gap-7">
-            <CredRow num="Live" text={<><strong>Every site still online</strong> — each project we've shipped is still up and owned by the business that hired us.</>} />
-            <CredRow num="2.4×" text={<><strong>Faster delivery</strong> with AI-assisted build vs. our previous workflow.</>} />
+            <CredRow num="Web" text={<><strong>Explore the work.</strong> Open the project pages to see the design, scope, and project type.</>} />
+            <CredRow num="2" text={<><strong>People behind the work.</strong> Design and marketing with Yael and Chaz.</>} />
             <CredRow num="PNW" text={<><strong>Locally rooted</strong>, globally informed — Edmonds, Lynnwood, Shoreline, Seattle.</>} />
-            <CredRow num="3 wks" text={<><strong>Median engagement.</strong> Strategy + brand + site in the time most agencies write a proposal.</>} />
+            <CredRow num="You" text={<><strong>A clear scope.</strong> Agree on deliverables, timing, and ownership before the project starts.</>} />
           </div>
         </div>
         <p className="reveal mt-24 display-thin max-w-[32ch]" style={{ fontSize: "clamp(1.35rem,2.5vw,2.25rem)", color: "rgba(15,17,21,0.92)", lineHeight: 1.25 }}>
@@ -464,43 +382,6 @@ function Process() {
       </div>
       <hr className="hr-tide mt-16" />
     </section>
-  );
-}
-
-function SocialProof() {
-  return (
-    <section className="relative overflow-hidden py-24 md:py-36" style={{ background: "var(--color-fog)", color: "var(--color-ink)" }}>
-      <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(800px 400px at 0% 100%, rgba(63,174,124,0.06), transparent 60%)" }} />
-      <div className="container relative">
-        <SectionHead left={sectionLabel("07", "Testimonials")} right="In their words" dark />
-        <div className="grid gap-14 md:grid-cols-[7fr_5fr] md:gap-20">
-          <blockquote className="reveal pr-0 md:pr-14">
-            <span className="display block text-[clamp(7.5rem,14vw,13.75rem)] leading-[0.6]" style={{ color: "var(--color-kelp)" }}>“</span>
-            <p className="display-thin" style={{ fontSize: "clamp(1.5rem,3.2vw,2.75rem)", lineHeight: 1.18, color: "var(--color-ink)" }}>Salt &amp; Tide completely transformed how our restaurant shows up online. The site finally <em className="font-semibold" style={{ color: "var(--color-kelp-deep)" }}>matches the room</em> — and it's the first thing new guests mention. These folks know what they're doing.</p>
-            <footer className="mt-9 border-t pt-5" style={{ borderColor: "rgba(15,17,21,0.12)" }}>
-              <div className="display text-[1.05rem]">— Owner, Pancake Haus</div>
-              <div className="mono-label" style={{ color: "rgba(15,17,21,0.55)" }}>Edmonds, WA · 20 years in business</div>
-            </footer>
-          </blockquote>
-          <div className="grid content-end gap-8">
-            <MiniQuote quote="We were brand new and needed everything — strategy, website, the works. They delivered a complete digital foundation that made us look established from day one." name="Owner, Luigi's Breakfast" biz="Edmonds · Launch client, 2026" />
-            <MiniQuote quote="I was skeptical working with such a young team — they outperformed agencies I've paid twice as much. The design + marketing thinking in one team is rare." name="Owner, Service Business" biz="Seattle metro · Returning client" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function MiniQuote({ quote, name, biz }: { quote: string; name: string; biz: string }) {
-  return (
-    <blockquote className="reveal border-l-2 p-7" style={{ borderColor: "var(--color-kelp-deep)", background: "rgba(15,17,21,0.04)" }}>
-      <p className="display-thin text-[1.05rem] leading-snug" style={{ color: "rgba(15,17,21,0.88)" }}>“{quote}”</p>
-      <footer className="mt-4">
-        <div className="display text-sm">{name}</div>
-        <div className="mono-label" style={{ fontSize: "10px", color: "rgba(15,17,21,0.55)" }}>{biz}</div>
-      </footer>
-    </blockquote>
   );
 }
 

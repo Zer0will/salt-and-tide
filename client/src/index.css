@@ -507,3 +507,11 @@
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/* Shared keyboard access and readable mobile form controls. */
+:where(a, button, input, select, textarea):focus-visible { outline: 2px solid var(--color-kelp); outline-offset: 4px; }
+.skip-link { position: fixed; top: .75rem; left: .75rem; z-index: 100; padding: .8rem 1.1rem; color: var(--color-ink); background: var(--color-fog); transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+.choice-input:focus-visible + .filter-pill { outline: 2px solid var(--color-kelp); outline-offset: 4px; }
+.choice-input:checked + .filter-pill { background: var(--color-kelp); color: var(--color-ink); border-color: var(--color-kelp); }
+@media (max-width: 767px) { input, select, textarea { font-size: 16px; } }
