@@ -2,6 +2,7 @@
 // SEO note: the <address> NAP block must remain identical to your Google Business Profile and any
 // citation directories (Yelp, Bing Places, etc.). Inconsistency hurts local rankings.
 import { Link } from "wouter";
+import { STUDIO_AVAILABILITY } from "@/lib/studio";
 
 export function Footer() {
   return (
@@ -10,10 +11,10 @@ export function Footer() {
       <div className="overflow-hidden border-y" style={{ borderColor: "var(--color-hairline)" }}>
         <div className="marquee-track display-thin py-5" style={{ color: "var(--color-text-secondary)" }}>
           {Array.from({ length: 2 }).map((_, i) => (
-            <span key={i} className="inline-flex items-center gap-8 px-8" style={{ fontSize: "1.5rem" }}>
+            <span key={i} aria-hidden={i > 0} className="inline-flex items-center gap-8 px-8" style={{ fontSize: "1.5rem" }}>
               <span>SALT &amp; TIDE CREATIVE</span>
               <KelpDot />
-              <span>BOOKING PROJECTS — SUMMER 2026</span>
+              <span>{STUDIO_AVAILABILITY}</span>
               <KelpDot />
               <span>EDMONDS · SEATTLE · GREATER PUGET</span>
               <KelpDot />
@@ -65,7 +66,7 @@ export function Footer() {
         {/* NAP — Name, Address, Phone (must match GBP exactly) */}
         <div className="grid gap-8 md:grid-cols-12">
           <div className="md:col-span-7">
-            <div className="mono-label">Reach Us · NAP</div>
+            <div className="mono-label">Reach Us</div>
             <address className="mt-4 not-italic text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
               <div className="display" style={{ color: "var(--color-text-primary)", fontSize: "1.05rem" }}>Salt &amp; Tide Creative LLC</div>
               <div>Edmonds, WA 98020 · United States</div>
@@ -82,7 +83,6 @@ export function Footer() {
           <div className="md:col-span-5 md:text-right">
             <div className="mono-label">Find Us</div>
             <div className="mt-4 text-sm flex gap-5 md:justify-end" style={{ color: "var(--color-text-secondary)" }}>
-              <a className="ul-grow" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
               <a className="ul-grow" href="https://www.instagram.com/salttidecreative/" target="_blank" rel="noreferrer">Instagram</a>
               <a className="ul-grow" href="https://share.google/jvwuOWUdfh3jCB8Al" target="_blank" rel="noreferrer">Google</a>
             </div>
@@ -93,7 +93,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs" style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}>
           <div>© {new Date().getFullYear()} SALT &amp; TIDE CREATIVE LLC. ALL RIGHTS RESERVED.</div>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center gap-5">
             <Link className="ul-grow" href="/privacy-policy">Privacy</Link>
             <Link className="ul-grow" href="/terms-of-service">Terms</Link>
             <Link className="ul-grow" href="/cookie-policy">Cookies</Link>

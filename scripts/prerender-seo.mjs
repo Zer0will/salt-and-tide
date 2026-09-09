@@ -1,5 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
+import { PROJECTS } from "../client/src/data/portfolio.ts";
+import { INSIGHTS } from "../client/src/data/insights.ts";
 
 const SITE_ORIGIN = "https://salttidecreative.com";
 const OUT_DIR = path.resolve("dist");
@@ -9,22 +11,8 @@ const ORG_NAME = "Salt & Tide Creative";
 const ORG_PHONE = "+1-253-660-8555";
 const ORG_EMAIL = "hello@salttidecreative.com";
 
-const projects = [
-  ["luigis-breakfast", "Luigi's Breakfast", "Restaurant Launch", "Edmonds, WA", "A new breakfast concept needed brand, site, and a growth plan before doors opened.", "/screenshots/luigis-breakfast-desktop.jpg"],
-  ["pancake-haus", "Pancake Haus", "Restaurant", "Edmonds, WA", "An Edmonds breakfast institution: full menu redesign + digital refresh built around average ticket.", "/screenshots/pancake-haus-desktop.jpg"],
-  ["walnut-street-coffee", "Walnut Street Coffee", "Cafe / Hospitality", "Edmonds, WA", "A neighborhood cafe with the digital warmth to match the in-shop experience.", "/screenshots/walnut-street-coffee-desktop.jpg"],
-  ["medina-painting", "Medina Painting", "Service Business", "Greater Seattle", "Painting contractor site engineered for trust, proof, and direct booking.", "/screenshots/medina-painting-desktop.jpg"],
-  ["lgm-landscaping", "LGM Landscaping", "Service Business", "Greater Seattle", "A landscaping crew with a website that finally matches the quality of the work.", "/screenshots/lgm-landscaping-desktop.jpg"],
-  ["island-hawaiian-bbq", "Island Hawaiian BBQ", "Restaurant", "Greater Seattle", "Quick-service Hawaiian site optimized for hungry mobile traffic at 11:47 a.m.", "/screenshots/island-hawaiian-bbq-desktop.jpg"],
-  ["plate-of-africa", "Plate of Africa", "Restaurant", "Greater Seattle", "A culture-rich restaurant that needed a site as warm as its kitchen.", "/screenshots/plate-of-africa-desktop.jpg"],
-  ["forevergreen", "Forevergreen", "Service Business", "Greater Seattle", "A high-end service brand with a digital presence that justifies the price.", "/screenshots/forevergreen-desktop.jpg"],
-];
-
-const insights = [
-  ["how-much-does-a-website-cost-seattle", "How Much Does a Website Cost in Seattle? | 2026 Guide", "What does a small business website really cost in Seattle? Real 2026 pricing, what drives the number, and how to avoid the most common pricing mistakes.", "How Much Does a Website Cost in Seattle? (2026 Guide)", "2026-05-10", "2026-05-15", "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=1600&q=80"],
-  ["why-seattle-small-businesses-need-a-website", "Why Seattle Small Businesses Need a Website (2026)", "Social media is rented land. Your website is owned. Here's why a real website still matters for Seattle small businesses in 2026 — and what to look for.", "Why Every Seattle Small Business Needs a Real Website in 2026", "2026-05-08", "2026-05-15", "https://images.unsplash.com/photo-1493932484895-752d1471eab5?auto=format&fit=crop&w=1600&q=80"],
-  ["restaurant-website-design-guide", "Restaurant Website Design Guide for Seattle (2026)", "What every Seattle restaurant website needs in 2026: menu, reservation, mobile speed, local SEO, schema, photography, and design that drives ticket size.", "Restaurant Website Design: A 2026 Guide for Seattle Operators", "2026-05-02", "2026-05-15", "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80"],
-];
+const projects = PROJECTS.map(p => [p.slug, p.client, p.category, p.location, p.blurb, p.desktop]);
+const insights = INSIGHTS.map(p => [p.slug, p.metaTitle, p.metaDescription, p.title, p.publishDate, p.updatedDate, p.hero]);
 
 const routeMeta = [
   {
@@ -36,7 +24,7 @@ const routeMeta = [
   {
     path: "/work",
     title: "Web Design Portfolio | Salt & Tide — Seattle Agency",
-    description: "See our web design and digital marketing work for Seattle and Edmonds, WA businesses. Real restaurant, service, and retail case studies from Salt & Tide Creative.",
+    description: "See our web design and digital marketing work for Seattle and Edmonds, WA businesses. Website showcases, previews, and educational projects from Salt & Tide Creative.",
     jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Selected Work", path: "/work" }])],
   },
   {
@@ -121,7 +109,7 @@ const routeMeta = [
   },
   {
     path: "/contact",
-    title: "Contact Salt & Tide Creative | Free Strategy Call",
+    title: "Contact Salt & Tide Creative | Lead Leak Audit",
     description: "Start your project with Salt & Tide Creative. Free 30-minute strategy call for Seattle and Edmonds, WA businesses. We respond within one business day.",
     jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]), contactSchema()],
   },
@@ -408,12 +396,34 @@ function setTag(html, pattern, replacement) {
   return html.replace(pattern, replacement);
 }
 
+function routeContent(meta) {
+  const project = PROJECTS.find(p => meta.path === `/work/${p.slug}`);
+  const article = INSIGHTS.find(p => meta.path === `/insights/${p.slug}`);
+  const heading = project?.title || article?.title || meta.title.split(" | ")[0];
+  let detail = "";
+  if (project) {
+    detail = `<p>${escapeText(project.projectType)} · ${escapeText(project.location)}</p>` +
+      [["The brief", project.challenge], ["The approach", project.approach], ["The experience", project.result]]
+        .map(([title, text]) => `<section><h2>${escapeText(title)}</h2><p>${escapeText(text)}</p></section>`).join("");
+  } else if (article) {
+    detail = article.body.split(/\n\s*\n/).map(block => {
+      const plain = block.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/\*\*/g, "");
+      return plain.startsWith("## ") ? `<h2>${escapeText(plain.slice(3))}</h2>` : `<p>${escapeText(plain)}</p>`;
+    }).join("");
+  } else if (meta.path === "/work") {
+    detail = `<ul>${PROJECTS.map(p => `<li><a href="/work/${p.slug}">${escapeText(p.client)}</a> — ${escapeText(p.projectType)}</li>`).join("")}</ul>`;
+  } else if (meta.path === "/services") {
+    detail = "<h2>Website packages</h2><p>Launch from $3,500; Growth from $6,500; Partnership from $8,500 plus $1,000 per month. Scope and timing are agreed before work begins.</p>";
+  }
+  return `<main><h1>${escapeText(heading)}</h1><p>${escapeText(meta.description)}</p>${detail}<p><a href="/contact">Contact the studio</a> · <a href="/work">Explore the work</a></p></main>`;
+}
+
 function applyMeta(baseHtml, meta) {
   const url = `${SITE_ORIGIN}${meta.path === "/" ? "/" : meta.path}`;
   const image = meta.image || DEFAULT_IMAGE;
   const type = meta.type || "website";
   const robots = meta.noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large";
-  let html = baseHtml;
+  let html = baseHtml.replace(/<main>.*?<\/main>/s, routeContent(meta));
   html = setTag(html, /<title>.*?<\/title>/s, `<title>${escapeText(meta.title)}</title>`);
   html = setTag(html, /<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${escapeAttr(meta.description)}" />`);
   html = setTag(html, /<meta name="robots" content="[^"]*" \/>/, `<meta name="robots" content="${robots}" />`);
@@ -442,4 +452,4 @@ for (const meta of routeMeta) {
   fs.writeFileSync(target, html);
 }
 
-console.log(`Prerendered SEO metadata for ${routeMeta.length} routes.`);
+console.log(`Prerendered route content and SEO metadata for ${routeMeta.length} routes.`);

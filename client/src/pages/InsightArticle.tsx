@@ -150,7 +150,7 @@ function ArticleBody({ markdown }: { markdown: string }) {
   return <div>{blocks}</div>;
 }
 
-function P({ text }: { text: string }) {
+export function InlineText({ text }: { text: string }) {
   // Inline: **bold**, [text](href). Internal hrefs (start with /) become <Link>.
   const tokens: (string | ReactElement)[] = [];
   let rest = text;
@@ -164,21 +164,25 @@ function P({ text }: { text: string }) {
     }
     if (m.index > 0) tokens.push(rest.slice(0, m.index));
     if (m[1]) {
-      tokens.push(<strong key={key++} style={{ color: "var(--color-text-primary)" }}>{m[2]}</strong>);
+      tokens.push(<strong key={key++} style={{ color: "var(--color-text-primary)" }}>{<InlineText text={m[2]} />}</strong>);
     } else if (m[3]) {
       const label = m[4]; const href = m[5];
       const isInternal = href.startsWith("/");
       tokens.push(
         isInternal
-          ? <Link key={key++} href={href} className="ul-grow" style={{ color: "var(--color-kelp)" }}>{label}</Link>
-          : <a key={key++} href={href} target="_blank" rel="noreferrer" className="ul-grow" style={{ color: "var(--color-kelp)" }}>{label}</a>
+          ? <Link key={key++} href={href} className="ul-grow" style={{ color: "var(--color-kelp)" }}><InlineText text={label} /></Link>
+          : <a key={key++} href={href} target="_blank" rel="noreferrer" className="ul-grow" style={{ color: "var(--color-kelp)" }}><InlineText text={label} /></a>
       );
     }
     rest = rest.slice(m.index + m[0].length);
   }
+  return <>{tokens}</>;
+}
+
+function P({ text }: { text: string }) {
   return (
     <p className="reveal" style={{ marginTop: "1.4em", color: "var(--color-text-secondary)", fontSize: "1.07rem", lineHeight: 1.75 }}>
-      {tokens}
+      <InlineText text={text} />
     </p>
   );
 }

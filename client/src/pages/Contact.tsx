@@ -1,5 +1,7 @@
 // SALT & TIDE — Pacific Brutalist. Contact page. Formspree handles email delivery (set VITE_FORMSPREE_ENDPOINT).
 import { useState } from "react";
+import { useSearch } from "wouter";
+import { INQUIRY_PACKAGES, PROJECT_BUDGETS, MONTHLY_BUDGETS } from "@/lib/studio";
 import { ArrowRight, Mail, Phone, Clock, MapPin, Check } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { toast } from "sonner";
@@ -7,16 +9,19 @@ import { Seo, SITE_ORIGIN, ORG_NAME, ORG_PHONE, ORG_EMAIL, breadcrumbSchema } fr
 import { trackWhopEvent } from "@/lib/whop";
 
 const SERVICE_OPTIONS = ["Lead Leak Audit", "Local Growth Engine", "Web Design", "Digital Marketing", "Both", "Not Sure Yet"];
-const BUDGET_OPTIONS  = ["Under $1,000/mo", "$1,000 – $2,500/mo", "$2,500 – $5,000/mo", "Project budget $5,000+", "Let's discuss"];
+const BUDGET_OPTIONS = [...PROJECT_BUDGETS, ...MONTHLY_BUDGETS, "Let’s discuss"];
 const TIMELINE_OPTIONS = ["ASAP", "1–3 months", "3–6 months", "Just exploring"];
 
 export default function Contact() {
   useReveal();
+  const search = useSearch();
+  const requestedPackage = INQUIRY_PACKAGES[new URLSearchParams(search).get("package") || ""];
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
     setSubmitting(true);
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -53,7 +58,7 @@ export default function Contact() {
         source: "contact_form",
       });
       setSubmitted(true);
-      toast.success("Message sent. We'll reply within 24 hours.");
+      toast.success("Message sent. We'll reply within one business day.");
       form.reset();
     } catch (err) {
       console.error(err);
@@ -112,7 +117,7 @@ export default function Contact() {
             Tell us about <span style={{ color: "var(--color-kelp)" }}>your business.</span>
           </h1>
           <p className="mt-7 max-w-xl" style={{ color: "var(--color-text-secondary)", fontSize: "1.15rem", lineHeight: 1.55 }}>
-            We respond within 24 hours. No bots. No automated email sequences. A real person — usually one of the founders — will read what you wrote and reply with something useful.
+            We respond within one business day. No bots. No automated email sequences. A real person — usually one of the founders — will read what you wrote and reply with something useful.
           </p>
         </div>
         <hr className="hr-tide mt-16" />
@@ -128,7 +133,9 @@ export default function Contact() {
             {submitted ? (
               <SuccessPanel />
             ) : (
-              <form onSubmit={onSubmit} className="space-y-8 reveal">
+              <form key={requestedPackage?.name || "inquiry"} onSubmit={onSubmit} aria-busy={submitting} className="space-y-8 reveal">
+                {requestedPackage && <p className="text-sm" style={{ color: "var(--color-kelp)" }}>You’re asking about {requestedPackage.name}. You can adjust the details below.</p>}
+                <input type="hidden" name="package" value={requestedPackage?.name || ""} />
                 <Row>
                   <Field label="Name" name="name" required placeholder="Your full name" />
                   <Field label="Email" name="email" type="email" required placeholder="you@example.com" />
@@ -145,13 +152,11 @@ export default function Contact() {
                   </span>
                 </label>
 
-                <FieldGroup label="Service Interest *">
-                  <Pills name="service" required options={SERVICE_OPTIONS} />
-                </FieldGroup>
+                <Pills name="service" label="Service interest" required options={SERVICE_OPTIONS} defaultValue={requestedPackage?.service} />
 
                 <Row>
-                  <FieldGroup label="Budget Range">
-                    <Select name="budget" options={["", ...BUDGET_OPTIONS]} />
+                  <FieldGroup label="Budget (project or monthly)">
+                    <Select name="budget" options={["", ...BUDGET_OPTIONS]} defaultValue={requestedPackage?.budget} />
                   </FieldGroup>
                   <FieldGroup label="Timeline">
                     <Select name="timeline" options={["", ...TIMELINE_OPTIONS]} />
@@ -188,7 +193,7 @@ export default function Contact() {
                     {submitting ? "Sending…" : "Send Message"} <ArrowRight size={18} />
                   </button>
                   <span className="mono-label" style={{ color: "var(--color-text-muted)" }}>
-                    We reply within 24 hours · Mon–Fri PT
+                    We reply within one business day · Mon–Fri PT
                   </span>
                 </div>
               </form>
@@ -205,7 +210,7 @@ export default function Contact() {
               <div className="mono-label" style={{ color: "var(--color-kelp)" }}>What happens next?</div>
               <ol className="mt-5 space-y-3.5 text-[0.95rem]" style={{ color: "var(--color-text-secondary)", lineHeight: 1.55 }}>
                 <Step n="1" t="We read your message." s="A founder, not a bot." />
-                <Step n="2" t="We reply within 24 hours." s="With real questions, not a brochure." />
+                <Step n="2" t="We reply within one business day." s="With real questions, not a brochure." />
                 <Step n="3" t="We book a 30-min call." s="Free. No pitch. Just clarity." />
                 <Step n="4" t="You decide what's next." s="Quote, timeline, or no thank you — your call." />
               </ol>
@@ -249,33 +254,30 @@ function Field({
   );
 }
 
-function Pills({ name, options, required }: { name: string; options: string[]; required?: boolean }) {
-  const [val, setVal] = useState<string>("");
+function Pills({ name, label, options, required, defaultValue = "" }: { name: string; label: string; options: string[]; required?: boolean; defaultValue?: string }) {
   return (
-    <div className="flex flex-wrap gap-2">
-      {options.map((o) => (
-        <button
-          key={o}
-          type="button"
-          onClick={() => setVal(o)}
-          className={`filter-pill ${val === o ? "is-active" : ""}`}
-        >
-          {o}
-        </button>
-      ))}
-      <input type="hidden" name={name} value={val} required={required} />
-    </div>
+    <fieldset>
+      <legend className="mono-label mb-2.5">{label}{required ? " *" : ""}</legend>
+      <div className="flex flex-wrap gap-3">
+        {options.map((option) => (
+          <label key={option} className="relative cursor-pointer">
+            <input className="choice-input sr-only" type="radio" name={name} value={option} defaultChecked={defaultValue === option} required={required} />
+            <span className="filter-pill inline-flex min-h-11 items-center">{option}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
   );
 }
 
-function Select({ name, options }: { name: string; options: string[] }) {
+function Select({ name, options, defaultValue = "" }: { name: string; options: string[]; defaultValue?: string }) {
   return (
     <div className="relative">
       <select
         name={name}
         className="w-full bg-transparent border px-4 py-3.5 text-[1rem] outline-none appearance-none transition-colors duration-200 focus:border-[color:var(--color-text-primary)]"
         style={{ borderColor: "var(--color-hairline)", color: "var(--color-text-primary)", fontFamily: "var(--font-body)" }}
-        defaultValue=""
+        defaultValue={defaultValue}
       >
         {options.map((o, i) => (
           <option key={`${name}-${i}-${o}`} value={o} style={{ background: "var(--color-ink)" }}>
@@ -314,7 +316,7 @@ function Step({ n, t, s }: { n: string; t: string; s: string }) {
 
 function SuccessPanel() {
   return (
-    <div className="reveal p-8 md:p-12" style={{ border: "1px solid var(--color-hairline)", background: "var(--color-surface)" }}>
+    <div role="status" className="p-8 md:p-12" style={{ border: "1px solid var(--color-hairline)", background: "var(--color-surface)" }}>
       <div className="inline-flex items-center justify-center" style={{
         width: 56, height: 56, background: "var(--color-kelp)", color: "var(--color-ink)",
       }}>
@@ -322,7 +324,7 @@ function SuccessPanel() {
       </div>
       <h2 className="display mt-6" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}>Message received.</h2>
       <p className="mt-4 max-w-xl" style={{ color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-        Thank you for reaching out. We've got your inquiry and will reply within 24 hours — usually within a few hours during the work week.
+        Thank you for reaching out. We've got your inquiry and will reply within one business day.
       </p>
       <p className="mt-3 max-w-xl" style={{ color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
         If your project is time-sensitive, you can also reach us directly at{" "}

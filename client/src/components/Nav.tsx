@@ -70,6 +70,8 @@ export function Nav() {
             </Link>
             <button
               aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
               className="md:hidden p-2 -mr-2"
               onClick={() => setOpen((v) => !v)}
               style={{ color: "var(--color-text-primary)" }}
@@ -82,6 +84,9 @@ export function Nav() {
 
       {/* Mobile overlay */}
       <div
+        id="mobile-navigation"
+        inert={!open}
+        aria-hidden={!open}
         className="fixed inset-0 z-40 md:hidden"
         style={{
           background: "var(--color-ink)",

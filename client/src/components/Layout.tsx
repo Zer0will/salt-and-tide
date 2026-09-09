@@ -4,14 +4,8 @@ import { useLocation } from "wouter";
 import { Cursor } from "./Cursor";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
+import { STUDIO_AVAILABILITY } from "@/lib/studio";
 
-function currentAvailabilityMonth() {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    year: "numeric",
-    timeZone: "America/Los_Angeles",
-  }).format(new Date());
-}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -56,11 +50,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--color-ink)" }}>
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Cursor />
       <div className="scroll-progress" style={{ width: `${progress.toFixed(2)}%` }} aria-hidden />
       <TopMarquee />
       <Nav />
-      <main data-reveal-root style={{ paddingTop: 0 }}>{children}</main>
+      <main id="main-content" tabIndex={-1} data-reveal-root style={{ paddingTop: 0 }}>{children}</main>
       <CornerStamps clock={clock} />
       <Footer />
     </div>
@@ -73,11 +68,11 @@ function TopMarquee() {
       <div className="marquee-track font-mono text-[11px] uppercase tracking-[0.18em]" style={{ color: "var(--color-text-muted)" }}>
         {Array.from({ length: 2 }).map((_, i) => (
           <span key={i} className="inline-flex">
-            <span className="px-7" style={{ color: "var(--color-kelp)" }}>● AVAILABLE FOR PROJECTS — {currentAvailabilityMonth()}</span>
+            <span className="px-7" style={{ color: "var(--color-kelp)" }}>● {STUDIO_AVAILABILITY}</span>
             <span className="px-7">Edmonds, WA · 47.8107°N · 122.3774°W</span>
             <span className="px-7">hello@salttidecreative.com</span>
-            <span className="px-7">Booking Q3 / Q4 2026</span>
-            <span className="px-7">Pacific Standard Time</span>
+            <span className="px-7">Reply within one business day</span>
+            <span className="px-7">Pacific Time</span>
           </span>
         ))}
       </div>

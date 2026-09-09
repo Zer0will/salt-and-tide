@@ -144,7 +144,7 @@ export default function LocationPage({ config }: { config: LocationPageConfig })
             <ul className="mt-12 space-y-2.5">
               {[
                 `Free strategy call for ${city} businesses`,
-                "Same Pacific-Time hours, same week response",
+                "Pacific Time · Reply within one business day",
                 "Local references and live case studies",
               ].map((b) => (
                 <li key={b} className="flex gap-3 text-sm" style={{ color: "var(--color-text-secondary)" }}>

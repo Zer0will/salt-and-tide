@@ -28,7 +28,7 @@ export const INSIGHTS: Insight[] = [
     category: "Pricing",
     readMinutes: 9,
     publishDate: "2026-05-10",
-    updatedDate: "2026-05-15",
+    updatedDate: "2026-09-09",
     author: { name: "Salt & Tide", role: "Studio" },
     hero: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=1600&q=80",
     keywords: [
@@ -122,7 +122,7 @@ If you're a Seattle small business owner trying to scope what you actually need,
     category: "Strategy",
     readMinutes: 7,
     publishDate: "2026-05-08",
-    updatedDate: "2026-05-15",
+    updatedDate: "2026-09-09",
     author: { name: "Salt & Tide", role: "Studio" },
     hero: "https://images.unsplash.com/photo-1493932484895-752d1471eab5?auto=format&fit=crop&w=1600&q=80",
     keywords: [
@@ -141,13 +141,13 @@ When a Seattle customer wants to make a decision — book a table tonight, hire 
 
 A Google Business Profile gets you on the map. A real website gets you the click. The two work together; neither replaces the other.
 
-In our own portfolio, we routinely see restaurants double their direct booking traffic within 90 days of launching a real site, because the search results stop sending people to OpenTable, Yelp, and Toast (each of which charges your business per visit) and start sending them to your own page.
+A website gives visitors a direct place to find your menu, hours, and contact information. Measure changes in calls, directions, and ordering clicks before making claims about its effect on your business. Third-party platforms have different pricing models; review your own provider agreement.
 
 ## Reviews need a home that's yours
 
 Five-star reviews on Google are gold. Five-star reviews embedded in your own site, with photos and full quotes, are platinum — because the visitor already trusts your brand environment.
 
-Review schema (the structured data that makes star ratings show up in Google search results) only works on a real website. You can't add it to an Instagram bio.
+Publish reviews with their source and permission where needed. A review section should help visitors assess your work; it should not promise special search-result treatment.
 
 ## "Looks legit" matters more than you think
 
@@ -155,7 +155,7 @@ Customers in 2026 are sharper than they were five years ago. A polished, fast we
 
 ## Your website is the only platform you control
 
-Instagram changes its algorithm. TikTok gets banned in some country. Yelp throttles your visibility unless you advertise. Your website? Yours forever.
+Social and directory platforms can change their features, ranking systems, and pricing. A website gives you more control over your content and the path visitors take to contact you.
 
 A real website is the only piece of digital real estate you actually own. Everything else is rented.
 
@@ -163,7 +163,7 @@ A real website is the only piece of digital real estate you actually own. Everyt
 
 Not every website earns its keep. The ones that do share five traits:
 
-**Mobile-first.** Built for the phone, because that's where 70%+ of small business traffic comes from. If it loads slowly or looks broken on mobile, none of the rest matters.
+**Mobile-first.** Built to remain readable and useful on a phone. If it loads slowly or looks broken on mobile, none of the rest matters.
 
 **Conversion-focused.** Every page has one job. The home page books a table or sells a service or captures a lead — not all three at once with no priority.
 
@@ -206,7 +206,7 @@ At Salt & Tide we usually start with a 30-minute strategy call to figure out whi
     category: "Restaurants",
     readMinutes: 8,
     publishDate: "2026-05-02",
-    updatedDate: "2026-05-15",
+    updatedDate: "2026-09-09",
     author: { name: "Salt & Tide", role: "Studio" },
     hero: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80",
     keywords: [
@@ -293,7 +293,7 @@ If you're walk-in only, say so loudly. "No reservations needed — we keep three
 
 ## What this looks like in practice
 
-Two of our portfolio restaurants — Pancake Haus and Luigi's Breakfast, both in Edmonds — followed exactly this framework. Both saw direct booking traffic increase substantially within 90 days of launch, and both moved up in local search for their core terms ("breakfast Edmonds," "pancakes near me," etc.) within the first quarter.
+Explore Pancake Haus in Edmonds and Luigi’s Breakfast in Redmond Ridge for examples of menu organization, food photography, and visitor information. These are design examples; measured booking or search-ranking improvements are not presented here.
 
 The work isn't magic. It's discipline applied to a clear framework.
 

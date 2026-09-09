@@ -147,9 +147,6 @@ function Founders() {
             </div>
           ))}
         </div>
-        <p className="mono-label mt-8" style={{ color: "var(--color-text-muted)" }}>
-          † Founder photography in production. Replace monograms with portraits in Q3 2026.
-        </p>
       </div>
       <hr className="hr-tide mt-24" />
     </section>
