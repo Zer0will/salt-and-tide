@@ -3,7 +3,7 @@
 **Project:** salttidecreative.com
 **Status:** Implementation complete (production-ready)
 **Date:** May 15, 2026
-**Prepared for:** Yael & Chaz, Salt & Tide Creative LLC
+**Prepared for:** Yael, Salt & Tide Creative LLC
 
 This report documents every search-engine-optimization change applied to the codebase, why it was applied, and what remains for the founders to do off-site (Google Business Profile, citations, link-building).
 
@@ -69,7 +69,7 @@ The table below summarizes the production meta and schema for every public URL. 
 | `/work` | Selected Work \| Salt & Tide Creative Portfolio | Eight live case studies — restaurants, retail, services across Edmonds & Seattle. See the websites Salt & Tide Creative has shipped. | BreadcrumbList, ItemList |
 | `/work/:slug` | [Project] Case Study \| Salt & Tide Creative | Restaurant + service business case studies with measurable outcomes. | BreadcrumbList, CreativeWork |
 | `/services` | Web Design & Marketing Services \| Salt & Tide Creative | Web design, SEO, and digital marketing services from $3,500. Launch, Growth, and Partnership tiers for small businesses in Seattle and Edmonds, WA. | BreadcrumbList, Service (3 Offers), FAQPage |
-| `/about` | About Salt & Tide Creative \| Edmonds, WA Web Design Studio | Meet the founders — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses. | BreadcrumbList, Person × 2 |
+| `/about` | About Salt & Tide Creative \| Edmonds, WA Web Design Studio | Meet the studio — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses. | BreadcrumbList, Person × 2 |
 | `/contact` | Contact Salt & Tide Creative \| Free Strategy Call | Start your project with Salt & Tide Creative. Free 30-minute strategy call for Seattle and Edmonds, WA businesses. We respond within one business day. | BreadcrumbList, ContactPage |
 | `/seattle-web-design` | Web Design Seattle WA \| Salt & Tide Creative | Seattle-area web design and digital marketing for restaurants and small businesses. Custom websites that convert. | BreadcrumbList, ProfessionalService (Seattle), FAQPage |
 | `/edmonds-web-design` | Web Design Edmonds WA \| Salt & Tide Creative | Locally-rooted Edmonds web design — restaurants, retail, and service businesses. Boutique studio on the Edmonds waterfront. | BreadcrumbList, ProfessionalService (Edmonds), FAQPage |

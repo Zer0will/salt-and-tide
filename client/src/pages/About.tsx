@@ -17,22 +17,13 @@ export default function About() {
       address: { "@type": "PostalAddress", addressLocality: "Edmonds", addressRegion: "WA", addressCountry: "US" },
       knowsAbout: ["Web Design", "Web Development", "AI-assisted build", "React", "Conversion-focused UX"],
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Chaz", // OWNER: full name
-      jobTitle: "Co-Founder & Marketing Strategist",
-      worksFor: { "@id": `${SITE_ORIGIN}/#organization`, name: ORG_NAME },
-      address: { "@type": "PostalAddress", addressLocality: "Edmonds", addressRegion: "WA", addressCountry: "US" },
-      knowsAbout: ["Brand Strategy", "Local SEO", "Email Marketing", "Paid Media", "Restaurant Marketing"],
-    },
   ];
 
   return (
     <>
       <Seo
         title="About Salt & Tide Creative | Edmonds, WA Web Design Studio"
-        description="Meet the founders of Salt & Tide Creative — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses."
+        description="Meet the studio behind Salt & Tide Creative — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses."
         path="/about"
         keywords={[
           "Edmonds web design studio",
@@ -93,12 +84,10 @@ function Story() {
         </div>
         <div className="md:col-span-7 space-y-6 reveal" style={{ color: "var(--color-text-secondary)", fontSize: "1.05rem", lineHeight: 1.7 }}>
           <p>
-            We met working in completely different worlds. One of us was knee-deep in AI tools and modern web architecture.
-            The other was in the field — running brand and growth strategy for restaurants and consumer businesses, including
-            time inside a major hospitality group.
+            Salt &amp; Tide brings AI-assisted development and modern web architecture to local businesses.
           </p>
           <p>
-            Over coffees in Edmonds, the same pattern kept showing up: incredible local businesses with menus, brands, and
+            Across Edmonds, the same pattern kept showing up: incredible local businesses with menus, brands, and
             stories worth shouting about — and websites that looked like they were built in 2014. The tools to build something
             world-class had quietly become accessible to small teams. The expertise to use those tools well had not.
           </p>
@@ -122,19 +111,13 @@ function Founders() {
       bio: "Builds the studio's design and engineering practice. Specializes in AI-accelerated development, modern web architecture, and turning ambiguous business goals into shipped product.",
       tags: ["Design Systems", "AI-Assisted Build", "Product Strategy"],
     },
-    {
-      name: "Chaz",
-      role: "Co-founder · Marketing + Brand",
-      bio: "Leads brand strategy, growth marketing, and client engagements. Background includes consulting on restaurant operations and brand strategy for hospitality groups across the Pacific Northwest.",
-      tags: ["Brand Strategy", "Restaurant Marketing", "Growth"],
-    },
   ];
   return (
     <section className="py-20 md:py-28" style={{ background: "var(--color-surface)" }}>
       <div className="container">
-        <div className="mono-label mb-10">§ Founders</div>
-        <h2 className="display reveal" style={{ fontSize: "clamp(2rem, 4.4vw, 3.4rem)" }}>The two of us.</h2>
-        <div className="mt-14 grid md:grid-cols-2 gap-px" style={{ background: "var(--color-hairline)" }}>
+        <div className="mono-label mb-10">§ Studio</div>
+        <h2 className="display reveal" style={{ fontSize: "clamp(2rem, 4.4vw, 3.4rem)" }}>Behind the work.</h2>
+        <div className="mt-14 grid gap-px" style={{ background: "var(--color-hairline)" }}>
           {team.map((p) => (
             <div key={p.name} className="reveal p-8 md:p-12" style={{ background: "var(--color-surface)" }}>
               <Monogram letter={p.name[0]} />
@@ -147,9 +130,6 @@ function Founders() {
             </div>
           ))}
         </div>
-        <p className="mono-label mt-8" style={{ color: "var(--color-text-muted)" }}>
-          † Founder photography in production. Replace monograms with portraits in Q3 2026.
-        </p>
       </div>
       <hr className="hr-tide mt-24" />
     </section>

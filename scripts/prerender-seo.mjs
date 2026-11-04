@@ -14,8 +14,6 @@ const projects = [
   ["pancake-haus", "Pancake Haus", "Restaurant", "Edmonds, WA", "An Edmonds breakfast institution: full menu redesign + digital refresh built around average ticket.", "/screenshots/pancake-haus-desktop.jpg"],
   ["walnut-street-coffee", "Walnut Street Coffee", "Cafe / Hospitality", "Edmonds, WA", "A neighborhood cafe with the digital warmth to match the in-shop experience.", "/screenshots/walnut-street-coffee-desktop.jpg"],
   ["medina-painting", "Medina Painting", "Service Business", "Greater Seattle", "Painting contractor site engineered for trust, proof, and direct booking.", "/screenshots/medina-painting-desktop.jpg"],
-  ["lgm-landscaping", "LGM Landscaping", "Service Business", "Greater Seattle", "A landscaping crew with a website that finally matches the quality of the work.", "/screenshots/lgm-landscaping-desktop.jpg"],
-  ["island-hawaiian-bbq", "Island Hawaiian BBQ", "Restaurant", "Greater Seattle", "Quick-service Hawaiian site optimized for hungry mobile traffic at 11:47 a.m.", "/screenshots/island-hawaiian-bbq-desktop.jpg"],
   ["plate-of-africa", "Plate of Africa", "Restaurant", "Greater Seattle", "A culture-rich restaurant that needed a site as warm as its kitchen.", "/screenshots/plate-of-africa-desktop.jpg"],
   ["forevergreen", "Forevergreen", "Service Business", "Greater Seattle", "A high-end service brand with a digital presence that justifies the price.", "/screenshots/forevergreen-desktop.jpg"],
 ];
@@ -116,7 +114,7 @@ const routeMeta = [
   {
     path: "/about",
     title: "About Salt & Tide Creative | Edmonds, WA Web Design Studio",
-    description: "Meet the founders of Salt & Tide Creative — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses.",
+    description: "Meet the studio of Salt & Tide Creative — an Edmonds, WA boutique studio building websites and marketing strategies for Pacific Northwest businesses.",
     jsonLd: [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])],
   },
   {

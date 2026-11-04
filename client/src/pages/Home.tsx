@@ -169,7 +169,7 @@ function StatusKicker({ label, children }: { label: string; children: React.Reac
 }
 
 function ClientRoster() {
-  const list = ["Pancake Haus", "Luigi's", "Walnut St. Coffee", "Medina Painting", "LGM Landscaping"];
+  const list = ["Pancake Haus", "Luigi's", "Walnut St. Coffee", "Medina Painting"];
   return (
     <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
       {list.map((n, i) => (
@@ -190,7 +190,7 @@ function Credibility() {
         <SectionHead left={sectionLabel("02", "Credibility")} right="By the numbers" dark />
         <div className="grid items-end gap-12 md:grid-cols-[1.4fr_1fr] md:gap-20">
           <div className="reveal border-b pb-10 md:border-b-0 md:border-r md:pb-0 md:pr-16" style={{ borderColor: "rgba(15,17,21,0.10)" }}>
-            <div className="display font-extrabold" style={{ fontSize: "clamp(6rem,14vw,13.75rem)", lineHeight: 0.86, letterSpacing: "-0.06em", color: "var(--color-ink)" }}>8<span className="align-top text-[0.45em]" style={{ color: "var(--color-kelp-deep)" }}>+</span></div>
+            <div className="display font-extrabold" style={{ fontSize: "clamp(6rem,14vw,13.75rem)", lineHeight: 0.86, letterSpacing: "-0.06em", color: "var(--color-ink)" }}>6<span className="align-top text-[0.45em]" style={{ color: "var(--color-kelp-deep)" }}>+</span></div>
             <p className="mt-6 display-thin max-w-[22ch]" style={{ fontSize: "clamp(1.25rem,2vw,1.75rem)", color: "rgba(15,17,21,0.85)" }}>Sites designed and shipped — every one built for a business we'd return to ourselves.</p>
           </div>
           <div className="flex flex-col gap-7">
@@ -252,7 +252,7 @@ function FeaturedWork() {
   return (
     <section className="py-24 md:py-36" id="work">
       <div className="container">
-        <SectionHead left={sectionLabel("04", "Selected work")} right={<Link href="/work" className="ul-grow" style={{ color: "var(--color-kelp)" }}>Index → all 8 projects</Link>} />
+        <SectionHead left={sectionLabel("04", "Selected work")} right={<Link href="/work" className="ul-grow" style={{ color: "var(--color-kelp)" }}>Index → all projects</Link>} />
         <h2 className="display reveal" style={{ fontSize: "clamp(2.5rem,6vw,5.25rem)" }}>Results we're proud of.</h2>
         <p className="reveal mt-5 max-w-2xl text-lg leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>Every project is a partnership. Here is what we have built together — and what those numbers turned into for the people running these businesses.</p>
         <div className="mt-20 grid gap-y-24 md:grid-cols-12 md:gap-x-8 md:gap-y-28">
@@ -279,7 +279,7 @@ function FeaturedWork() {
           ))}
         </div>
         <div className="mt-24 flex flex-col gap-6 border-t pt-6 md:flex-row md:items-center md:justify-between" style={{ borderColor: "var(--color-hairline)" }}>
-          <p className="display-thin max-w-[24ch] text-2xl italic">A working portfolio of <strong className="font-medium" style={{ color: "var(--color-kelp)" }}>eight live sites</strong> — restaurants, retail, services, hospitality.</p>
+          <p className="display-thin max-w-[24ch] text-2xl italic">A working portfolio of <strong className="font-medium" style={{ color: "var(--color-kelp)" }}>live sites</strong> — restaurants, retail, services, hospitality.</p>
           <Link href="/work" className="btn-primary self-start">View all work <ArrowRight size={18} /></Link>
         </div>
       </div>
@@ -405,9 +405,8 @@ function Difference() {
         <div className="reveal">
           <div className="mono-label">{sectionLabel("05", "Why us")}</div>
           <h2 className="display mt-6" style={{ fontSize: "clamp(2.1rem,4vw,3.5rem)", lineHeight: 1.04 }}>Most agencies hand you a template and call it a day. <span className="italic font-medium" style={{ color: "var(--color-kelp)" }}>We treat every project like our own business depends on it</span> — because it does.</h2>
-          <div className="mt-12 grid max-w-md grid-cols-2 gap-6">
+          <div className="mt-12 grid max-w-md grid-cols-1 gap-6">
             <Founder name="Yael" role="Web + AI strategy" />
-            <Founder name="Chaz" role="Marketing + brand" />
           </div>
         </div>
         <div className="grid gap-px sm:grid-cols-2" style={{ background: "var(--color-hairline)" }}>

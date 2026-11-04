@@ -30,7 +30,7 @@ export const SEATTLE: LocationPageConfig = {
   faq: [
     {
       q: "How much does a Seattle small business website cost?",
-      a: "Most Seattle small business sites we build run $3,500\u2013$8,500 depending on scope. Restaurant sites and service businesses with bookings tend to land in the $5,000\u2013$8,500 range. Larger Seattle agencies often quote $15,000\u2013$30,000 for the same scope; our pricing reflects a focused two-person studio with low overhead.",
+      a: "Most Seattle small business sites we build run $3,500\u2013$8,500 depending on scope. Restaurant sites and service businesses with bookings tend to land in the $5,000\u2013$8,500 range. Larger Seattle agencies often quote $15,000\u2013$30,000 for the same scope; our pricing reflects a focused small studio with low overhead.",
     },
     {
       q: "Do you only work with Seattle businesses?",
@@ -120,7 +120,7 @@ export const LYNNWOOD: LocationPageConfig = {
   faq: [
     {
       q: "Do you work with Lynnwood service businesses?",
-      a: "Yes. Painting, landscaping, home services, and retail are core verticals for us. See Medina Painting and LGM Landscaping in our portfolio for examples.",
+      a: "Yes. Painting, landscaping, home services, and retail are core verticals for us. See Medina Painting in our portfolio for an example.",
     },
     {
       q: "Will my Lynnwood business rank in local search?",

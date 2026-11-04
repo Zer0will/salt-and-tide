@@ -115,50 +115,6 @@ export const PROJECTS: Project[] = [
     filters: ["all", "service", "web"],
   },
   {
-    slug: "lgm-landscaping",
-    title: "LGM Landscaping — Field Work, Digital Front",
-    client: "LGM Landscaping",
-    category: "Service Business",
-    location: "Greater Seattle",
-    year: "2026",
-    liveUrl: "https://lgm-landscaping.vercel.app/",
-    desktop: "/screenshots/lgm-landscaping-desktop.jpg",
-    mobile:  "/screenshots/lgm-landscaping-mobile.jpg",
-    full:    "/screenshots/lgm-landscaping-full.jpg",
-    blurb: "A landscaping crew with a website that finally matches the quality of the work.",
-    challenge:
-      "Great work, no proof online. Most leads were word-of-mouth and Google Maps drive-bys — leaving 80% of potential customers untouched.",
-    approach:
-      "Lead with the photography. Service grid people can scan in five seconds. Seasonal callouts for retainers and recurring contracts. Phone CTA persistent on mobile.",
-    result:
-      "A site that earns the call before the call. The crew kept doing what they're great at; the website finally pulls its weight.",
-    services: ["Web Design & Build", "Photography Direction", "Local SEO"],
-    resultCallout: "Lead capture and seasonal retainer push, built in",
-    filters: ["all", "service", "web"],
-  },
-  {
-    slug: "island-hawaiian-bbq",
-    title: "Island Hawaiian BBQ — Built For The Lunch Rush",
-    client: "Island Hawaiian BBQ",
-    category: "Restaurant",
-    location: "Greater Seattle",
-    year: "2026",
-    liveUrl: "https://island-hawaiian-bbq-web.vercel.app/",
-    desktop: "/screenshots/island-hawaiian-bbq-desktop.jpg",
-    mobile:  "/screenshots/island-hawaiian-bbq-mobile.jpg",
-    full:    "/screenshots/island-hawaiian-bbq-full.jpg",
-    blurb: "Quick-service Hawaiian — site optimized for hungry mobile traffic at 11:47 a.m.",
-    challenge:
-      "QSR success is decided on phones, in the five-minute window before lunch. The previous site loaded slow, hid the menu, and made directions a chore.",
-    approach:
-      "Top of mobile is hours, address, phone — full stop. Menu is one tap away with photos that sell. Order-online and directions stay sticky as you scroll.",
-    result:
-      "A QSR site that does the one job it has: convert lunch traffic before someone else gets the order.",
-    services: ["Web Design & Build", "Menu Photography", "Local SEO"],
-    resultCallout: "Mobile-first QSR site engineered for the lunch rush",
-    filters: ["all", "restaurant", "web"],
-  },
-  {
     slug: "plate-of-africa",
     title: "Plate of Africa — A Story Worth Showing Up For",
     client: "Plate of Africa",

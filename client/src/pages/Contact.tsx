@@ -112,7 +112,7 @@ export default function Contact() {
             Tell us about <span style={{ color: "var(--color-kelp)" }}>your business.</span>
           </h1>
           <p className="mt-7 max-w-xl" style={{ color: "var(--color-text-secondary)", fontSize: "1.15rem", lineHeight: 1.55 }}>
-            We respond within 24 hours. No bots. No automated email sequences. A real person — usually one of the founders — will read what you wrote and reply with something useful.
+            We respond within 24 hours. No bots. No automated email sequences. A real person from the studio will read what you wrote and reply with something useful.
           </p>
         </div>
         <hr className="hr-tide mt-16" />

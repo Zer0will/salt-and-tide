@@ -1,7 +1,7 @@
 # Keyword Map — Salt & Tide Creative
 
 **Last updated:** May 15, 2026
-**Owner:** Yael & Chaz
+**Owner:** Yael
 
 This is the master keyword-to-URL assignment for salttidecreative.com. Every public route has been assigned a primary head term and a small cluster of supporting long-tail terms. The site avoids targeting the same head term from multiple URLs (which causes Google to keyword-cannibalize the rankings).
 
@@ -42,8 +42,6 @@ This is the master keyword-to-URL assignment for salttidecreative.com. Every pub
 | `/work/pancake-haus` | Pancake Haus website | Edmonds pancake restaurant, restaurant website redesign | N+I | Low | M |
 | `/work/walnut-street-coffee` | Walnut Street Coffee website | Edmonds coffee shop website, coffee shop web design | N+I | Low | M |
 | `/work/medina-painting` | Medina Painting website | Seattle painting contractor website, painter web design Seattle | N+I | Low | M |
-| `/work/lgm-landscaping` | LGM Landscaping website | Seattle landscaping website, landscaper web design WA | N+I | Low | M |
-| `/work/island-hawaiian-bbq` | Island Hawaiian BBQ website | Hawaiian restaurant Seattle website, BBQ restaurant web design | N+I | Low | M |
 | `/work/plate-of-africa` | Plate of Africa website | African restaurant Seattle website, ethnic restaurant web design | N+I | Low | M |
 | `/work/forevergreen` | Forevergreen website | landscaping company website Seattle, green services web design | N+I | Low | M |
 | `/about` | Salt & Tide Creative founders | Edmonds web design studio, about Salt & Tide, PNW marketing agency | N | Low | M |

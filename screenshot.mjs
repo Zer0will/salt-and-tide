@@ -10,8 +10,6 @@ const sites = [
   { slug: "pancake-haus",          url: "https://pancakehaus.vercel.app/" },
   { slug: "walnut-street-coffee",  url: "https://walnutstreetcoffeepreview.vercel.app/" },
   { slug: "medina-painting",       url: "https://medina-painting-main.vercel.app/" },
-  { slug: "lgm-landscaping",       url: "https://lgm-landscaping.vercel.app/" },
-  { slug: "island-hawaiian-bbq",   url: "https://island-hawaiian-bbq-web.vercel.app/" },
   { slug: "plate-of-africa",       url: "https://official-plate-of-africa.vercel.app/" },
   { slug: "forevergreen",          url: "https://forevergreen-five.vercel.app/" },
 ];
